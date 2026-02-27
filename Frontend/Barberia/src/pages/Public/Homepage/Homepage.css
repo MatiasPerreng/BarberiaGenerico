@@ -43,7 +43,7 @@ section {
   background:
     linear-gradient(
       180deg,
-      rgba(20, 18, 12, 0.95),
+      rgba(12, 35, 68, 0.95),
       #000 55%
     ),
     url("/noise.png");
@@ -77,9 +77,9 @@ section {
 ======================================================= */
 
 .hero-logo {
-  max-width: 270px;
+  max-width: 130px;
   padding: 20px;
-  background: rgba(255, 255, 255, 0.03);
+  /* background: rgba(255, 255, 255, 0.03); */
   border-radius: 50px;
   margin-bottom: 25px;
   animation: fadeInDown 1.2s ease forwards;
@@ -102,18 +102,18 @@ section {
 /* BOTÓN HERO */
 .hero-section .btn {
   border-radius: 999px !important;
-  border: 1px solid rgba(230, 199, 123, 0.6) !important;
-  color: #e6c77b !important;
+  background-color: #07070700;
+  color: #C0C0C0!important;
   padding: 14px 36px !important;
   transition: all 0.3s ease !important;
   animation: fadeInUp 1.6s ease forwards;
 }
 
 .hero-section .btn:hover {
-  background: #e6c77b !important;
-  color: #000 !important;
+  background-color: #C0C0C0;
   transform: translateY(-2px) !important;
-  box-shadow: 0 10px 20px rgba(230, 199, 123, 0.3);
+  box-shadow: 0 10px 20px rgba(243, 243, 245, 0.3);
+  color:black!important;
 }
 
 /* =======================================================

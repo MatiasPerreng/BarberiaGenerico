@@ -47,13 +47,13 @@ export default function HomePage() {
       <section className="hero-section">
         <div className="container text-center py-5">
           <img
-            src="/logo.jpg"
+            src="/iconobarber.png"
             alt="King Barber"
             className="hero-logo mb-4"
           />
 
           <h1 className="display-5 fw-bold hero-title">
-            KING BARBER
+            AGENDA BARBERIA
           </h1>
 
           <p className="lead">
