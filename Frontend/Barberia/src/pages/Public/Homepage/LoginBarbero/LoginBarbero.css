@@ -1,0 +1,78 @@
+/* =======================================================
+   LOGIN BARBERO - KING BARBER
+======================================================= */
+
+.kb-login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at top, #222, #000);
+}
+
+.kb-login-form {
+  width: 100%;
+  max-width: 360px;
+  padding: 36px 32px;
+  border-radius: 18px;
+
+  background: linear-gradient(180deg, #1c1f24, #121418);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center;
+}
+
+.kb-login-form img {
+  width: 90px;
+  margin: 0 auto 6px;
+}
+
+.kb-login-form h2 {
+  color: #e6c77b;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.kb-login-form input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+.kb-login-form button {
+  margin-top: 6px;
+  padding: 12px;
+  border-radius: 999px;
+  border: none;
+
+  background: linear-gradient(135deg, #e6c77b, #caa24d);
+  color: #000;
+
+  font-weight: 800;
+  letter-spacing: 1px;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.kb-login-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(230, 199, 123, 0.4);
+}
+
+.kb-login-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.kb-login-error {
+  color: #f87171;
+  font-size: 13px;
+  font-weight: 600;
+}

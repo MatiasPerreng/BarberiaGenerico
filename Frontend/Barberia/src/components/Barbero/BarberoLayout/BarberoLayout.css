@@ -1,0 +1,221 @@
+/* =======================================================
+   LAYOUT BASE
+======================================================= */
+
+.barbero-layout {
+  min-height: 100vh;
+  display: flex;
+  background: #f6f7f8;
+}
+
+/* =======================================================
+   MOBILE HEADER
+======================================================= */
+
+.barbero-mobile-header {
+  display: none;
+  height: 56px;
+  background: #1c1f24;
+  align-items: center;
+  padding: 0 14px;
+  gap: 12px;
+}
+
+.barbero-mobile-header img {
+  width: 45px;
+}
+
+.barbero-hamburger {
+  background: none;
+  border: none;
+  color: #e6c77b;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.barbero-user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+
+/* =======================================================
+   SIDEBAR
+======================================================= */
+
+.barbero-sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background: linear-gradient(180deg, #1c1f24, #121418);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
+  z-index: 20;
+}
+
+/* =======================================================
+   LOGO
+======================================================= */
+
+.barbero-logo {
+  padding: 32px 20px 26px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.barbero-logo img {
+  width: 85px;
+}
+
+/* =======================================================
+   NAV
+======================================================= */
+
+.barbero-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  gap: 4px;
+}
+
+.barbero-nav a {
+  padding: 14px 26px;
+  color: #cfd2d6;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  position: relative;
+  transition: all 0.25s ease;
+}
+
+.barbero-nav a:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.barbero-nav a.active {
+  color: #e6c77b;
+  background: rgba(230, 199, 123, 0.08);
+}
+
+.barbero-nav a.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #e6c77b;
+}
+
+/* =======================================================
+   USER / LOGOUT
+======================================================= */
+
+.barbero-user {
+  margin-top: auto;
+  padding: 20px 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.barbero-user-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.barbero-user-role {
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.barbero-logout {
+  background: transparent;
+  border: 1px solid rgba(230, 199, 123, 0.5);
+  color: #e6c77b;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.barbero-logout:hover {
+  background: #e6c77b;
+  color: #000;
+}
+
+/* =======================================================
+   CONTENT (MISMA LÓGICA QUE ADMIN)
+======================================================= */
+
+.barbero-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: #f6f7f8;
+}
+
+/* CONTENIDO REAL */
+.barbero-content-inner {
+  flex: 1;
+  /* 🔥 EMPUJA EL FOOTER */
+  padding: 42px;
+  box-sizing: border-box;
+}
+
+/* =======================================================
+   OVERLAY
+======================================================= */
+
+.barbero-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 10;
+}
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media (max-width: 900px) {
+  .barbero-mobile-header {
+    display: flex;
+  }
+
+  .barbero-layout {
+    padding-top: 56px;
+  }
+
+  .barbero-sidebar {
+    position: fixed;
+    top: 0;
+    left: -260px;
+    height: 100dvh;
+    width: 250px;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+  }
+
+  .barbero-sidebar.open {
+    left: 0;
+  }
+
+  .barbero-content-inner {
+    padding: 20px;
+  }
+}

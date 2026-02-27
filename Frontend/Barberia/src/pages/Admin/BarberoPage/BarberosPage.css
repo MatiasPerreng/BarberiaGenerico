@@ -1,0 +1,397 @@
+/* ======================================================
+    PAGE
+====================================================== */
+
+.barberos-page-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ======================================================
+    HEADER
+====================================================== */
+
+.barberos-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.barberos-header h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+  margin-right: auto;
+}
+
+.barberos-btn-primary {
+  padding: 8px 18px;
+  /* Reducido */
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #e6c77b, #cfa85a);
+  color: #111;
+  font-size: 0.75rem;
+  /* Reducido */
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(230, 199, 123, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.barberos-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(230, 199, 123, 0.5);
+}
+
+/* ======================================================
+    LIST
+====================================================== */
+
+.barberos-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ======================================================
+    CARD
+====================================================== */
+
+.barberos-row {
+  background: linear-gradient(180deg, #ffffff, #f6f7f8);
+  border-radius: 18px;
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.barberos-row:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+}
+
+/* ======================================================
+    AVATAR
+====================================================== */
+
+.barberos-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(230, 199, 123, 0.9);
+}
+
+/* ======================================================
+    INFO
+====================================================== */
+
+.barberos-info {
+  text-align: center;
+}
+
+.barberos-info strong {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* ======================================================
+    STATUS
+====================================================== */
+
+.barberos-status {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 6px 16px;
+  border-radius: 999px;
+}
+
+.barberos-status.active {
+  background: rgba(46, 125, 50, 0.12);
+  color: #1b5e20;
+}
+
+.barberos-status.inactive {
+  background: rgba(164, 0, 0, 0.12);
+  color: #8b0000;
+}
+
+/* ======================================================
+    ACTIONS – MOBILE FIRST (AHORA MÁS CHICOS)
+====================================================== */
+
+.barberos-actions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.barberos-actions button {
+  padding: 8px 16px;
+  /* Achicado de 12px 24px */
+  height: 38px;
+  /* Altura fija más baja */
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #e6c77b, #cfa85a);
+  color: #111;
+  font-size: 0.75rem;
+  /* Achicado de 0.85rem */
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.barberos-actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(230, 199, 123, 0.5);
+}
+
+/* ELIMINAR ACHICADO */
+.barberos-actions button.danger {
+  margin-top: 6px;
+  background: linear-gradient(135deg, #b91c1c, #dc2626);
+  color: #fff;
+  height: 38px;
+  /* Igual que los otros botones */
+  font-size: 0.75rem;
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.35);
+}
+
+/* ======================================================
+    DESKTOP (BOTONES MÁS COMPACTOS)
+====================================================== */
+
+@media (min-width: 768px) {
+  .barberos-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .barberos-info {
+    text-align: left;
+    min-width: 160px;
+  }
+
+  .barberos-actions {
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: auto;
+    margin-left: auto;
+    margin-top: 0;
+  }
+
+  .barberos-actions button {
+    width: auto;
+    height: 32px;
+    /* Super compacto en desktop */
+    padding: 0 14px;
+    font-size: 0.7rem;
+    /* Texto más chico */
+    border-radius: 12px;
+    /* Más refinado */
+  }
+
+  .barberos-actions button.danger {
+    margin-top: 0;
+    height: 32px;
+    padding: 0 16px;
+  }
+}
+
+/* ======================================================
+    MODAL CREAR ACCESO (ESTILOS ORIGINALES)
+====================================================== */
+
+.barberos-access-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  padding: 20px;
+}
+
+.barberos-access-modal-card {
+  width: 100%;
+  max-width: 480px;
+  background: #111;
+  color: #f5f5f5;
+  border-radius: 22px;
+  padding: 32px 30px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), inset 0 0 0 1px rgba(230, 199, 123, 0.15);
+  animation: barberosAccessIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes barberosAccessIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.barberos-access-modal-title {
+  margin-bottom: 26px;
+  text-align: center;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #e6c77b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.barberos-access-modal-text {
+  text-align: center;
+  margin-bottom: 18px;
+  font-size: 0.9rem;
+  color: #ddd;
+}
+
+.barberos-access-modal-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.barberos-access-modal-form input,
+.barberos-access-modal-form select {
+  height: 46px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #1b1b1b;
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 14px;
+}
+
+.barberos-access-modal-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.barberos-access-modal-actions button {
+  height: 52px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.barberos-access-modal-actions button[type="button"] {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f5f5f5;
+}
+
+.barberos-access-modal-actions button[type="submit"] {
+  background: linear-gradient(135deg, #e6c77b, #cfa85a);
+  color: #111;
+  box-shadow: 0 8px 18px rgba(207, 168, 90, 0.25);
+}
+
+@media (max-width: 420px) {
+  .barberos-access-modal-card {
+    padding: 26px 20px;
+  }
+
+  .barberos-access-modal-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .barberos-access-modal-actions button {
+    height: 54px;
+    font-size: 1rem;
+  }
+}
+
+/* ======================================================
+    MISC
+====================================================== */
+
+.barberos-descanso-tag {
+  font-size: 0.8rem;
+  color: #cfa85a;
+  background: rgba(230, 199, 123, 0.1);
+  padding: 4px 10px;
+  border-radius: 6px;
+  margin-top: 4px;
+  display: inline-block;
+  border: 1px solid rgba(230, 199, 123, 0.2);
+}
+
+.summary-btn-todos {
+  padding: 8px 16px;
+  margin-left: 10px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #e6c77b, #cfa85a);
+  color: #111;
+  font-size: 0.75rem;
+  /* Reducido */
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.btn-action.danger {
+  background: linear-gradient(135deg, #440000, #880000) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(136, 0, 0, 0.3);
+}
+
+.barberos-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+
+@media (max-width: 767px) {
+  .barberos-header h2 {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .summary-btn-todos,
+  .barberos-btn-primary {
+    width: 100%; 
+    margin-left: 0 !important;  
+    margin-right: 0 !important; 
+    margin-top: 10px;
+    padding: 12px;
+    text-align: center;
+    display: block;
+    box-sizing: border-box; 
+  }
+}

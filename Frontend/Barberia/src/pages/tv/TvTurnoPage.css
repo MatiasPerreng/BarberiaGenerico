@@ -1,0 +1,285 @@
+/* =======================================================
+   CONTENEDOR
+======================================================= */
+
+.tv-agenda-container {
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.1), transparent 60%), #0a0a0a;
+    color: #fff;
+    padding: clamp(18px, 2.5vh, 36px) clamp(28px, 4.5vw, 60px);
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* =======================================================
+   HEADER
+======================================================= */
+
+.tv-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: clamp(70px, 9vh, 105px);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: clamp(14px, 2vh, 28px);
+}
+
+.tv-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.tv-logo {
+    height: clamp(46px, 6vh, 72px);
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap');
+
+.tv-brand-text {
+  font-family: "Cinzel", serif;
+  font-weight: 700;               /* 900 en Cinzel queda demasiado pesado */
+  font-size: clamp(2.2rem, 3.2vw, 3.4rem);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+
+.tv-clock {
+    font-size: clamp(1.6rem, 2vw, 2.4rem);
+    font-weight: 700;
+    font-family: monospace;
+}
+
+/* =======================================================
+   MAIN
+======================================================= */
+
+.tv-main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.2vh, 32px);
+}
+
+/* =======================================================
+   TITULOS
+======================================================= */
+
+.tv-section-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: clamp(6px, 1.2vh, 14px);
+}
+
+.tv-title {
+    font-size: clamp(1.1rem, 1.4vw, 1.6rem);
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.tv-title.gold {
+    color: #d4af37;
+}
+
+.live-badge {
+    background: #c0392b;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    margin-bottom: 6.2px;
+    animation: blink 1.2s infinite;
+}
+
+/* =======================================================
+   LISTA EN CURSO
+======================================================= */
+
+.tv-list {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.3vh, 18px);
+}
+
+.tv-item {
+    display: grid;
+    grid-template-columns: clamp(180px, 16vw, 240px) 1fr;
+    background: rgba(255, 255, 255, 0.03);
+    padding: clamp(12px, 1.6vh, 22px) clamp(18px, 2.6vw, 34px);
+    border-radius: 14px;
+    border-left: 5px solid #d4af37;
+    align-items: center;
+}
+
+.tv-label {
+    font-size: 0.65rem;
+    color: #d4af37;
+    font-weight: bold;
+}
+
+.tv-barbero {
+    font-size: clamp(1.6rem, 2.1vw, 2.3rem);
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.tv-servicio {
+    font-size: clamp(1.4rem, 2vw, 2.2rem);
+    font-weight: 800;
+}
+
+.tv-cliente {
+    font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+    color: #888;
+}
+
+/* =======================================================
+   GRID 2x2
+======================================================= */
+
+.tv-list-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(10px, 1.6vh, 20px);
+}
+
+.tv-list-grid .tv-item {
+    grid-template-columns: clamp(140px, 12vw, 210px) 1fr;
+    padding: clamp(10px, 1.4vh, 18px) clamp(14px, 2vw, 28px);
+}
+
+.tv-list-grid .tv-barbero {
+    font-size: clamp(1.4rem, 1.8vw, 2rem);
+}
+
+.tv-list-grid .tv-servicio {
+    font-size: clamp(1.3rem, 1.7vw, 1.9rem);
+}
+
+/* =======================================================
+   PRÓXIMO SERVICIO
+======================================================= */
+
+.tv-next-card {
+    background: linear-gradient(145deg, rgba(212, 175, 55, 0.12), rgba(255, 255, 255, 0.02));
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 20px;
+    padding: clamp(14px, 2vh, 26px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.tv-next-fecha {
+    font-size: clamp(0.9rem, 1.1vw, 1.05rem);
+    color: #d4af37;
+    letter-spacing: 1.5px;
+    margin-bottom: 6px;
+    opacity: 0.85;
+}
+
+.tv-next-hora {
+    font-size: clamp(3rem, 4.4vw, 4.6rem);
+    font-weight: 900;
+    color: #d4af37;
+    margin-bottom: 6px;
+}
+
+.tv-next-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 6px;
+}
+
+.tv-next-servicio {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-weight: 800;
+}
+
+.tv-next-cliente {
+    font-size: clamp(1.35rem, 1.8vw, 1.55rem);
+    color: #fff;
+    opacity: 0.9;
+}
+
+.tv-next-barbero {
+    font-size: clamp(1.1rem, 1.4vw, 1.4rem);
+    color: #ccc;
+}
+
+.tv-next-barbero strong {
+    color: #d4af37;
+}
+
+/* =======================================================
+   FOOTER
+======================================================= */
+
+.tv-footer {
+    height: clamp(36px, 5vh, 60px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: auto;
+
+}
+
+.tv-footer strong{
+    color: #d4af37
+}
+
+/* =======================================================
+   EFECTOS
+======================================================= */
+
+.shimmer-effect {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.04), transparent);
+    transform: skewX(-20deg);
+    animation: shine 5s infinite;
+}
+
+@keyframes shine {
+    100% {
+        left: 200%;
+    }
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.tv-animate {
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

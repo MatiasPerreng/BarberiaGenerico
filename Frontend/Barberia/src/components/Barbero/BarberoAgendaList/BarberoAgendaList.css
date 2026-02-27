@@ -1,0 +1,154 @@
+/* =======================================================
+   LISTA CONTENEDOR
+======================================================= */
+.barbero-agenda-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* =======================================================
+   ITEM TURNO (DESKTOP ORIGINAL - RESTAURADO)
+======================================================= */
+.barbero-agenda-item {
+  position: relative;
+  background: linear-gradient(180deg, #ffffff, #fafafa);
+  border-radius: 18px;
+  padding: 20px 26px;
+
+  /* Volvemos a tu grid original de 3 columnas */
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  align-items: center;
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  /* Sin cursor pointer ni eventos para evitar el bloqueo que mencionaste */
+  cursor: default; 
+}
+
+/* =======================================================
+   HORA (DESKTOP)
+======================================================= */
+.barbero-agenda-item .hora {
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: 0.6px;
+  color: #111;
+}
+
+/* =======================================================
+   INFO CLIENTE / SERVICIO (DESKTOP)
+======================================================= */
+.barbero-agenda-item .info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.barbero-agenda-item .info strong {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.3px;
+}
+
+.barbero-agenda-item .info span {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* =======================================================
+   ESTADO (BADGE)
+======================================================= */
+.barbero-agenda-item .estado {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  padding: 8px 16px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* COLORES POR ESTADO */
+.barbero-agenda-item.estado-reservado .estado {
+  background: linear-gradient(135deg, rgba(230, 199, 123, 0.25), rgba(230, 199, 123, 0.12));
+  color: #9a7400;
+}
+
+.barbero-agenda-item.estado-atendido .estado {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(16, 185, 129, 0.12));
+  color: #047857;
+}
+
+.barbero-agenda-item.estado-cancelado {
+  opacity: 0.55;
+}
+
+.barbero-agenda-item.estado-cancelado .estado {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(239, 68, 68, 0.12));
+  color: #991b1b;
+}
+
+/* =======================================================
+   📱 RESPONSIVE MOBILE (MEJORADO Y AISLADO)
+======================================================= */
+@media (max-width: 700px) {
+  .barbero-agenda-item {
+    /* Cambiamos a Flex para mejor control estético en mobile */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 22px;
+    
+    /* Borde lateral estético basado en el estado */
+    border-left: 6px solid #eee;
+  }
+
+  /* Colores del borde lateral según estado */
+  .barbero-agenda-item.estado-reservado { border-left-color: #e6c77b; }
+  .barbero-agenda-item.estado-atendido { border-left-color: #10b981; }
+  .barbero-agenda-item.estado-cancelado { border-left-color: #ef4444; }
+
+  /* Hora destacada arriba con separador */
+  .barbero-agenda-item .hora {
+    font-size: 20px;
+    font-weight: 900;
+    width: 100%;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    margin-bottom: 4px;
+  }
+
+  /* Info más legible */
+  .barbero-agenda-item .info strong {
+    font-size: 15.5px;
+  }
+
+  .barbero-agenda-item .info span {
+    font-size: 13.5px;
+    margin-top: 4px;
+  }
+
+  /* Estado como chip sutil */
+  .barbero-agenda-item .estado {
+    align-self: flex-start;
+    font-size: 10px;
+    padding: 7px 15px;
+    margin-top: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+}
+
+/* EXTRA SMALL */
+@media (max-width: 420px) {
+  .barbero-agenda-item {
+    padding: 16px 18px;
+  }
+}
+

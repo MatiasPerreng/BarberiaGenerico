@@ -1,0 +1,233 @@
+/* =========================
+   MODAL OVERLAY
+========================= */
+
+.servicio-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(3px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+  z-index: 1000;
+}
+
+/* =========================
+   FORM CONTENEDOR
+========================= */
+
+.servicio-form {
+  width: 100%;
+  max-width: 420px;
+  min-height: 120px;
+
+  background: #111;
+  color: #f5f5f5;
+
+  border-radius: 16px;
+  padding: 28px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+  animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* =========================
+   TITULO
+========================= */
+
+.servicio-form h3 {
+  margin: 0 0 22px;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #e6c77b;
+}
+
+/* =========================
+   FORM GROUP
+========================= */
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.form-group label {
+  font-size: 0.75rem;
+  letter-spacing: 0.6px;
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+/* =========================
+   INPUTS
+========================= */
+
+.servicio-form input {
+  width: 100%;
+  padding: 6px 8px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1b1b1b;
+  color: #f5f5f5;
+
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.servicio-form input::placeholder {
+  color: #888;
+}
+
+.servicio-form input:focus {
+  outline: none;
+  border-color: #e6c77b;
+  box-shadow: 0 0 0 2px rgba(230, 199, 123, 0.25);
+}
+
+/* =========================
+   FILE INPUT
+========================= */
+
+.servicio-file {
+  margin: 6px 0 14px;
+}
+
+.servicio-file-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.6px;
+  color: #bbb;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.servicio-file-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+
+  padding: 11px;
+  border-radius: 10px;
+
+  background: #1b1b1b;
+  border: 1px dashed rgba(230, 199, 123, 0.45);
+  color: #e6c77b;
+
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  cursor: pointer;
+
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.servicio-file-btn:hover {
+  background: rgba(230, 199, 123, 0.08);
+  border-color: #e6c77b;
+}
+
+/* =========================
+   PREVIEW
+========================= */
+
+.servicio-preview {
+  width: 100%;
+  height: 160px;
+  /* 🔥 altura fija para no agrandar el modal */
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(230, 199, 123, 0.35);
+}
+
+/* =========================
+   ACCIONES
+========================= */
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+/* Cancelar */
+.form-actions button:last-child {
+  flex: 1;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #eee;
+
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.form-actions button:last-child:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Guardar */
+.form-actions button:first-child {
+  flex: 1;
+  background: linear-gradient(135deg, #e6c77b, #cfa85a);
+  color: #111;
+  font-weight: 600;
+
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+.form-actions button:first-child:hover {
+  background: linear-gradient(135deg, #f0d88f, #d9b86c);
+  transform: translateY(-1px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 480px) {
+  .servicio-form {
+    min-height: unset;
+    padding: 22px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    width: 100%;
+  }
+}

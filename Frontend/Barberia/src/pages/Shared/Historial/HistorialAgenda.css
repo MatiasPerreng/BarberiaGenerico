@@ -1,0 +1,148 @@
+/* ===============================
+    CONTENEDOR
+================================ */
+.kb-historial {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: linear-gradient(180deg, #fafafa, #f3f4f6);
+}
+
+/* ===============================
+    TÍTULO
+================================ */
+.kb-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  color: #111;
+}
+
+.kb-title::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, #cfa85a, #f0d27a, #cfa85a);
+  border-radius: 999px;
+}
+
+/* ===============================
+    FILTRO FECHA
+================================ */
+.kb-filtro-fecha {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 22px;
+  padding: 16px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+/* INPUT DATE – DESKTOP OK */
+.kb-date-filter {
+  flex: 1;
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  background: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  
+  /* MEJORA: Quita azul de iOS y Chrome */
+  color: #111;
+  accent-color: #cfa85a;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* BOTÓN TODOS */
+.kb-btn-todos {
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
+
+  background: linear-gradient(135deg, #e6c77b, #cfa85a);
+  color: #111;
+
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  box-shadow: 0 10px 26px rgba(230, 199, 123, 0.45);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.kb-btn-todos:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(230, 199, 123, 0.65);
+}
+
+/* ===============================
+    FIX SOLO iOS
+================================ */
+@supports (-webkit-touch-callout: none) {
+  .kb-date-filter {
+    -webkit-appearance: none;
+    appearance: none;
+    display: flex;
+    align-items: center;
+    line-height: 52px;
+    
+    /* MEJORA: Fuerza color en iPhone */
+    color: #111 !important;
+    background-color: #ffffff !important;
+  }
+  
+  /* MEJORA: Evita icono azul en Safari */
+  .kb-date-filter::-webkit-calendar-picker-indicator {
+    filter: none;
+  }
+}
+
+/* ===============================
+    CARDS
+================================ */
+.kb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.kb-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 18px 22px;
+  border-left: 5px solid #d4af37;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.kb-text {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ===============================
+    MOBILE REAL
+================================ */
+@media (max-width: 430px) {
+  .kb-filtro-fecha {
+    flex-direction: column;
+  }
+
+  .kb-date-filter,
+  .kb-btn-todos {
+    width: 100%;
+  }
+}

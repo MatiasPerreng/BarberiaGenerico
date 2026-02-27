@@ -1,0 +1,123 @@
+/* =======================================================
+   OVERLAY
+======================================================= */
+.success-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 15px;
+}
+
+/* =======================================================
+   CARD
+======================================================= */
+.success-modal-card {
+  background: linear-gradient(180deg, #141414, #0f0f0f);
+  border-radius: 20px;
+  padding: 30px 24px;
+  width: 100%;
+  max-width: 380px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 199, 123, 0.1);
+  border: 1px solid rgba(230, 199, 123, 0.2);
+  box-sizing: border-box;
+  animation: successScaleIn 0.3s ease-out;
+}
+
+/* =======================================================
+   TEXTOS
+======================================================= */
+.success-modal-title {
+  color: #e6c77b;
+  margin: 0 0 10px 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.success-modal-text {
+  color: #d1d5db;
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+/* =======================================================
+   WHATSAPP NOTE (ARREGLO DEFINITIVO)
+======================================================= */
+.success-modal-whatsapp-note {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin: 0 auto 25px auto;
+  font-style: italic;
+  line-height: 1.4;
+  
+  /* Esto centra el bloque, pero alinea el contenido interno a la izquierda */
+  display: flex;
+  align-items: flex-start; /* Alinea el punto con la primera línea de texto */
+  justify-content: center; 
+  gap: 8px;
+  
+  max-width: 300px;
+  text-align: left; /* Alineación interna para que el punto quede pegado */
+}
+
+.success-modal-whatsapp-note::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0; /* Evita que el punto se deforme */
+  width: 7px;
+  height: 7px;
+  background-color: #25d366;
+  border-radius: 50%;
+  margin-top: 6px; /* Lo baja un poquito para nivelarlo con la primera línea */
+  box-shadow: 0 0 8px rgba(37, 211, 102, 0.6);
+}
+
+/* =======================================================
+   ACTIONS
+======================================================= */
+.success-modal-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.success-modal-btn-confirm {
+  background: linear-gradient(135deg, #e6c77b, #f3db9c);
+  border: none;
+  padding: 14px 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #111;
+  width: 100%;
+  transition: transform 0.2s;
+}
+
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+@media (max-width: 480px) {
+  .success-modal-card {
+    padding: 25px 20px;
+  }
+
+  .success-modal-title {
+    font-size: 1.25rem;
+  }
+
+  .success-modal-whatsapp-note {
+    font-size: 0.8rem;
+    max-width: 100%; /* Permite que ocupe el ancho en móviles pequeños */
+  }
+}
+
+@keyframes successScaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}

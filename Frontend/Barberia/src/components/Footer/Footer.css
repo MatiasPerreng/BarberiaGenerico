@@ -1,0 +1,61 @@
+/* ===============================
+   FOOTER
+   =============================== */
+
+.site-footer {
+  background: linear-gradient(180deg, #0b0b0b, #000);
+  border-top: 1px solid rgba(230, 199, 123, 0.12);
+  padding: 18px 12px;
+  text-align: center;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Marca / año */
+.footer-brand {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Separador */
+.footer-separator {
+  color: rgba(230, 199, 123, 0.5);
+}
+
+/* Autor */
+.footer-dev strong {
+  font-weight: 600;
+  color: #e6c77b;
+  letter-spacing: 0.1em;
+}
+
+/* Hover sutil (desktop) */
+@media (hover: hover) {
+  .footer-dev strong:hover {
+    text-shadow: 0 0 8px rgba(230, 199, 123, 0.45);
+  }
+}
+
+/* ===============================
+   MOBILE
+   =============================== */
+
+@media (max-width: 576px) {
+  .footer-inner {
+    flex-direction: column;
+    gap: 4px;
+    font-size: 0.78rem;
+  }
+
+  .footer-separator {
+    display: none;
+  }
+}

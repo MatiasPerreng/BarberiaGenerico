@@ -1,0 +1,172 @@
+/* =======================================================
+   RESET & BLOQUEO DE SCROLL
+   ======================================================= */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; 
+}
+
+body.modal-open {
+    overflow: hidden !important;
+    touch-action: none; 
+}
+
+/* =======================================================
+   MODAL (RESERVAS)
+   ======================================================= */
+.booking-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden; 
+}
+
+.booking-container {
+    background: #fff;
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; 
+    scrollbar-width: thin;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    
+    /* FIX iOS: Evita el resaltado azul al tocar el contenedor */
+    -webkit-tap-highlight-color: transparent;
+}
+
+/* Ocultar scrollbar si prefieres diseño limpio */
+.booking-container::-webkit-scrollbar {
+    width: 6px;
+}
+.booking-container::-webkit-scrollbar-thumb {
+    background: #e6c77b;
+    border-radius: 10px;
+}
+
+/* =======================================================
+   HERO SECTION
+   ======================================================= */
+.hero-section {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 100px 20px 60px;
+    box-sizing: border-box;
+    color: white;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(20, 18, 12, 0.95), #000 70%), url("/noise.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-logo {
+    max-width: 250px;
+    margin-bottom: 20px;
+    animation: fadeInDown 1.2s ease-out forwards;
+}
+
+.hero-title {
+    font-family: "Cinzel", serif;
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    letter-spacing: 4px;
+    margin-bottom: 15px;
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+.hero-section .lead {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+    animation: fadeInUp 1.4s ease-out forwards;
+}
+
+.hero-btn {
+    display: inline-block;
+    text-decoration: none;
+    border-radius: 50px;
+    border: 1px solid #e6c77b;
+    color: #e6c77b;
+    padding: 14px 40px;
+    transition: all 0.3s ease;
+    animation: fadeInUp 1.6s ease-out forwards;
+    
+    /* FIX iOS: Quita el flash azul al clickear */
+    -webkit-tap-highlight-color: transparent;
+}
+
+.hero-btn:hover {
+    background: #e6c77b;
+    color: #000;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(230, 199, 123, 0.3);
+}
+
+/* =======================================================
+   SISTEMA DE REVEAL (SCROLL)
+   ======================================================= */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =======================================================
+   FIX GLOBAL PARA INPUTS & iOS (AZUL)
+   ======================================================= */
+input, select, textarea, button {
+    /* Cambia el azul de los controles (checks, radio, etc) por tu dorado */
+    accent-color: #e6c77b; 
+    /* Elimina el recuadro azul al tocar en Safari */
+    -webkit-tap-highlight-color: transparent; 
+}
+
+/* Específico para Date Picker en iOS */
+@supports (-webkit-touch-callout: none) {
+    input[type="date"], input[type="time"] {
+        -webkit-appearance: none;
+        background: #fff;
+        color: #111; /* Asegura que el texto no se ponga azul/gris */
+    }
+}
+
+/* =======================================================
+   ANIMACIONES KEYFRAMES
+   ======================================================= */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =======================================================
+   MEDIA QUERIES (ADAPTABILIDAD)
+   ======================================================= */
+@media (max-width: 600px) {
+    .booking-container { max-height: 95vh; }
+    .hero-title { font-size: 1.8rem; }
+}

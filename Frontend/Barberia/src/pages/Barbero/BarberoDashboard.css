@@ -1,0 +1,142 @@
+/* =======================================================
+   DASHBOARD BARBERO
+======================================================= */
+
+.barbero-dashboard {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* =======================================================
+   HEADER / HERO INTERNO
+======================================================= */
+
+.barbero-dashboard h1 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+/* =======================================================
+   DAY SUMMARY (stats)
+   👉 BarberoDaySummary vive acá visualmente
+======================================================= */
+
+.barbero-dashboard>div:first-of-type {
+  background: linear-gradient(180deg, #ffffff, #fafafa);
+  border-radius: 20px;
+  padding: 26px 30px;
+
+  box-shadow:
+    0 12px 34px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* Texto de los stats */
+.barbero-dashboard>div:first-of-type p,
+.barbero-dashboard>div:first-of-type span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+}
+
+/* =======================================================
+   ESTADOS (ERROR / LOADING)
+======================================================= */
+
+.barbero-dashboard .error {
+  background: #fff;
+  padding: 18px 22px;
+  border-radius: 16px;
+  font-weight: 600;
+  color: #b91c1c;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+}
+
+.barbero-dashboard p {
+  font-weight: 600;
+  color: #6b7280;
+}
+
+/* =======================================================
+   SEPARADORES VISUALES
+======================================================= */
+
+.barbero-dashboard>*:not(h1) {
+  animation: fadeInUp 0.35s ease both;
+}
+
+/* =======================================================
+   ANIMACION SUAVE
+======================================================= */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+
+@media (max-width: 900px) {
+  .barbero-dashboard {
+    gap: 24px;
+  }
+
+  .barbero-dashboard h1 {
+    font-size: 30px;
+  }
+
+  .barbero-dashboard>div:first-of-type {
+    padding: 22px 22px;
+  }
+}
+
+
+.extra {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.wsp-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.wsp-icon-agenda {
+  width: 20px;
+  height: 20px;
+  display: block;
+  transition: transform 0.25s ease, filter 0.25s ease;
+  
+  /* Tus filtros de WhatsApp verde oficial */
+  filter: brightness(0) saturate(100%) invert(48%) sepia(96%) 
+          saturate(428%) hue-rotate(87deg) brightness(93%) contrast(92%);
+}
+
+/* Hover premium igual al de ContactBar */
+.wsp-link:hover .wsp-icon-agenda {
+  transform: translateY(-2px) scale(1.1);
+  /* Un toque más de brillo en el hover si querés */
+  filter: brightness(0) saturate(100%) invert(53%) sepia(80%) 
+          saturate(500%) hue-rotate(85deg) brightness(100%) contrast(100%);
+}

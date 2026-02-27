@@ -1,0 +1,89 @@
+/* =======================================================
+   WRAPPER GENERAL
+======================================================= */
+
+.map-wrapper {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 80px; 
+  overflow: hidden;
+  background: #1c1f24;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+}
+
+
+/* =======================================================
+   HEADER SUPERIOR (TÍTULO + DIRECCIÓN)
+======================================================= */
+
+.map-header {
+  padding: 26px 24px;
+  text-align: center;
+  background: linear-gradient(
+    180deg,
+    rgba(20, 18, 12, 0.95),
+    #000
+  );
+}
+
+.map-title {
+  margin: 0 0 6px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: 0.6px;
+  color: #e6c77b;
+}
+
+.map-address {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.3px;
+  color: rgba(255, 255, 255, 0.85);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.map-address .pin {
+  font-size: 1.05rem;
+}
+
+/* =======================================================
+   MAPA
+======================================================= */
+
+.map-container {
+  width: 100%;
+  height: 420px;
+  background: #000;
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+
+@media (max-width: 768px) {
+  .map-container {
+    height: 320px;
+  }
+
+  .map-title {
+    font-size: 1.15rem;
+  }
+
+  .map-address {
+    font-size: 0.85rem;
+  }
+}

@@ -1,0 +1,139 @@
+/* =======================================================
+   ESTILO DE LA CARD (Asegura que la cruz se ubique bien)
+======================================================= */
+.turno-row {
+  position: relative; /* Indispensable para que la cruz flote a la derecha */
+  background: linear-gradient(180deg, #ffffff, #fafafa);
+  border-radius: 16px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-left: 4px solid #e6c77b; /* Borde dorado de tu imagen */
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+  transition: transform 0.2s ease;
+  margin-bottom: 14px;
+}
+
+/* =======================================================
+   LA CRUZ (Fijada arriba a la derecha)
+======================================================= */
+.turno-btn-cancel-unique {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(185, 28, 28, 0.08);
+  border: none;
+
+  color: #b91c1c;
+  font-size: 16px;
+  font-weight: 700;
+
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.turno-btn-cancel-unique:hover {
+  background: rgba(185, 28, 28, 0.18);
+  transform: scale(1.05);
+}
+
+/* =======================================================
+   MODAL OSCURO / DORADO
+======================================================= */
+.cancel-modal-overlay-unique {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: cancelFadeIn 0.2s ease;
+}
+
+.cancel-modal-card-unique {
+  background: linear-gradient(180deg, #141414, #0f0f0f);
+  border-radius: 16px;
+  padding: 28px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(230, 199, 123, 0.12);
+  border: 1px solid rgba(230, 199, 123, 0.15);
+  animation: cancelScaleIn 0.25s ease;
+}
+
+.cancel-modal-card-unique h2 {
+  color: #e6c77b;
+  margin-bottom: 10px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  margin-top: 0;
+}
+
+.cancel-modal-card-unique p {
+  color: #d1d5db !important;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.cancel-modal-sub-unique {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 26px !important;
+}
+
+/* =======================================================
+   BOTONES DEL MODAL
+======================================================= */
+.cancel-modal-actions-unique {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.cancel-modal-btn-confirm-unique {
+  background: linear-gradient(135deg, #e6c77b, #f3db9c);
+  border: none;
+  padding: 12px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #111;
+  box-shadow: 0 8px 22px rgba(230, 199, 123, 0.35);
+  transition: transform 0.15s ease;
+}
+
+.cancel-modal-btn-cancel-unique {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 12px 22px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #e5e7eb;
+}
+
+/* Animaciones */
+@keyframes cancelFadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes cancelScaleIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Mobile Fix */
+@media (max-width: 480px) {
+  .cancel-modal-actions-unique { flex-direction: column; }
+  .cancel-modal-btn-confirm-unique, .cancel-modal-btn-cancel-unique { width: 100%; }
+}

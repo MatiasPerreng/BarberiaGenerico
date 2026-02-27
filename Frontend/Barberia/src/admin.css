@@ -1,0 +1,273 @@
+/* =========================
+   LAYOUT
+========================= */
+
+.admin-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: #f6f7f8;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.admin-sidebar {
+    width: 240px;
+    background: #1c1f24;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.admin-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.admin-logo img {
+    width: 36px;
+}
+
+.admin-logo span {
+    font-weight: 700;
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
+.admin-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.admin-nav a {
+    color: #bbb;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.admin-nav a.active,
+.admin-nav a:hover {
+    background: #2b2f36;
+    color: #e6c77b;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.admin-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-header {
+    background: #fff;
+    padding: 20px 30px;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-header h1 {
+    font-size: 18px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* =========================
+   CONTENT
+========================= */
+
+.admin-content {
+    padding: 30px;
+    flex: 1;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.admin-dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.admin-card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.admin-card h3 {
+    margin: 0 0 10px;
+    font-size: 16px;
+}
+
+.admin-card p {
+    font-size: 13px;
+    color: #666;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 900px) {
+    .admin-wrapper {
+        flex-direction: column;
+    }
+
+    .admin-sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 15px 10px;
+    }
+
+    .admin-logo {
+        display: none;
+    }
+
+    .admin-nav {
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .admin-nav a {
+        font-size: 12px;
+        padding: 6px 8px;
+    }
+
+    .admin-dashboard {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================
+   ADMIN TABLE
+========================= */
+
+.admin-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.admin-page-header button {
+    background: #e6c77b;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.admin-table {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.admin-row {
+    background: #fff;
+    padding: 16px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.admin-row small {
+    display: block;
+    color: #777;
+    font-size: 12px;
+}
+
+.admin-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.status.active {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.status.inactive {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.admin-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.admin-modal {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 380px;
+}
+
+.admin-modal h3 {
+    margin-bottom: 16px;
+}
+
+.admin-modal input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+@media (max-width: 900px) {
+    .admin-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+
+.admin-page-header select {
+    padding: 6px 10px;
+}
+
+.admin-modal .row {
+    display: flex;
+    gap: 10px;
+}
+
+.admin-modal select,
+.admin-modal input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+}

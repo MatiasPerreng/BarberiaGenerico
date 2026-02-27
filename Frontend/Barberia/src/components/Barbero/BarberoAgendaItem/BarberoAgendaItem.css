@@ -1,0 +1,10 @@
+.wsp-icon {
+  margin-left: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.wsp-icon:hover {
+  transform: scale(1.15);
+}

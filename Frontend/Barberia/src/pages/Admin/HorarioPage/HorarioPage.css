@@ -1,0 +1,578 @@
+/* =======================================================
+   OVERLAY
+======================================================= */
+.success-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: successFadeIn 0.2s ease;
+  padding: 15px; /* Evita que el modal toque los bordes en móviles */
+}
+
+/* =======================================================
+   CARD
+======================================================= */
+.success-modal-card {
+  background: linear-gradient(180deg, #141414, #0f0f0f);
+  border-radius: 16px;
+  padding: 28px;
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 0 40px rgba(230, 199, 123, 0.12);
+  border: 1px solid rgba(230, 199, 123, 0.15);
+  animation: successScaleIn 0.25s ease;
+  box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+}
+
+/* =======================================================
+   TEXTOS
+======================================================= */
+.success-modal-title {
+  color: #e6c77b;
+  margin: 0 0 10px 0;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.success-modal-text {
+  color: #d1d5db;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  margin-bottom: 26px;
+}
+
+/* =======================================================
+   ACTIONS
+======================================================= */
+.success-modal-actions {
+  display: flex;
+  justify-content: center;
+}
+
+/* Botón dorado */
+.success-modal-btn-confirm {
+  background: linear-gradient(135deg, #e6c77b, #f3db9c);
+  border: none;
+  padding: 12px 26px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #111 !important; /* Forzar negro iOS */
+  box-shadow: 0 8px 22px rgba(230, 199, 123, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  -webkit-appearance: none; /* Fix iOS */
+}
+
+.success-modal-btn-confirm:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(230, 199, 123, 0.45);
+}
+
+/* =======================================================
+   ANIMATIONS
+======================================================= */
+@keyframes successFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes successScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+@media (max-width: 480px) {
+  .success-modal-card {
+    width: 100%;
+    max-width: none;
+    padding: 22px 18px;
+    border-radius: 14px;
+    margin: 0; /* Quitamos margen para usar el padding del overlay */
+  }
+
+  .success-modal-btn-confirm {
+    width: 100%;
+  }
+
+  .success-modal-overlay {
+    padding: 20px;
+  }
+}
+
+.success-modal-whatsapp-note {
+  font-size: 0.8rem; /* Texto bien chico */
+  color: #666;       /* Gris suave */
+  margin-bottom: 20px;
+  margin-top: -5px;  /* Para pegarlo un poco más al texto de arriba */
+  font-style: italic;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* FIX: Alinea con la primera línea, no al centro */
+  gap: 5px;
+  max-width: 280px; /* Evita que el texto se estire de más */
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left; /* Alineación para que el punto quede pegado al inicio del bloque */
+}
+
+/* Opcional: un puntito verde sutil antes del texto */
+.success-modal-whatsapp-note::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0; /* Evita que el punto se aplaste en móviles */
+  width: 6px;
+  height: 6px;
+  background-color: #25d366; /* Color WhatsApp */
+  border-radius: 50%;
+  margin-top: 5px; /* Nivela el punto con el texto */
+}
+
+/* ======================================================
+    HEADER
+====================================================== */
+
+.horarios-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+
+.horarios-header h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+.horarios-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.horarios-header h2 {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0;
+  margin-right: auto;
+}
+
+/* ======================================================
+    SELECT BARBERO
+====================================================== */
+
+.horarios-select-barbero {
+  height: 38px;
+  min-width: 220px;
+  padding: 0 42px 0 14px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  color: #111 !important; /* FORZAR NEGRO iOS */
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none; 
+  -webkit-tap-highlight-color: transparent; 
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, #e6c77b 50%),
+    linear-gradient(135deg, #e6c77b 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) 15px,
+    calc(100% - 14px) 15px;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.horarios-select-barbero:focus {
+  outline: none;
+  border-color: #e6c77b;
+  box-shadow: 0 0 0 2px rgba(230, 199, 123, 0.35);
+}
+
+/* ======================================================
+    BOTÓN PRIMARIO
+====================================================== */
+
+.horarios-btn-primary {
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
+
+  background: linear-gradient(135deg, #e6c77b, #cfa85a);
+  color: #111 !important; /* FORZAR NEGRO iOS */
+
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent; 
+  box-shadow: 0 10px 26px rgba(230, 199, 123, 0.45);
+  -webkit-appearance: none;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.horarios-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(230, 199, 123, 0.65);
+}
+
+/* ======================================================
+    ESTADOS VACÍOS
+====================================================== */
+
+.horarios-empty {
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 14px;
+  background: #f8f8f8;
+}
+
+.horarios-empty-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.horarios-empty-subtitle {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* ======================================================
+    ERRORES
+====================================================== */
+
+.horarios-error {
+  background: rgba(255, 60, 60, 0.15);
+  color: #ffb3b3;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+/* ======================================================
+    MEDIA QUERY 600 (1)
+====================================================== */
+
+@media (max-width: 600px) {
+  .horarios-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .horarios-select-barbero,
+  .horarios-btn-primary {
+    width: 100%;
+  }
+}
+
+/* ======================================================
+    REPETICIÓN DE SELECT
+====================================================== */
+
+.horarios-select-barbero {
+  height: 38px;
+  min-width: 220px;
+  padding: 0 42px 0 14px;
+
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: #fff;
+  color: #111 !important;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none; 
+
+  background-image:
+    linear-gradient(45deg, transparent 50%, #e6c77b 50%),
+    linear-gradient(135deg, #e6c77b 50%, transparent 50%);
+  background-position:
+    calc(100% - 20px) 15px,
+    calc(100% - 14px) 15px;
+  background-size: 6px 6px;
+  background-repeat: no-repeat;
+
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.horarios-select-barbero:focus {
+  outline: none;
+  border-color: #e6c77b;
+  box-shadow: 0 0 0 2px rgba(230, 199, 123, 0.35);
+}
+
+/* ======================================================
+    REPETICIÓN DE EMPTY
+====================================================== */
+
+.horarios-empty {
+  margin-top: 60px;
+  padding: 40px 20px;
+  text-align: center;
+  border-radius: 14px;
+  background: #f8f8f8;
+}
+
+.horarios-empty-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.horarios-empty-subtitle {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* ======================================================
+    REPETICIÓN DE ERROR
+====================================================== */
+
+.horarios-error {
+  background: rgba(255, 60, 60, 0.15);
+  color: #ffb3b3;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 14px;
+  text-align: center;
+}
+
+/* ======================================================
+    REPETICIÓN DE MEDIA QUERY 600 (2)
+====================================================== */
+
+@media (max-width: 600px) {
+  .horarios-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .horarios-select-barbero,
+  .horarios-btn-primary {
+    width: 100%;
+  }
+}
+
+/* ======================================================
+    BOTÓN ELIMINAR
+====================================================== */
+
+.btn-delete {
+  min-width: 96px;
+  padding: 8px 18px;
+
+  border-radius: 999px;
+  border: 1px solid rgba(185, 28, 28, 0.35);
+
+  background: linear-gradient(135deg,
+      #2a0f0f,
+      #4a1414);
+
+  color: #f5f5f5 !important;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent; 
+  -webkit-appearance: none;
+
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.btn-delete:hover {
+  background: linear-gradient(135deg,
+      #5c1a1a,
+      #7a1f1f);
+  transform: translateY(-1px);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.35);
+}
+
+.btn-delete:active {
+  transform: translateY(0);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* ======================================================
+    FILTROS (DÍAS Y VIGENCIA)
+====================================================== */
+
+.horarios-filtros {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.filtro-dias {
+  display: flex;
+  gap: 8px;
+}
+
+.filtro-dia {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #fff !important; /* Fix fondo iOS */
+  color: #111 !important; /* Forzar negro en iOS */
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent; 
+  -webkit-appearance: none;
+}
+
+
+.filtro-dia.active {
+  background: #e6c77b !important; /* Forzar color activo */
+  border-color: #e6c77b;
+  color: #111 !important; /* TEXTO NEGRO CUANDO ESTÁ ACTIVO */
+}
+
+.filtro-vigencia {
+  display: flex;
+  gap: 8px;
+}
+
+.filtro-vigencia button {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  background: #fff !important; /* Fix fondo iOS */
+  color: #111 !important; /* Forzar negro en iOS */
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+}
+
+.filtro-vigencia button.active {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: #111;
+}
+
+/* ======================================================
+    MEDIA QUERY 600 (3 - FILTROS)
+====================================================== */
+
+@media (max-width: 600px) {
+
+  .horarios-filtros {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .filtro-dias {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 4px 2px 8px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filtro-dias::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filtro-dia {
+    flex: 0 0 auto;
+    padding: 8px 14px;
+    min-width: auto;
+    height: 36px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    background: #fff !important;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    white-space: nowrap;
+    line-height: 1;
+    color: #111 !important; /* Fix azul iOS */
+  }
+
+  .filtro-dia.active {
+    background: #111 !important;
+    color: #fff !important;
+    border-color: #111;
+  }
+
+  .filtro-vigencia {
+    display: flex;
+    gap: 10px;
+  }
+
+  .filtro-vigencia button {
+    flex: 1;
+    height: 40px;
+    padding: 0;
+    font-size: 0.85rem;
+    font-weight: 700;
+    border-radius: 12px;
+    color: #111 !important; /* Fix azul iOS */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .filtro-vigencia button.active {
+    background: #111 !important;
+    color: #fff !important;
+  }
+}

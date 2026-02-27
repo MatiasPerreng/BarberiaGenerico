@@ -1,0 +1,382 @@
+/* =======================================================
+   OVERLAY & CONTAINER
+======================================================= */
+
+.bl-overlay {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(180deg, rgba(230, 199, 123, 0.22) 0%, rgba(0, 0, 0, 0.96) 50%), #000;
+  padding: 20px;
+}
+
+.bl-container {
+  width: 100%;
+  max-width: 900px;
+  height: 620px;
+  background: #f6f7f8;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+/* =======================================================
+   SIDEBAR
+======================================================= */
+
+.bl-sidebar {
+  background: #1c1f24;
+  color: #fff;
+  padding: 45px 35px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bl-logo {
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+.bl-logo img {
+  width: 95px;
+}
+
+/* =======================================================
+   STEPS
+======================================================= */
+
+.bl-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bl-step {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  opacity: 0.3;
+}
+
+.bl-step-text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.bl-step-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2b2f36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.bl-step.active,
+.bl-step.done {
+  opacity: 1;
+}
+
+.bl-step.active {
+  color: #e6c77b;
+}
+
+.bl-step.active .bl-step-number {
+  background: #e6c77b;
+  color: #111;
+}
+
+.bl-step.done .bl-step-number {
+  background: #caa851;
+  color: #111;
+}
+
+/* =======================================================
+   CONTENT
+======================================================= */
+
+.bl-content {
+  padding: 50px;
+  background: #fff;
+  overflow-y: auto;
+}
+
+.bl-content h3 {
+  font-size: 16px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+  color: #111;
+}
+
+/* =======================================================
+   BOTÓN VOLVER
+======================================================= */
+
+.bl-btn-volver {
+  background: rgba(230, 199, 123, 0.15);
+  border: 1px solid rgba(230, 199, 123, 0.6);
+  color: #111;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  margin-bottom: 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.bl-btn-volver::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #e6c77b, transparent);
+  transition: width 0.35s ease;
+}
+
+.bl-btn-volver:hover {
+  background: #e6c77b;
+  color: #000;
+  transform: translateX(-2px);
+}
+
+.bl-btn-volver:hover::after {
+  width: 100%;
+}
+
+.bl-btn-volver:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(230, 199, 123, 0.35);
+}
+
+/* =======================================================
+   GRID DESKTOP
+======================================================= */
+
+.bl-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 25px;
+}
+
+.bl-card {
+  background: #fff;
+  padding: 30px 20px;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #eee;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.bl-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.bl-card.selected {
+  border-color: #e6c77b;
+  background: #fffdf7;
+}
+
+/* =======================================================
+   CARD CONTENT
+======================================================= */
+
+.bl-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto 15px;
+  overflow: hidden;
+  background: #eee;
+}
+
+.bl-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.bl-info h4 {
+  font-size: 16px;
+  margin: 0;
+  color: #111;
+}
+
+.bl-role {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #999;
+}
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media (max-width: 899px) {
+  .bl-overlay {
+    background: #1c1f24;
+    padding: 20px 0;
+  }
+
+  .bl-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 420px;
+    min-height: 580px;
+    height: auto;
+    background: #1c1f24;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .bl-sidebar {
+    padding: 30px 20px 25px;
+  }
+
+  .bl-logo {
+    margin-bottom: 20px;
+  }
+
+  .bl-logo img {
+    width: 75px;
+  }
+
+  .bl-sidebar-footer {
+    display: none;
+  }
+
+  .bl-steps {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .bl-step-text {
+    display: none;
+  }
+
+  .bl-step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .bl-content {
+    background: #fff;
+    padding: 30px 18px;
+    flex: 1;
+  }
+
+  .bl-content h3 {
+    font-size: 14px;
+    margin-bottom: 25px;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+
+  .bl-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .bl-card {
+    display: flex;
+    align-items: center;
+    padding: 16px 18px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  }
+
+  .bl-avatar {
+    width: 52px;
+    height: 52px;
+    margin: 0 18px 0 0;
+  }
+
+  .bl-card.selected {
+    border-left: 5px solid #e6c77b;
+  }
+}
+
+
+.bl-sidebar-footer {
+  margin-top: auto;
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+/* --- ESTILOS DEL CARTEL DE AVISO (NUEVO) --- */
+
+.bl-message-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 20px;
+  margin: 20px auto;
+  background-color: #fcfcfc; /* Fondo suave */
+  border: 2px dashed #ddd;    /* Borde punteado para que parezca un placeholder */
+  border-radius: 12px;
+  color: #555;
+  max-width: 500px; /* Para que no se estire de más en PC */
+}
+
+.bl-icon-warning {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  filter: grayscale(1); /* Un toque estético más sobrio */
+  opacity: 0.7;
+}
+
+.bl-message-container p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: #333;
+}
+
+.bl-message-container small {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* --- RESPONSIVE MOBILE (Solo para el cartel) --- */
+
+@media (max-width: 480px) {
+  .bl-message-container {
+    padding: 30px 15px;
+    margin: 10px; /* Un poco más de aire en los bordes de la pantalla */
+    border-width: 1px; /* Borde más fino en móvil */
+  }
+
+  .bl-icon-warning {
+    font-size: 2.5rem; /* Ícono un pelín más chico en móvil */
+  }
+
+  .bl-message-container p {
+    font-size: 1rem; /* Texto ajustado para pantallas chicas */
+  }
+
+  .bl-message-container small {
+    font-size: 0.85rem;
+  }
+}

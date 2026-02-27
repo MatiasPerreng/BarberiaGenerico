@@ -1,0 +1,151 @@
+/* =======================================================
+   CONTACT CARD (EDITORIAL / MINIMAL)
+======================================================= */
+
+.contact-card {
+  margin: 60px auto 0;
+  padding: 48px 40px;
+  max-width: 700px;
+  background: #f7f5f3;
+  color: #111;
+}
+
+/* =======================================================
+   TITULOS
+======================================================= */
+
+.contact-title {
+  margin: 0 0 10px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.contact-subtitle {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* =======================================================
+   DIVIDER
+======================================================= */
+
+.contact-divider {
+  margin: 28px 0;
+  height: 1px;
+  background: #222;
+  opacity: 0.15;
+}
+
+/* =======================================================
+   ITEMS
+======================================================= */
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-icon {
+  font-size: 0.9rem;
+}
+
+.contact-text {
+  font-size: 0.95rem;
+  color: #222;
+}
+
+/* =======================================================
+   SOCIALS
+======================================================= */
+
+.contact-socials {
+  margin-top: 32px;
+  display: flex;
+  gap: 14px;
+}
+
+.contact-socials a {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.contact-socials a:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
+}
+
+.contact-socials img {
+  width: 20px;
+  height: 20px;
+}
+
+
+/* =======================================================
+ICONOS
+======================================================= */
+
+
+.contact-socials {
+  display: flex;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.contact-socials a img {
+  width: 26px;
+  height: 26px;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* WhatsApp verde oficial */
+.contact-socials a[href*="wa.me"] img {
+  filter: brightness(0) saturate(100%) invert(48%) sepia(96%)
+          saturate(428%) hue-rotate(87deg) brightness(93%) contrast(92%);
+}
+
+/* Instagram (degradado no se puede, pero rosa oficial sí) */
+.contact-socials a[href*="instagram"] img {
+  filter: brightness(0) saturate(100%) invert(36%) sepia(88%)
+          saturate(2150%) hue-rotate(312deg) brightness(97%) contrast(104%);
+}
+
+/* Hover premium */
+.contact-socials a:hover img {
+  transform: translateY(-2px) scale(1.05);
+}
+
+
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+
+@media (max-width: 600px) {
+  .contact-card {
+    padding: 36px 24px;
+  }
+
+  .contact-title {
+    font-size: 1.5rem;
+  }
+}
+
+

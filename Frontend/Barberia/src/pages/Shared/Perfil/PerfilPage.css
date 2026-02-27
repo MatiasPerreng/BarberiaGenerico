@@ -1,0 +1,106 @@
+/* ================================
+   PERFIL – KING BARBER STYLE
+================================ */
+
+.perfil-page {
+  max-width: 480px;
+  margin: auto;
+  padding: 28px 20px;
+  background: #f7f7f5;
+}
+
+/* ---------- TÍTULO ---------- */
+.perfil-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 22px;
+  color: #111;
+  letter-spacing: 0.2px;
+}
+
+/* ---------- CARD PERFIL ---------- */
+.perfil-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 18px 18px;
+  margin-bottom: 26px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+/* ---------- FILAS ---------- */
+.perfil-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.perfil-row:last-child {
+  border-bottom: none;
+}
+
+/* ---------- LABEL / VALUE ---------- */
+.perfil-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #777;
+}
+
+.perfil-value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+}
+
+/* ---------- ACCIONES ---------- */
+.perfil-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ---------- BOTONES ---------- */
+.perfil-action-btn {
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
+
+  background: linear-gradient(135deg, #e6c77b, #cfa85a);
+  color: #111;
+
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+
+
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.perfil-action-btn:hover {
+transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(230, 199, 123, 0.65);
+}
+
+.perfil-action-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 480px) {
+  .perfil-title {
+    font-size: 22px;
+  }
+
+  .perfil-action-btn {
+    font-size: 14px;
+    padding: 14px;
+  }
+}

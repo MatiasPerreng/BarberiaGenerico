@@ -1,0 +1,178 @@
+/* =========================
+   NAVBAR KING PRO
+========================= */
+
+.navbar-pro {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 72px;
+  padding: 0 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.88),
+      rgba(0, 0, 0, 0.35)
+    );
+
+  backdrop-filter: blur(5px);
+
+  border-bottom: 1px solid rgba(230, 199, 123, 0.18);
+
+  z-index: 1000;
+  transition: all 0.35s ease;
+}
+
+/* línea dorada inferior */
+.navbar-pro::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(230,199,123,0.35),
+    transparent
+  );
+}
+
+/* =========================
+   MARCA
+========================= */
+
+.nav-left {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* mini corona */
+.nav-left::before {
+  content: "♛";
+  position: absolute;
+  top: -10px;
+  left: 2px;
+  font-size: 0.7rem;
+  color: rgba(230,199,123,0.7);
+}
+
+.nav-monogram {
+  font-family: "Cinzel", serif;
+  font-size: 1.7rem;
+  letter-spacing: 3px;
+  font-weight: 600;
+  color: rgba(230, 199, 123, 0.95);
+  position: relative;
+}
+
+/* base del monograma */
+.nav-monogram::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 1px;
+  background: rgba(230, 199, 123, 0.35);
+}
+
+.nav-brand {
+  font-family: "Cinzel", serif;
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  color: rgba(230, 199, 123, 0.75);
+  text-transform: uppercase;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+.nav-right a {
+  position: relative;
+  margin-left: 32px;
+
+  font-family: "Cinzel", serif;
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  font-weight: 500;
+
+  text-transform: uppercase;
+  text-decoration: none;
+
+  color: rgba(255, 255, 255, 0.7)!important;
+  transition: color 0.25s ease;
+}
+
+/* subrayado dorado */
+.nav-right a::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 1px;
+  background: rgba(230, 199, 123, 0.8);
+  transition: width 0.25s ease;
+}
+
+.nav-right a:hover {
+  color: rgba(230, 199, 123, 0.95);
+}
+
+.nav-right a:hover::after {
+  width: 100%;
+}
+
+/* =========================
+   SCROLL STATE
+========================= */
+
+.navbar-pro.scrolled {
+  background: rgba(0, 0, 0, 0.92);
+  backdrop-filter: blur(6px);
+  height: 64px;
+  border-bottom: 1px solid rgba(230, 199, 123, 0.12);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+  .navbar-pro {
+    padding: 0 20px;
+    height: 64px;
+  }
+
+  .nav-left::before {
+    display: none;
+  }
+
+  .nav-monogram {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+  }
+
+  .nav-brand {
+    font-size: 0.65rem;
+    letter-spacing: 2.5px;
+  }
+
+  .nav-right a {
+    margin-left: 18px;
+    font-size: 0.6rem;
+    letter-spacing: 1px;
+  }
+}

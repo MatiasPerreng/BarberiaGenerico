@@ -1,0 +1,438 @@
+/* =======================================================
+   OVERLAY & CONTAINER
+======================================================= */
+
+.aa-booking-overlay {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(180deg,
+      rgba(230, 199, 123, 0.22) 0%,
+      rgba(0, 0, 0, 0.96) 50%),
+    #000;
+  padding: 20px;
+}
+
+.aa-booking-container {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  background: #f6f7f8;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* =======================================================
+   SIDEBAR (ESTÁTICO)
+======================================================= */
+
+.aa-booking-sidebar {
+  background: #1c1f24;
+  color: #fff;
+  padding: 45px 35px;
+  display: flex;
+  flex-direction: column;
+}
+
+.aa-logo {
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+.aa-logo img {
+  width: 95px;
+}
+
+.aa-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.aa-step {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  opacity: 0.3;
+}
+
+.aa-step-text {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.aa-step-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2b2f36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.aa-step.active,
+.aa-step.done {
+  opacity: 1;
+}
+
+.aa-step.active {
+  color: #e6c77b;
+}
+
+.aa-step.active .aa-step-number {
+  background: #e6c77b;
+  color: #111;
+}
+
+.aa-step.done .aa-step-number {
+  background: #caa851;
+  color: #111;
+}
+
+/* =======================================================
+   CONTENIDO PRINCIPAL & AUTO-SCROLL
+======================================================= */
+
+.aa-booking-content {
+  padding: 50px;
+  background: #fff;
+  overflow-y: visible;
+  /* Crucial para que el scroll automático sea fluido */
+  scroll-behavior: smooth;
+}
+
+/* Estilo para la barra de scroll */
+.aa-booking-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.aa-booking-content::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.aa-booking-content::-webkit-scrollbar-thumb {
+  background: #e6c77b;
+  border-radius: 10px;
+}
+
+.aa-booking-content h3 {
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  color: #111;
+}
+
+/* BOTÓN VOLVER */
+.aa-btn-volver {
+  background: rgba(230, 199, 123, 0.15);
+  border: 1px solid rgba(230, 199, 123, 0.6);
+  color: #111;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  margin-bottom: 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+
+.aa-btn-volver::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent,
+      #e6c77b,
+      transparent);
+  transition: width 0.35s ease;
+}
+
+.aa-btn-volver:hover {
+  background: #e6c77b;
+  color: #000;
+  transform: translateX(-2px);
+}
+
+.aa-btn-volver:hover::after {
+  width: 100%;
+}
+
+.aa-btn-volver:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(230, 199, 123, 0.35);
+}
+/* =======================================================
+   CALENDARIO
+======================================================= */
+
+.aa-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.aa-month-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #111;
+  min-width: 150px;
+  text-align: center;
+}
+
+.aa-month-btn {
+  background: #f3f4f6;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-size: 18px;
+  cursor: pointer;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.aa-month-btn:hover {
+  background: #e5e7eb;
+  color: #000;
+}
+
+.aa-calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.aa-calendar-weekdays span {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #9ca3af;
+}
+
+.aa-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 30px;
+  transition: opacity 0.3s ease;
+}
+
+.aa-calendar-grid.is-loading {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.aa-calendar-day {
+  height: 38px;
+  border-radius: 6px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #111;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+.aa-calendar-day.available {
+  border-bottom: 3px solid #3cb371;
+}
+
+.aa-calendar-day.available:hover {
+  background: #f0fdf4;
+  border-color: #3cb371;
+}
+
+.aa-calendar-day.full {
+  border-bottom: 3px solid #dc2626;
+  background: #fff5f5;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.aa-calendar-day.disabled {
+  background: #f9fafb;
+  border-color: #f3f4f6;
+  color: #d1d5db;
+  cursor: not-allowed;
+}
+
+.aa-calendar-day.selected {
+  background: #3cb371 !important;
+  border-color: #3cb371 !important;
+  color: #fff !important;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(60, 179, 113, 0.3);
+  z-index: 2;
+}
+
+.aa-calendar-empty {
+  height: 38px;
+}
+
+/* =======================================================
+   SECCIÓN DE HORARIOS
+======================================================= */
+
+.aa-horarios-container {
+  border-top: 1px solid #eee;
+  padding-top: 25px;
+  padding-bottom: 30px;
+  /* Espacio extra para el scroll */
+  animation: fadeIn 0.4s ease;
+}
+
+.aa-horarios-container h4 {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #666;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+.aa-horarios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
+  gap: 10px;
+}
+
+.aa-hora-card {
+  padding: 12px 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: #111;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+/* HOVER VERDE (SUCCESS) */
+.aa-hora-card:hover {
+  background: #3cb371;
+  color: #fff;
+  border-color: #3cb371;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(60, 179, 113, 0.2);
+}
+
+.aa-no-horarios {
+  grid-column: 1 / -1;
+  font-size: 13px;
+  color: #999;
+  padding: 20px 0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =======================================================
+   RESPONSIVE (MOBILE)
+======================================================= */
+
+@media (max-width: 899px) {
+  .aa-booking-container {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    height: auto;
+  }
+
+  .aa-booking-sidebar {
+    padding: 25px 15px;
+  }
+
+  .aa-logo {
+    margin-bottom: 15px;
+  }
+
+  .aa-logo img {
+    width: 65px;
+  }
+
+  .aa-steps {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .aa-step-text {
+    display: none;
+  }
+
+  .aa-booking-content {
+    padding: 30px 20px;
+    flex: 1;
+    overflow-y: auto;
+    /* Permite scroll en móvil */
+  }
+
+  .aa-calendar-grid {
+    gap: 5px;
+    margin-bottom: 20px;
+  }
+
+  .aa-calendar-day {
+    height: 48px;
+    /* Touch target optimizado para dedos */
+    font-size: 14px;
+  }
+
+  .aa-horarios-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .aa-hora-card {
+    padding: 15px 0;
+    font-size: 13px;
+  }
+}
+
+.af-sidebar-footer {
+  margin-top: auto;
+  font-size: 11px;
+  opacity: 0.5;
+}

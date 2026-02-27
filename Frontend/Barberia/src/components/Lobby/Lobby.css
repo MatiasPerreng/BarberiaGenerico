@@ -1,0 +1,14 @@
+.lobby {
+  min-height: 100vh;
+  background: #000 url("/img/bg-pattern.png") repeat;
+  padding: 60px 40px;
+}
+
+.lobby-title {
+  text-align: center;
+  color: #fff;
+  font-size: 38px;
+  letter-spacing: 4px;
+  margin-bottom: 50px;
+  text-decoration: underline;
+}

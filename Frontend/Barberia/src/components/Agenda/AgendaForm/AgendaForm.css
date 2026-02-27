@@ -1,0 +1,350 @@
+/* =======================================================
+   OVERLAY & CONTAINER
+======================================================= */
+
+.af-booking-overlay {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(180deg,
+      rgba(230, 199, 123, 0.22) 0%,
+      rgba(0, 0, 0, 0.96) 50%),
+    #000;
+  padding: 20px;
+}
+
+.af-booking-container {
+  width: 100%;
+  max-width: 900px;
+  height: 620px;
+  background: #f6f7f8;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+/* =======================================================
+   SIDEBAR
+======================================================= */
+
+.af-booking-sidebar {
+  background: #1c1f24;
+  color: #fff;
+  padding: 45px 35px;
+  display: flex;
+  flex-direction: column;
+}
+
+.af-logo {
+  margin-bottom: 45px;
+  text-align: center;
+}
+
+.af-logo img {
+  width: 95px;
+}
+
+/* =========================
+   STEPS (IGUAL AL ORIGINAL)
+========================= */
+
+.af-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.af-step {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 25px;
+  opacity: 0.3;
+}
+
+.af-step-text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.af-step-number {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #2b2f36;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  flex-shrink: 0;
+}
+
+.af-step.active,
+.af-step.done {
+  opacity: 1;
+}
+
+.af-step.active {
+  color: #e6c77b;
+}
+
+.af-step.active .af-step-number {
+  background: #e6c77b;
+  color: #111;
+}
+
+.af-step.done .af-step-number {
+  background: #caa851;
+  color: #111;
+}
+
+.af-sidebar-footer {
+  margin-top: auto;
+  font-size: 11px;
+  opacity: 0.5;
+}
+
+/* =======================================================
+   CONTENT
+======================================================= */
+
+.af-booking-content {
+  padding: 50px;
+  background: #fff;
+  overflow-y: auto;
+}
+
+.af-booking-content h3 {
+  font-size: 16px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 35px;
+  color: #111;
+  font-weight: 700;
+}
+
+/* =======================================================
+   BOTÓN VOLVER
+======================================================= */
+
+.af-btn-volver {
+  background: rgba(230, 199, 123, 0.15);
+  border: 1px solid rgba(230, 199, 123, 0.6);
+  color: #111;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.8px;
+  text-transform: uppercase;
+  padding: 8px 18px;
+  margin-bottom: 28px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+
+.af-btn-volver::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+      transparent,
+      #e6c77b,
+      transparent);
+  transition: width 0.35s ease;
+}
+
+.af-btn-volver:hover {
+  background: #e6c77b;
+  color: #000;
+  transform: translateX(-2px);
+}
+
+.af-btn-volver:hover::after {
+  width: 100%;
+}
+
+.af-btn-volver:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(230, 199, 123, 0.35);
+}
+
+
+/* =======================================================
+   FORMULARIO
+======================================================= */
+
+.af-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.af-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.af-form-group label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #888;
+}
+
+.af-form-group input {
+  padding: 12px 15px;
+  border: 1px solid #eee;
+  border-radius: 0;
+  font-size: 16px;
+}
+
+.af-input-error {
+  border-color: #ff4d4d !important;
+}
+
+.af-error {
+  color: #ff4d4d;
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.af-form-actions {
+  grid-column: 1 / -1;
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* =======================================================
+   BOTÓN CONFIRMAR
+======================================================= */
+
+.af-btn-confirmar {
+  background: #e6c77b;
+  color: #111;
+  padding: 15px 35px;
+  border: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0;
+}
+
+.af-btn-confirmar:hover:not(:disabled) {
+  background: #caa851;
+  transform: translateY(-2px);
+}
+
+.af-btn-confirmar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* =======================================================
+   MOBILE
+======================================================= */
+
+@media (max-width: 899px) {
+  .af-booking-overlay {
+    background: #1c1f24;
+    padding: 20px 0;
+    align-items: center;
+  }
+
+  .af-booking-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 420px;
+    min-height: 580px;
+    height: auto;
+    margin: auto;
+    background: #1c1f24;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .af-booking-sidebar {
+    padding: 30px 20px 25px;
+    align-items: center;
+  }
+
+  .af-logo {
+    margin-bottom: 20px;
+  }
+
+  .af-logo img {
+    width: 75px;
+  }
+
+  .af-sidebar-footer {
+    display: none;
+  }
+
+  .af-steps {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .af-step-text {
+    display: none;
+  }
+
+  .af-step-number {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .af-booking-content {
+    background: #fdfdfd;
+    padding: 30px 20px;
+    flex: 1;
+  }
+
+  .af-booking-content h3 {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 25px;
+  }
+
+  .af-form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .af-form-group input {
+    background: #fff;
+    border: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    font-size: 16px;
+  }
+
+  .af-form-actions {
+    width: 100%;
+  }
+
+  .af-btn-confirmar {
+    width: 100%;
+    padding: 18px;
+  }
+}
+

@@ -1,0 +1,257 @@
+/* =======================================================
+   REVEAL SYSTEM (EFECTO SCROLL)
+======================================================= */
+
+.reveal {
+  position: relative;
+  transform: translateY(60px); /* Empieza desplazado hacia abajo */
+  opacity: 0;
+  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  visibility: hidden; /* Evita que ocupen espacio clicable mientras son invisibles */
+}
+
+.reveal.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =======================================================
+   GLOBAL
+======================================================= */
+
+section {
+  scroll-margin-top: 80px;
+}
+
+.homepage-main-container {
+  overflow-x: hidden;
+  background-color: #fff;
+}
+
+/* =======================================================
+   HERO – BASE (DESKTOP FIRST)
+======================================================= */
+
+.hero-section {
+  position: relative;
+  min-height: calc(100vh - 68px);
+
+  padding-top: calc(68px + 60px);
+  padding-bottom: 90px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(20, 18, 12, 0.95),
+      #000 55%
+    ),
+    url("/noise.png");
+
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-position: center;
+
+  display: grid;
+  place-items: center;
+
+  color: white;
+  overflow: hidden;
+}
+
+/* halo superior del hero */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top,
+    rgba(230, 199, 123, 0.06),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* =======================================================
+   HERO – CONTENIDO & ANIMACIONES CARGA
+======================================================= */
+
+.hero-logo {
+  max-width: 270px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 50px;
+  margin-bottom: 25px;
+  animation: fadeInDown 1.2s ease forwards;
+}
+
+.hero-title {
+  font-family: "Cinzel", serif;
+  color: white;
+  letter-spacing: 4px;
+  margin-bottom: 12px;
+  animation: fadeInUp 1s ease forwards;
+}
+
+.hero-section .lead {
+  opacity: 0.85;
+  margin-bottom: 28px;
+  animation: fadeInUp 1.4s ease forwards;
+}
+
+/* BOTÓN HERO */
+.hero-section .btn {
+  border-radius: 999px !important;
+  border: 1px solid rgba(230, 199, 123, 0.6) !important;
+  color: #e6c77b !important;
+  padding: 14px 36px !important;
+  transition: all 0.3s ease !important;
+  animation: fadeInUp 1.6s ease forwards;
+}
+
+.hero-section .btn:hover {
+  background: #e6c77b !important;
+  color: #000 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 10px 20px rgba(230, 199, 123, 0.3);
+}
+
+/* =======================================================
+   TITULO – NUESTROS SERVICIOS (PRO)
+======================================================= */
+
+.services-title {
+  position: relative;
+  display: inline-block;
+  font-family: "Cinzel", serif;
+  font-size: 2.2rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #111;
+  margin: 0 auto 3rem;
+  text-align: center;
+  width: 100%;
+}
+
+/* Línea dorada inferior */
+.services-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -14px;
+  transform: translateX(-50%);
+  width: 90px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #e6c77b,
+    transparent
+  );
+}
+
+/* Halo sutil de fondo para el título */
+.services-title::before {
+  content: "";
+  position: absolute;
+  inset: -12px -24px;
+  background: radial-gradient(
+    circle,
+    rgba(230, 199, 123, 0.12),
+    transparent 70%
+  );
+  z-index: -1;
+}
+
+/* =======================================================
+   MAPA + CONTACTO
+======================================================= */
+
+#ubicacion {
+  background: #f8f9fa;
+}
+
+.contact-section {
+  background: #f8f9fa;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* =======================================================
+   DESKTOP BAJO (ALTURA)
+======================================================= */
+
+@media (max-height: 820px) {
+  .hero-section {
+    padding-top: calc(68px + 40px);
+    padding-bottom: 70px;
+  }
+  .hero-logo { max-width: 230px; padding: 18px; }
+  .hero-title { font-size: 2rem; }
+  .hero-section .lead { font-size: 0.95rem; }
+  .hero-section .btn { padding: 12px 30px; font-size: 0.85rem; }
+}
+
+/* =======================================================
+   DESKTOP MUY BAJO
+======================================================= */
+
+@media (max-height: 720px) {
+  .hero-logo { max-width: 200px; }
+  .hero-title { font-size: 1.7rem; }
+}
+
+/* =======================================================
+   MOBILE (ESTILOS ESPECÍFICOS)
+======================================================= */
+
+@media (max-width: 600px) {
+  .hero-section {
+    padding-top: calc(68px + 24px);
+    padding-bottom: 50px;
+    background-position: center;
+  }
+
+  .hero-logo {
+    max-width: 200px;
+    padding: 16px;
+    border-radius: 36px;
+    margin-bottom: 18px;
+  }
+
+  .hero-title { font-size: 1.6rem; text-align: center; }
+  .hero-section .lead { font-size: 0.95rem; text-align: center; }
+  .hero-section .btn { padding: 12px 28px; font-size: 0.75rem; }
+
+  .services-title { font-size: 1.6rem; letter-spacing: 2px; }
+  .services-title::after { width: 70px; }
+
+  .reveal {
+    transform: translateY(30px); /* Menos desplazamiento en móvil para fluidez */
+  }
+}
+
+/* =======================================================
+   KEYFRAMES (ANIMACIONES DE ENTRADA)
+======================================================= */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
