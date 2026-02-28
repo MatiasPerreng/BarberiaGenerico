@@ -81,7 +81,7 @@ export default function LoginBarbero() {
   return (
     <div className="kb-login-container">
       <form className="kb-login-form" onSubmit={handleSubmit}>
-        <img src="/logo.jpg" alt="King Barber" />
+        <img src="/logobarber.png" alt="King Barber" />
 
         <h2>Acceso</h2>
 

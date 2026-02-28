@@ -1,198 +1,17 @@
 /* =======================================================
-   REVEAL SYSTEM (EFECTO SCROLL)
-======================================================= */
-.reveal {
-  position: relative;
-  transform: translateY(60px); /* Empieza desplazado hacia abajo */
-  opacity: 0;
-  transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  visibility: hidden; /* Evita que ocupen espacio clicable mientras son invisibles */
-}
-
-.reveal.active {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-}
-
-/* =======================================================
-   GLOBAL
-======================================================= */
-section {
-  scroll-margin-top: 80px;
-}
-
-.homepage-main-container {
-  overflow-x: hidden;
-  background-color: #fff;
-}
-
-/* =======================================================
-   HERO – BASE (DESKTOP FIRST)
-======================================================= */
-.hero-section {
-  position: relative;
-  min-height: calc(30vh - 38px);
-  padding-top: calc(68px + 60px);
-  padding-bottom: 90px;
-
-  /* --- ALINEACIÓN PERFECTA (FLEXBOX) --- */
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center; /* Centrado horizontal */
-  /* ------------------------------------- */
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(12, 35, 68, 0.95),
-      #000 55%
-    ),
-    url("/noise.png");
-
-  background-blend-mode: overlay;
-  background-size: cover;
-  background-position: center;
-  color: white;
-  overflow: hidden;
-}
-
-/* halo superior del hero */
-.hero-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at top,
-    rgba(230, 199, 123, 0.06),
-    transparent 70%
-  );
-  pointer-events: none;
-}
-
-/* =======================================================
-   HERO – CONTENIDO & ANIMACIONES CARGA
-======================================================= */
-.hero-logo {
-  max-width: 550px;
-  height: auto;
-  border-radius: 50px;
-  
-  /* --- AJUSTE DE MARGENES PARA ALINEACIÓN --- */
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 10px; /* Acercar a la fuente */
-  display: block;
-  /* ------------------------------------------- */
-  
-  animation: fadeInDown 1.2s ease forwards;
-}
-
-.hero-title {
-  font-family: 'Anton', sans-serif;
-  font-weight: 400; /* Anton es una fuente display */
-  
-  /* --- RESPONSIVO Y ESPACIADO PRO --- */
-  font-size: clamp(2rem, 6vw, 3.5rem); /* Ajuste dinámico */
-  letter-spacing: 6px; 
-  line-height: 1.1;
-  text-transform: uppercase;
-  text-align: center;
-  /* ------------------------------------ */
-
-  color: #FFFFFF;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Profundidad */
-  
-  margin-top: 0;
-  margin-bottom: 20px;
-  display: block;
-  
-  animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-  opacity: 0; /* Para la animación */
-}
-
-/* Efecto de color degradado en texto */
-.hero-title {
-  background: linear-gradient(to bottom, #ffffff 60%, #c0c0c0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hero-section .lead {
-  opacity: 0.85;
-  margin-bottom: 28px;
-  animation: fadeInUp 1.4s ease forwards;
-  text-align: center;
-  font-family: 'Montserrat', sans-serif; /* Subtítulo más limpio */
-  letter-spacing: 2px;
-}
-
-/* BOTÓN HERO - ESTILO PRO */
-.hero-section .btn {
-  display: inline-block;
-  border-radius: 999px; /* Pill shape */
-  padding: 14px 38px;
-  
-  /* Colores y Borde plateado */
-  background-color: transparent;
-  color: #C0C0C0 !important;
-  border: 1px solid rgba(192, 192, 192, 0.5);
-  
-  /* Tipografía */
-  font-family: "Cinzel", serif;
-  font-weight: 600;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-size: 13px;
-  
-  /* Animaciones y Efectos */
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-  animation: fadeInUp 1.6s ease forwards;
-  position: relative;
-  overflow: hidden; /* Para el brillo */
-}
-
-.hero-section .btn:hover {
-  background-color: #C0C0C0;
-  color: #000 !important;
-  border-color: #C0C0C0;
-  
-  /* Transformaciones al pasar mouse */
-  transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 15px 30px rgba(192, 192, 192, 0.2);
-}
-
-/* Efecto de brillo "Flash" Pro */
-.hero-section .btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  transition: all 0.6s;
-}
-
-.hero-section .btn:hover::before {
-  left: 100%;
-}
-
-/* =======================================================
-   TITULO – NUESTROS SERVICIOS (TEMÁTICA AZUL Y NEGRO)
-======================================================= */
+   TITULO – NUESTROS SERVICIOS (INFOCORE STYLE)
+   ======================================================= */
 .services-title {
   position: relative;
   display: inline-block;
-  font-family: "Cinzel", serif;
-  font-size: 2.2rem;
-  letter-spacing: 3px;
+  
+  /* --- CAMBIO A FUENTE MODERNA --- */
+  font-family: "Anton", sans-serif;
+  font-weight: 400; 
+  font-size: 2.5rem; /* Un poco más grande al ser una fuente display */
+  letter-spacing: 4px; /* Mayor espaciado */
+  /* -------------------------------- */
+  
   text-transform: uppercase;
   color: #0c2344; /* Azul profundo del Hero */
   margin: 0 auto 3rem;
@@ -200,129 +19,41 @@ section {
   width: 100%;
 }
 
-/* Línea azul/negra inferior */
+/* Línea azul/negra inferior - Actualizada para combinar con Anton */
 .services-title::after {
   content: "";
   position: absolute;
   left: 50%;
   bottom: -14px;
   transform: translateX(-50%);
-  width: 90px;
-  height: 2px;
-  /* Degradado de negro a azul para coincidir con el Hero */
+  width: 100px;
+  height: 3px; /* Un poco más gruesa */
+  
+  /* Degradado sólido tecnológico */
   background: linear-gradient(
     90deg,
     transparent,
-    #0c2344,
+    #007aff, /* Azul eléctrico de contraste */
     transparent
   );
+  box-shadow: 0 0 10px rgba(0, 122, 255, 0.3);
 }
 
-/* Halo azul de fondo (más sutil sobre blanco) */
+/* Halo azul de fondo (mantenemos el halo sutil) */
 .services-title::before {
   content: "";
   position: absolute;
   inset: -12px -24px;
   background: radial-gradient(
     circle,
-    rgba(12, 35, 68, 0.08), /* Azul del Hero con baja opacidad */
+    rgba(12, 35, 68, 0.08),
     transparent 70%
   );
   z-index: -1;
 }
 
-/* =======================================================
-   MAPA + CONTACTO
-======================================================= */
-#ubicacion {
-  background: #f8f9fa;
-}
-
-.contact-section {
-  background: #f8f9fa;
-  border-top: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-/* =======================================================
-   MEDIA QUERIES (RESPONSIVE DESIGN)
-======================================================= */
-@media (max-height: 820px) {
-  .hero-section {
-    padding-top: calc(68px + 40px);
-    padding-bottom: 70px;
-  }
-  .hero-logo { max-width: 250px; padding: 18px; }
-  .hero-title { font-size: 2.2rem; }
-  .hero-section .lead { font-size: 0.95rem; }
-  .hero-section .btn { padding: 12px 30px; font-size: 0.85rem; }
-}
-
-@media (max-height: 720px) {
-  .hero-logo { max-width: 200px; }
-  .hero-title { font-size: 1.8rem; }
-}
-
-/* MOBILE */
+/* Ajuste específico para móvil */
 @media (max-width: 600px) {
-  .hero-section {
-    padding-top: calc(68px + 24px);
-    padding-bottom: 50px;
-  }
-
-  .hero-logo {
-    max-width: 180px;
-    padding: 12px;
-    border-radius: 30px;
-    margin-bottom: 15px;
-    
-  }
-
-  .hero-title { 
-    font-size: 1.8rem;
-    letter-spacing: 3px; 
-    margin-bottom: 15px;
-  }
-  
-  .hero-section .lead { 
-    font-size: 0.9rem; 
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-  }
-  
-  .hero-section .btn { 
-    padding: 12px 28px; 
-    font-size: 0.75rem; 
-  }
-
-  .services-title { font-size: 1.6rem; letter-spacing: 2px; }
-  .services-title::after { width: 70px; }
-
-  .reveal {
-    transform: translateY(30px);
-  }
-}
-
-/* =======================================================
-   KEYFRAMES
-======================================================= */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  .services-title { font-size: 1.8rem; letter-spacing: 2px; }
+  .services-title::after { width: 70px; height: 2px; }
 }

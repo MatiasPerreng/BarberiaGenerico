@@ -1,66 +1,72 @@
 /* =======================================================
-   WRAPPER GENERAL
+   WRAPPER GENERAL - ESTILO INFOCORE (PLANO)
 ======================================================= */
-
 .map-wrapper {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto 80px; 
   overflow: hidden;
-  background: #1c1f24;
-  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.5);
+  background: #000000;
+  /* Eliminamos border-radius y border */
+  border-radius: 0; 
+  border: none;
+  /* Mantenemos sombra ligera para contraste */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-
 /* =======================================================
-   HEADER SUPERIOR (TÍTULO + DIRECCIÓN)
+   HEADER SUPERIOR (FONDO NEGRO / FUENTE AZUL)
 ======================================================= */
-
 .map-header {
-  padding: 26px 24px;
+  padding: 30px 20px;
   text-align: center;
-  background: linear-gradient(
-    180deg,
-    rgba(20, 18, 12, 0.95),
-    #000
-  );
+  background: #000000;
+  border-bottom: 2px solid #007aff; /* Línea azul más gruesa para definir */
 }
 
 .map-title {
-  margin: 0 0 6px;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 600;
-  font-size: 1.35rem;
-  letter-spacing: 0.6px;
-  color: #ffffff;
+  margin: 0 0 10px;
+  /* Cambiamos la fuente a la que usa tu web para que coincida */
+  font-family: "Anton", sans-serif; 
+  font-weight: 400;
+  font-size: 1.8rem;
+  letter-spacing: 3px;
+  
+  /* Color Azul Infocore con Shadow Pro */
+  color: #007aff; 
+  text-shadow: 0 0 10px rgba(0, 122, 255, 0.5), 
+               2px 2px 2px rgba(0, 0, 0, 0.8);
 }
 
 .map-address {
   margin: 0;
+  /* Fuente legible y más gruesa para que no se vea "fina" */
   font-family: "Montserrat", sans-serif;
-  font-weight: 400;
-  font-size: 0.95rem;
-  letter-spacing: 0.3px;
-  color: rgba(255, 255, 255, 0.85);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  color: #ffffff;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
 }
 
+/* El pin de ubicación en azul */
 .map-address .pin {
-  font-size: 1.05rem;
+  color: #007aff;
+  font-size: 1.2rem;
+  filter: drop-shadow(0 0 5px rgba(0, 122, 255, 0.5));
 }
 
 /* =======================================================
-   MAPA
+   CONTENEDOR DEL MAPA (ORIGINAL)
 ======================================================= */
-
 .map-container {
   width: 100%;
-  height: 420px;
-  background: #000;
+  height: 450px;
+  background: #f0f0f0;
 }
 
 .map-container iframe {
@@ -73,17 +79,12 @@
 /* =======================================================
    RESPONSIVE
 ======================================================= */
-
 @media (max-width: 768px) {
   .map-container {
-    height: 320px;
+    height: 350px;
   }
 
   .map-title {
-    font-size: 1.15rem;
-  }
-
-  .map-address {
-    font-size: 0.85rem;
+    font-size: 1.4rem;
   }
 }

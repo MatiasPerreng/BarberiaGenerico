@@ -1,31 +1,32 @@
-/* ===============================
-   SECCIÓN GALERÍA
-   =============================== */
+/* =======================================================
+   SECCIÓN GALERÍA - ESTILO INFOCORE
+======================================================= */
 
 .gallery-section {
   position: relative;
-  background: linear-gradient(180deg, #000, #111);
+  /* Fondo negro puro */
+  background: #000000;
   padding: 80px 0;
   overflow: hidden;
 }
 
-/* Glow dorado ambiental */
+/* Glow Azul ambiental - Sustituye al dorado */
 .gallery-section::before {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(
     circle at center,
-    rgba(230, 199, 123, 0.08),
+    rgba(0, 122, 255, 0.1), /* Azul suave Infocore */
     transparent 60%
   );
   pointer-events: none;
   z-index: 0;
 }
 
-/* ===============================
-   TÍTULO
-   =============================== */
+/* =======================================================
+   TÍTULO - ESTILO INFOCORE
+======================================================= */
 
 .gallery-title-wrapper {
   text-align: center;
@@ -40,29 +41,28 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #fff;
-}
-
-.gallery-title span {
-  color: #ffffff;
-  font-weight: 600;
+  /* Glow ligero azul en el texto */
+  text-shadow: 0 0 10px rgba(0, 122, 255, 0.3);
 }
 
 .gallery-title-line {
   width: 90px;
   height: 2px;
   margin: 16px auto 0;
+  /* Degradado azul para la línea */
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(55, 46, 180, 0.9),
+    #007aff, /* Azul eléctrico */
     transparent
   );
-  box-shadow: 0 0 12px rgba(123, 143, 230, 0.35);
+  /* Sombra azul para la línea */
+  box-shadow: 0 0 12px rgba(0, 122, 255, 0.5);
 }
 
-/* ===============================
+/* =======================================================
    CARRUSEL
-   =============================== */
+======================================================= */
 
 #galleryCarousel {
   position: relative;
@@ -75,9 +75,9 @@
   overflow: visible;
 }
 
-/* ===============================
+/* =======================================================
    IMÁGENES
-   =============================== */
+======================================================= */
 
 .gallery-img {
   display: block;
@@ -86,12 +86,13 @@
   height: 75vh;
   max-height: 680px;
   object-fit: contain;
+  /* Filtro sutil para integrar imágenes en fondo negro */
   filter: contrast(1.04) saturate(1.05);
 }
 
-/* ===============================
-   FLECHAS
-   =============================== */
+/* =======================================================
+   FLECHAS - AZUL INFOCORE
+======================================================= */
 
 .carousel-control-prev,
 .carousel-control-next {
@@ -103,8 +104,11 @@
   background-image: none;
   width: 14px;
   height: 14px;
-  border-top: 2px solid rgba(55, 46, 180, 0.9);
-  border-right: 2px solid rgba(55, 46, 180, 0.9);
+  /* Borde en azul eléctrico */
+  border-top: 2px solid #007aff;
+  border-right: 2px solid #007aff;
+  /* Sombra azul en flechas */
+  filter: drop-shadow(0 0 4px rgba(0, 122, 255, 0.5));
 }
 
 .carousel-control-prev-icon {
@@ -115,9 +119,9 @@
   transform: rotate(45deg);
 }
 
-/* ===============================
+/* =======================================================
    MOBILE
-   =============================== */
+======================================================= */
 
 @media (max-width: 768px) {
   .gallery-title {

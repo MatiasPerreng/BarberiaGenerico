@@ -1,6 +1,6 @@
-/* =========================
-   NAVBAR KING PRO
-========================= */
+/* =======================================================
+   NAVBAR INFOCORE SOLUTIONS - TECH STYLE
+   ======================================================= */
 
 .navbar-pro {
   position: fixed;
@@ -8,42 +8,34 @@
   width: 100%;
   height: 72px;
   padding: 0 48px;
-  background-color: white !important;
+  background-color: white !important; /* Fondo blanco inicial */
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  /* background:
-    linear-gradient(180deg,
-      rgba(0, 0, 0, 0.88),
-      rgba(0, 0, 0, 0.35)); */
-
   backdrop-filter: blur(5px);
-
-  border-bottom: 0.5px solid white !important;
-
+  border-bottom: 0.5px solid rgba(0, 0, 0, 0.05) !important;
   z-index: 1000;
   transition: all 0.35s ease;
 }
 
-/* línea dorada inferior */
+/* Línea inferior azul sutil en estado normal */
 .navbar-pro::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 92%;
+  width: 95%;
   height: 1px;
   background: linear-gradient(to right,
       transparent,
-      rgba(230, 199, 123, 0.35),
+      rgba(0, 122, 255, 0.1),
       transparent);
 }
 
-/* =========================
+/* =======================================================
    MARCA
-========================= */
+   ======================================================= */
 
 .nav-left {
   position: relative;
@@ -52,107 +44,67 @@
   gap: 14px;
 }
 
-/* mini corona */
-.nav-left::before {
-  content: "♛";
-  position: absolute;
-  top: -10px;
-  left: 2px;
-  font-size: 0.7rem;
-  color: rgba(230, 199, 123, 0.7);
-}
-
+/* --- SOLUCIÓN DE CONTRASTE DEL LOGO --- */
 .nav-left img {
   max-width: 170px;
-  color: white !important;
+  transition: filter 0.35s ease; /* Transición suave del filtro */
 }
 
+/* Ajustes de tipografía para el monograma si se usara */
 .nav-monogram {
-  font-family: "Cinzel", serif;
-  font-size: 1.7rem;
-  letter-spacing: 3px;
-  font-weight: 600;
-  color: rgba(230, 199, 123, 0.95);
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  font-weight: 800;
+  color: #000000;
   position: relative;
-}
-
-/* base del monograma */
-.nav-monogram::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 100%;
-  height: 1px;
-  background: rgba(230, 199, 123, 0.35);
 }
 
 .nav-brand {
-  font-family: "Cinzel", serif;
-  font-size: 0.85rem;
-  letter-spacing: 4px;
-  color: rgba(230, 199, 123, 0.75);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  color: #333;
   text-transform: uppercase;
+  font-weight: 600;
 }
 
-/* =========================
+/* =======================================================
    LINKS
-========================= */
+   ======================================================= */
 
 .nav-right a {
   position: relative;
   margin-left: 32px;
 
-  font-family: "Cinzel", serif;
-  font-size: 0.72rem;
-  letter-spacing: 3px;
-  font-weight: 500;
-
+  /* Nueva fuente pro y legible */
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 1px;
+  font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
-  font-size: 15px;
-  color: rgba(8, 8, 92, 0.7) !important;
-  transition: color 0.25s ease;
+  font-size: 0.85rem;
+  
+  /* Azul profundo */
+  color: #0c2344 !important;
+  transition: all 0.3s ease;
 }
 
-.nav-right a {
-  position: relative;
-  margin-left: 32px;
-  
-  /* Mantengo tu fuente Cinzel que es muy elegante */
-  font-family: "Cinzel", serif;
-  letter-spacing: 3px;
-  font-weight: 500;
-  text-transform: uppercase;
-  text-decoration: none;
-  font-size: 15px; /* Eliminé el 0.72rem duplicado para evitar conflictos */
-  
-  /* Azul inicial suave */
-  color: rgba(8, 8, 92, 0.7); 
-  transition: color 0.3s ease;
-}
-
-/* El subrayado azul */
+/* Hover interactivo azul */
 .nav-right a:hover {
-  /* Un azul más vivo que el original */
-  color: #0047AB !important; 
+  color: #007aff !important;
 }
 
+/* Subrayado azul */
 .nav-right a::after {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -5px;
+  bottom: -8px;
   transform: translateX(-50%);
   width: 0%;
   height: 2px;
-  
-  /* Aquí defines el color de la línea */
-  background-color: #0047AB; 
-  
-  /* Agregamos un leve brillo a la línea */
-  box-shadow: 0 0 5px rgba(0, 71, 171, 0.3);
-  
+  background-color: #007aff;
   transition: width 0.3s ease;
 }
 
@@ -160,43 +112,45 @@
   width: 100%;
 }
 
-/* =========================
-   SCROLL STATE
-========================= */
+/* =======================================================
+   SCROLL STATE (Fondo Negro al bajar)
+   ======================================================= */
 
 .navbar-pro.scrolled {
-  background: rgba(0, 0, 0, 0.92);
-  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.95) !important;
+  backdrop-filter: blur(8px);
   height: 64px;
+  border-bottom: 1px solid rgba(0, 122, 255, 0.2) !important;
 }
 
-/* =========================
+/* --- SOLUCIÓN DE CONTRASTE DEL LOGO AL SCROLLEAR --- */
+.navbar-pro.scrolled .nav-left img {
+  /* Filtro para invertir los colores del logo y hacerlo blanco */
+  filter: brightness(0) invert(1);
+}
+
+/* Cambiar color de textos a blanco al hacer scroll */
+.navbar-pro.scrolled .nav-right a {
+  color: #ffffff !important;
+}
+
+.navbar-pro.scrolled .nav-right a:hover {
+  color: #007aff !important;
+}
+
+/* =======================================================
    MOBILE
-========================= */
+   ======================================================= */
 
 @media (max-width: 600px) {
   .navbar-pro {
     padding: 0 20px;
-    height: 64px;
-  }
-
-  .nav-left::before {
-    display: none;
-  }
-
-  .nav-monogram {
-    font-size: 1.4rem;
-    letter-spacing: 2px;
-  }
-
-  .nav-brand {
-    font-size: 0.65rem;
-    letter-spacing: 2.5px;
+    height: 60px;
   }
 
   .nav-right a {
-    margin-left: 18px;
-    font-size: 0.6rem;
-    letter-spacing: 1px;
+    margin-left: 15px;
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
   }
 }

@@ -97,21 +97,23 @@ section {
 /* =======================================================
    BOTONES - SISTEMA UNIFICADO (CORREGIDO)
 ======================================================= */
-/* Estilo base para botones Hero y Reservar */
 .hero-section .btn, 
 .btn-reservar {
-  display: inline-flex; /* Mejor alineación de texto */
+  display: inline-flex; 
   align-items: center;
   justify-content: center;
   border-radius: 999px;
   background-color: transparent;
   color: #C0C0C0 !important;
   border: 1px solid rgba(192, 192, 192, 0.5);
-  font-family: "Cinzel", serif;
-  font-weight: 600;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700; 
+  letter-spacing: 1.5px;
+  font-size: 13px;
   text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
+  margin-left: 10px;
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
@@ -177,7 +179,6 @@ section {
   font-family: "Cinzel", serif;
   font-size: 2.2rem;
   letter-spacing: 3px;
-  text-transform: uppercase;
   color: #111;
   margin: 0 auto 4rem;
   text-align: center;
@@ -244,7 +245,6 @@ section {
   font-family: 'Anton', sans-serif;
   font-size: 1.2rem;
   letter-spacing: 2px;
-  text-transform: uppercase;
   margin-bottom: 5px;
 }
 
