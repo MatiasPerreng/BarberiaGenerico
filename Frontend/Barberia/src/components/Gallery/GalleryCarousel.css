@@ -43,7 +43,7 @@
 }
 
 .gallery-title span {
-  color: #e6c77b;
+  color: #ffffff;
   font-weight: 600;
 }
 
@@ -54,10 +54,10 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(230, 199, 123, 0.9),
+    rgba(55, 46, 180, 0.9),
     transparent
   );
-  box-shadow: 0 0 12px rgba(230, 199, 123, 0.35);
+  box-shadow: 0 0 12px rgba(123, 143, 230, 0.35);
 }
 
 /* ===============================
@@ -103,8 +103,8 @@
   background-image: none;
   width: 14px;
   height: 14px;
-  border-top: 2px solid rgba(230, 199, 123, 0.6);
-  border-right: 2px solid rgba(230, 199, 123, 0.6);
+  border-top: 2px solid rgba(55, 46, 180, 0.9);
+  border-right: 2px solid rgba(55, 46, 180, 0.9);
 }
 
 .carousel-control-prev-icon {

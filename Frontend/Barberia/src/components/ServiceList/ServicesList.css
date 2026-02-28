@@ -1,7 +1,6 @@
-/* =========================
-   GRID
-========================= */
-
+/* =======================================================
+   GRID DE SERVICIOS - ESTILO HERO PRO
+======================================================= */
 .servicios-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -9,103 +8,109 @@
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 12px;
+  animation: fadeInUp 1s ease forwards;
 }
 
-/* =========================
-   CARD
-========================= */
-
+/* =======================================================
+   CARD DE SERVICIOS - FONDO NEGRO Y BORDE PLATEADO
+======================================================= */
 .servicio-card {
-  background: #0f0f0f;
+  background: #050505; /* Fondo negro intenso */
   color: #fff;
   border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  border: 1px solid rgba(192, 192, 192, 0.1); /* Borde sutil */
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 .servicio-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  box-shadow: 0 30px 60px rgba(192, 192, 192, 0.1);
+  border-color: rgba(192, 192, 192, 0.3);
 }
 
-/* =========================
-   IMAGEN
-========================= */
-
+/* =======================================================
+   IMAGEN - Brillo al hacer hover
+======================================================= */
 .servicio-img {
   width: 100%;
   height: 220px;
   object-fit: cover;
   filter: brightness(0.8) contrast(1.05);
+  transition: filter 0.4s ease;
 }
 
-/* =========================
-   BODY
-========================= */
+.servicio-card:hover .servicio-img {
+  filter: brightness(1) contrast(1.05);
+}
 
+/* =======================================================
+   BODY - Adaptado
+======================================================= */
 .servicio-body {
   padding: 26px 26px 28px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  background: linear-gradient(
-    to bottom,
-    rgba(0,0,0,0),
-    #0f0f0f 45%
-  );
+  background: #050505;
 }
 
-/* =========================
-   TIPOGRAFÍA
-========================= */
-
+/* =======================================================
+   TIPOGRAFÍA - Estilo Premium
+======================================================= */
 .servicio-title {
-  font-size: 15px;
-  font-weight: 600;
-  letter-spacing: 3px;
+  font-family: 'Anton', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 6px;
+  color: #fff;
 }
 
 .servicio-duracion {
+  font-family: 'Montserrat', sans-serif;
   font-size: 0.7rem;
-  letter-spacing: 1.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  opacity: 0.55;
+  color: #C0C0C0; /* Plateado */
+  opacity: 0.8;
   margin-bottom: 14px;
 }
 
 .servicio-desc {
+  font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   line-height: 1.7;
   color: #bdbdbd;
   flex-grow: 1;
+  margin-bottom: 16px;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
+/* =======================================================
+   FOOTER - Adaptado
+======================================================= */
 .servicio-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 26px;
+  margin-top: auto;
   gap: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.05);
 }
 
-/* =========================
-   PRECIO
-========================= */
-
+/* =======================================================
+   PRECIO - Plateado brillante
+======================================================= */
 .servicio-precio {
   font-size: 1.4rem;
   font-weight: 500;
   letter-spacing: 1px;
-  color: #e6c77b;
+  color: #FFFFFF;
 }
 
 .servicio-precio small {
@@ -114,49 +119,88 @@
   margin-right: 2px;
 }
 
-/* =========================
-   BOTÓN
-========================= */
-
+/* =======================================================
+   BOTÓN - COMPACTO Y CON ESTILO PRO (CORREGIDO)
+======================================================= */
 .btn-reservar {
-  background: transparent;
-  border: 1px solid rgba(230, 199, 123, 0.55);
-  color: #e6c77b;
+  display: inline-block;
   border-radius: 999px;
-  padding: 8px 20px;
-  font-size: 0.75rem;
+  
+  /* --- TAMAÑO Y ALINEACIÓN AJUSTADOS --- */
+  padding: 8px 16px; /* Ajuste ligero de padding horizontal */
+  font-size: 11px;                
   letter-spacing: 1.5px;
-  text-transform: uppercase;
+  text-align: center; /* FORZA AL CENTRO */
+  /* ------------------------------------- */
+  
+  /* ESTILO PLATEADO */
+  background-color: transparent;
+  color: #C0C0C0 !important;
+  border: 1px solid rgba(192, 192, 192, 0.5);
+  
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  text-transform: uppercase;                
+  
+  /* Animaciones y Efectos */
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  position: relative;
+  overflow: hidden;                
+  text-decoration: none;
   cursor: pointer;
-  transition: all 0.25s ease;
   white-space: nowrap;
+  
+  /* Asegura que el botón ocupe el ancho necesario sin desbordar */
+  width: auto; 
+  box-sizing: border-box;
 }
-
 .btn-reservar:hover {
-  background: #e6c77b;
-  color: #000;
+  background-color: #C0C0C0;
+  color: #000 !important;
+  border-color: #C0C0C0;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(192, 192, 192, 0.2);
 }
 
-/* =========================
-   LOADING
-========================= */
+/* EFECTO DE BRILLO "FLASH" PRO */
+.btn-reservar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: all 0.6s;
+}
 
+.btn-reservar:hover::before {
+  left: 100%;
+}
+
+/* =======================================================
+   LOADING
+======================================================= */
 .loading {
   text-align: center;
   color: #ccc;
+  font-family: 'Montserrat', sans-serif;
 }
 
-/* =========================
+/* =======================================================
    RESPONSIVE
-========================= */
-
+======================================================= */
 /* TABLET */
 @media (max-width: 1024px) {
   .servicios-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
   }
-
   .servicio-img {
     height: 200px;
   }
@@ -168,29 +212,23 @@
     grid-template-columns: 1fr;
     gap: 20px;
   }
-
   .servicio-img {
     height: 180px;
   }
-
   .servicio-body {
     padding: 22px 20px 24px;
   }
-
   .servicio-title {
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: 2px;
   }
-
   .servicio-desc {
     font-size: 12.5px;
   }
-
   .servicio-footer {
     flex-direction: column;
     align-items: flex-start;
   }
-
   .btn-reservar {
     width: 100%;
     text-align: center;

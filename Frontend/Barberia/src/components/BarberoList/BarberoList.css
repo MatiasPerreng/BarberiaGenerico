@@ -7,7 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(180deg, rgba(230, 199, 123, 0.22) 0%, rgba(0, 0, 0, 0.96) 50%), #000;
+  background: linear-gradient(180deg, rgba(12, 35, 68, 0.5) 0%, rgba(0, 0, 0, 0.96) 50%), #000;
   padding: 20px;
 }
 
@@ -23,11 +23,11 @@
 }
 
 /* =======================================================
-   SIDEBAR
+   SIDEBAR - CONTRASTE MEJORADO
 ======================================================= */
 
 .bl-sidebar {
-  background: #1c1f24;
+  background: #0c2344; /* Azul profundo del Hero */
   color: #fff;
   padding: 45px 35px;
   display: flex;
@@ -44,7 +44,7 @@
 }
 
 /* =======================================================
-   STEPS
+   STEPS - AJUSTE DE CONTRASTE
 ======================================================= */
 
 .bl-steps {
@@ -58,7 +58,8 @@
   align-items: center;
   gap: 15px;
   margin-bottom: 25px;
-  opacity: 0.3;
+  opacity: 0.5; /* Más tenue cuando no activo */
+  color: #fff; /* Texto blanco */
 }
 
 .bl-step-text {
@@ -73,11 +74,13 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #2b2f36;
+  /* CAMBIO: Fondo más claro para contraste en sidebar oscuro */
+  background: rgba(255, 255, 255, 0.1); 
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 11px;
+  color: #fff;
 }
 
 .bl-step.active,
@@ -86,17 +89,17 @@
 }
 
 .bl-step.active {
-  color: #e6c77b;
+  color: #fff; /* Blanco sobre azul */
 }
 
 .bl-step.active .bl-step-number {
-  background: #e6c77b;
-  color: #111;
+  background: #fff; /* Círculo blanco */
+  color: #0c2344; /* Número azul */
 }
 
 .bl-step.done .bl-step-number {
-  background: #caa851;
-  color: #111;
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
 }
 
 /* =======================================================
@@ -122,9 +125,9 @@
 ======================================================= */
 
 .bl-btn-volver {
-  background: rgba(230, 199, 123, 0.15);
-  border: 1px solid rgba(230, 199, 123, 0.6);
-  color: #111;
+  background: rgba(12, 35, 68, 0.08);
+  border: 1px solid rgba(12, 35, 68, 0.3);
+  color: #0c2344; /* Texto azul para contraste */
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.8px;
@@ -137,6 +140,7 @@
   align-items: center;
   gap: 8px;
   transition: all 0.25s ease;
+  position: relative;
 }
 
 .bl-btn-volver::after {
@@ -146,13 +150,13 @@
   bottom: -4px;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #e6c77b, transparent);
+  background: linear-gradient(90deg, transparent, #0c2344, transparent);
   transition: width 0.35s ease;
 }
 
 .bl-btn-volver:hover {
-  background: #e6c77b;
-  color: #000;
+  background: #0c2344;
+  color: #fff;
   transform: translateX(-2px);
 }
 
@@ -162,7 +166,7 @@
 
 .bl-btn-volver:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(230, 199, 123, 0.35);
+  box-shadow: 0 0 0 3px rgba(12, 35, 68, 0.2);
 }
 
 /* =======================================================
@@ -191,8 +195,8 @@
 }
 
 .bl-card.selected {
-  border-color: #e6c77b;
-  background: #fffdf7;
+  border-color: #0c2344;
+  background: #f0f4f8; /* Fondo suave azulado */
 }
 
 /* =======================================================
@@ -232,7 +236,7 @@
 
 @media (max-width: 899px) {
   .bl-overlay {
-    background: #1c1f24;
+    background: #0c2344; /* Azul en móvil también */
     padding: 20px 0;
   }
 
@@ -243,7 +247,7 @@
     max-width: 420px;
     min-height: 580px;
     height: auto;
-    background: #1c1f24;
+    background: #0c2344; /* Azul en móvil */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
   }
 
@@ -312,7 +316,7 @@
   }
 
   .bl-card.selected {
-    border-left: 5px solid #e6c77b;
+    border-left: 5px solid #0c2344;
   }
 }
 
@@ -321,9 +325,10 @@
   margin-top: auto;
   font-size: 11px;
   opacity: 0.5;
+  color: #fff; /* Asegurar contraste */
 }
 
-/* --- ESTILOS DEL CARTEL DE AVISO (NUEVO) --- */
+/* --- ESTILOS DEL CARTEL DE AVISO --- */
 
 .bl-message-container {
   display: flex;
@@ -333,17 +338,17 @@
   text-align: center;
   padding: 40px 20px;
   margin: 20px auto;
-  background-color: #fcfcfc; /* Fondo suave */
-  border: 2px dashed #ddd;    /* Borde punteado para que parezca un placeholder */
+  background-color: #fcfcfc;
+  border: 2px dashed #ddd;
   border-radius: 12px;
   color: #555;
-  max-width: 500px; /* Para que no se estire de más en PC */
+  max-width: 500px;
 }
 
 .bl-icon-warning {
   font-size: 3rem;
   margin-bottom: 15px;
-  filter: grayscale(1); /* Un toque estético más sobrio */
+  color: #0c2344; /* Ícono azul */
   opacity: 0.7;
 }
 
@@ -351,12 +356,12 @@
   font-size: 1.1rem;
   font-weight: 600;
   margin: 0 0 8px 0;
-  color: #333;
+  color: #0c2344; /* Título azul */
 }
 
 .bl-message-container small {
   font-size: 0.9rem;
-  color: #888;
+  color: #64748b;
 }
 
 /* --- RESPONSIVE MOBILE (Solo para el cartel) --- */
@@ -364,16 +369,16 @@
 @media (max-width: 480px) {
   .bl-message-container {
     padding: 30px 15px;
-    margin: 10px; /* Un poco más de aire en los bordes de la pantalla */
-    border-width: 1px; /* Borde más fino en móvil */
+    margin: 10px;
+    border-width: 1px;
   }
 
   .bl-icon-warning {
-    font-size: 2.5rem; /* Ícono un pelín más chico en móvil */
+    font-size: 2.5rem;
   }
 
   .bl-message-container p {
-    font-size: 1rem; /* Texto ajustado para pantallas chicas */
+    font-size: 1rem;
   }
 
   .bl-message-container small {

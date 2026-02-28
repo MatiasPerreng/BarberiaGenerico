@@ -1,7 +1,6 @@
 /* =======================================================
    REVEAL SYSTEM (EFECTO SCROLL)
 ======================================================= */
-
 .reveal {
   position: relative;
   transform: translateY(60px); /* Empieza desplazado hacia abajo */
@@ -19,7 +18,6 @@
 /* =======================================================
    GLOBAL
 ======================================================= */
-
 section {
   scroll-margin-top: 80px;
 }
@@ -32,13 +30,18 @@ section {
 /* =======================================================
    HERO – BASE (DESKTOP FIRST)
 ======================================================= */
-
 .hero-section {
   position: relative;
-  min-height: calc(100vh - 68px);
-
+  min-height: calc(30vh - 38px);
   padding-top: calc(68px + 60px);
   padding-bottom: 90px;
+
+  /* --- ALINEACIÓN PERFECTA (FLEXBOX) --- */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Centrado horizontal */
+  /* ------------------------------------- */
 
   background:
     linear-gradient(
@@ -51,10 +54,6 @@ section {
   background-blend-mode: overlay;
   background-size: cover;
   background-position: center;
-
-  display: grid;
-  place-items: center;
-
   color: white;
   overflow: hidden;
 }
@@ -75,51 +74,119 @@ section {
 /* =======================================================
    HERO – CONTENIDO & ANIMACIONES CARGA
 ======================================================= */
-
 .hero-logo {
-  max-width: 130px;
-  padding: 20px;
-  /* background: rgba(255, 255, 255, 0.03); */
+  max-width: 550px;
+  height: auto;
   border-radius: 50px;
-  margin-bottom: 25px;
+  
+  /* --- AJUSTE DE MARGENES PARA ALINEACIÓN --- */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10px; /* Acercar a la fuente */
+  display: block;
+  /* ------------------------------------------- */
+  
   animation: fadeInDown 1.2s ease forwards;
 }
 
 .hero-title {
-  font-family: "Cinzel", serif;
-  color: white;
-  letter-spacing: 4px;
-  margin-bottom: 12px;
-  animation: fadeInUp 1s ease forwards;
+  font-family: 'Anton', sans-serif;
+  font-weight: 400; /* Anton es una fuente display */
+  
+  /* --- RESPONSIVO Y ESPACIADO PRO --- */
+  font-size: clamp(2rem, 6vw, 3.5rem); /* Ajuste dinámico */
+  letter-spacing: 6px; 
+  line-height: 1.1;
+  text-transform: uppercase;
+  text-align: center;
+  /* ------------------------------------ */
+
+  color: #FFFFFF;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); /* Profundidad */
+  
+  margin-top: 0;
+  margin-bottom: 20px;
+  display: block;
+  
+  animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0; /* Para la animación */
+}
+
+/* Efecto de color degradado en texto */
+.hero-title {
+  background: linear-gradient(to bottom, #ffffff 60%, #c0c0c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-section .lead {
   opacity: 0.85;
   margin-bottom: 28px;
   animation: fadeInUp 1.4s ease forwards;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif; /* Subtítulo más limpio */
+  letter-spacing: 2px;
 }
 
-/* BOTÓN HERO */
+/* BOTÓN HERO - ESTILO PRO */
 .hero-section .btn {
-  border-radius: 999px !important;
-  background-color: #07070700;
-  color: #C0C0C0!important;
-  padding: 14px 36px !important;
-  transition: all 0.3s ease !important;
+  display: inline-block;
+  border-radius: 999px; /* Pill shape */
+  padding: 14px 38px;
+  
+  /* Colores y Borde plateado */
+  background-color: transparent;
+  color: #C0C0C0 !important;
+  border: 1px solid rgba(192, 192, 192, 0.5);
+  
+  /* Tipografía */
+  font-family: "Cinzel", serif;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 13px;
+  
+  /* Animaciones y Efectos */
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
   animation: fadeInUp 1.6s ease forwards;
+  position: relative;
+  overflow: hidden; /* Para el brillo */
 }
 
 .hero-section .btn:hover {
   background-color: #C0C0C0;
-  transform: translateY(-2px) !important;
-  box-shadow: 0 10px 20px rgba(243, 243, 245, 0.3);
-  color:black!important;
+  color: #000 !important;
+  border-color: #C0C0C0;
+  
+  /* Transformaciones al pasar mouse */
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 15px 30px rgba(192, 192, 192, 0.2);
+}
+
+/* Efecto de brillo "Flash" Pro */
+.hero-section .btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: all 0.6s;
+}
+
+.hero-section .btn:hover::before {
+  left: 100%;
 }
 
 /* =======================================================
    TITULO – NUESTROS SERVICIOS (PRO)
 ======================================================= */
-
 .services-title {
   position: relative;
   display: inline-block;
@@ -150,7 +217,7 @@ section {
   );
 }
 
-/* Halo sutil de fondo para el título */
+/* Halo sutil de fondo */
 .services-title::before {
   content: "";
   position: absolute;
@@ -166,7 +233,6 @@ section {
 /* =======================================================
    MAPA + CONTACTO
 ======================================================= */
-
 #ubicacion {
   background: #f8f9fa;
 }
@@ -177,63 +243,67 @@ section {
 }
 
 /* =======================================================
-   DESKTOP BAJO (ALTURA)
+   MEDIA QUERIES (RESPONSIVE DESIGN)
 ======================================================= */
-
 @media (max-height: 820px) {
   .hero-section {
     padding-top: calc(68px + 40px);
     padding-bottom: 70px;
   }
-  .hero-logo { max-width: 230px; padding: 18px; }
-  .hero-title { font-size: 2rem; }
+  .hero-logo { max-width: 250px; padding: 18px; }
+  .hero-title { font-size: 2.2rem; }
   .hero-section .lead { font-size: 0.95rem; }
   .hero-section .btn { padding: 12px 30px; font-size: 0.85rem; }
 }
 
-/* =======================================================
-   DESKTOP MUY BAJO
-======================================================= */
-
 @media (max-height: 720px) {
   .hero-logo { max-width: 200px; }
-  .hero-title { font-size: 1.7rem; }
+  .hero-title { font-size: 1.8rem; }
 }
 
-/* =======================================================
-   MOBILE (ESTILOS ESPECÍFICOS)
-======================================================= */
-
+/* MOBILE */
 @media (max-width: 600px) {
   .hero-section {
     padding-top: calc(68px + 24px);
     padding-bottom: 50px;
-    background-position: center;
   }
 
   .hero-logo {
-    max-width: 200px;
-    padding: 16px;
-    border-radius: 36px;
-    margin-bottom: 18px;
+    max-width: 180px;
+    padding: 12px;
+    border-radius: 30px;
+    margin-bottom: 15px;
+    
   }
 
-  .hero-title { font-size: 1.6rem; text-align: center; }
-  .hero-section .lead { font-size: 0.95rem; text-align: center; }
-  .hero-section .btn { padding: 12px 28px; font-size: 0.75rem; }
+  .hero-title { 
+    font-size: 1.8rem;
+    letter-spacing: 3px; 
+    margin-bottom: 15px;
+  }
+  
+  .hero-section .lead { 
+    font-size: 0.9rem; 
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  
+  .hero-section .btn { 
+    padding: 12px 28px; 
+    font-size: 0.75rem; 
+  }
 
   .services-title { font-size: 1.6rem; letter-spacing: 2px; }
   .services-title::after { width: 70px; }
 
   .reveal {
-    transform: translateY(30px); /* Menos desplazamiento en móvil para fluidez */
+    transform: translateY(30px);
   }
 }
 
 /* =======================================================
-   KEYFRAMES (ANIMACIONES DE ENTRADA)
+   KEYFRAMES
 ======================================================= */
-
 @keyframes fadeInUp {
   from {
     opacity: 0;

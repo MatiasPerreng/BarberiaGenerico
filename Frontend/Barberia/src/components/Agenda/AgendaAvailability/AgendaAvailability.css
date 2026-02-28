@@ -1,5 +1,5 @@
 /* =======================================================
-   OVERLAY & CONTAINER
+   OVERLAY & CONTAINER - ESTILO AZUL NOCHE
 ======================================================= */
 
 .aa-booking-overlay {
@@ -7,11 +7,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background:
-    linear-gradient(180deg,
-      rgba(230, 199, 123, 0.22) 0%,
-      rgba(0, 0, 0, 0.96) 50%),
-    #000;
+  /* CAMBIO: Gradiente azul oscuro en lugar de dorado/negro */
+  background: linear-gradient(180deg, rgba(12, 35, 68, 0.4) 0%, rgba(0, 0, 0, 0.96) 60%), #000;
   padding: 20px;
 }
 
@@ -28,11 +25,11 @@
 }
 
 /* =======================================================
-   SIDEBAR (ESTÁTICO)
+   SIDEBAR (ESTÁTICO) - Azul Profundo
 ======================================================= */
 
 .aa-booking-sidebar {
-  background: #1c1f24;
+  background: #0c2344; /* Azul profundo del Hero */
   color: #fff;
   padding: 45px 35px;
   display: flex;
@@ -59,7 +56,8 @@
   align-items: center;
   gap: 15px;
   margin-bottom: 25px;
-  opacity: 0.3;
+  opacity: 0.5; /* Más tenue cuando no activo */
+  color: #fff;
 }
 
 .aa-step-text {
@@ -74,12 +72,14 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #2b2f36;
+  /* CAMBIO: Fondo sutil sobre azul */
+  background: rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 11px;
   flex-shrink: 0;
+  color: #fff;
 }
 
 .aa-step.active,
@@ -88,17 +88,20 @@
 }
 
 .aa-step.active {
-  color: #e6c77b;
+  /* CAMBIO: Blanco sobre azul */
+  color: #fff;
 }
 
 .aa-step.active .aa-step-number {
-  background: #e6c77b;
-  color: #111;
+  /* CAMBIO: Círculo blanco, número azul */
+  background: #fff;
+  color: #0c2344;
 }
 
 .aa-step.done .aa-step-number {
-  background: #caa851;
-  color: #111;
+  /* CAMBIO: Círculo más claro */
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
 }
 
 /* =======================================================
@@ -109,11 +112,10 @@
   padding: 50px;
   background: #fff;
   overflow-y: visible;
-  /* Crucial para que el scroll automático sea fluido */
   scroll-behavior: smooth;
 }
 
-/* Estilo para la barra de scroll */
+/* Estilo para la barra de scroll - CAMBIO A AZUL */
 .aa-booking-content::-webkit-scrollbar {
   width: 6px;
 }
@@ -123,7 +125,8 @@
 }
 
 .aa-booking-content::-webkit-scrollbar-thumb {
-  background: #e6c77b;
+  /* CAMBIO: Thumb azul */
+  background: #0c2344;
   border-radius: 10px;
 }
 
@@ -132,14 +135,15 @@
   letter-spacing: 2px;
   text-transform: uppercase;
   margin-bottom: 30px;
-  color: #111;
+  color: #0c2344; /* CAMBIO: Título azul */
 }
 
-/* BOTÓN VOLVER */
+/* BOTÓN VOLVER - ESTILO PLATEADO */
 .aa-btn-volver {
-  background: rgba(230, 199, 123, 0.15);
-  border: 1px solid rgba(230, 199, 123, 0.6);
-  color: #111;
+  /* CAMBIO: Transparente/Borde azul */
+  background: transparent;
+  border: 1px solid rgba(12, 35, 68, 0.3);
+  color: #0c2344;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.8px;
@@ -152,8 +156,8 @@
   align-items: center;
   gap: 8px;
   transition: all 0.25s ease;
+  position: relative;
 }
-
 
 .aa-btn-volver::after {
   content: "";
@@ -162,16 +166,15 @@
   bottom: -4px;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg,
-      transparent,
-      #e6c77b,
-      transparent);
+  /* CAMBIO: Gradiente azul */
+  background: linear-gradient(90deg, transparent, #0c2344, transparent);
   transition: width 0.35s ease;
 }
 
 .aa-btn-volver:hover {
-  background: #e6c77b;
-  color: #000;
+  /* CAMBIO: Fondo sólido azul */
+  background: #0c2344;
+  color: #fff;
   transform: translateX(-2px);
 }
 
@@ -181,8 +184,10 @@
 
 .aa-btn-volver:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(230, 199, 123, 0.35);
+  /* CAMBIO: Sombra azul sutil */
+  box-shadow: 0 0 0 3px rgba(12, 35, 68, 0.2);
 }
+
 /* =======================================================
    CALENDARIO
 ======================================================= */
@@ -200,7 +205,7 @@
   font-weight: 700;
   letter-spacing: 1.5px;
   text-transform: uppercase;
-  color: #111;
+  color: #0c2344; /* CAMBIO: Azul */
   min-width: 150px;
   text-align: center;
 }
@@ -222,7 +227,7 @@
 
 .aa-month-btn:hover {
   background: #e5e7eb;
-  color: #000;
+  color: #0c2344;
 }
 
 .aa-calendar-weekdays {
@@ -265,6 +270,7 @@
   position: relative;
 }
 
+/* Mantengo los colores funcionales de éxito/error */
 .aa-calendar-day.available {
   border-bottom: 3px solid #3cb371;
 }
@@ -309,7 +315,6 @@
   border-top: 1px solid #eee;
   padding-top: 25px;
   padding-bottom: 30px;
-  /* Espacio extra para el scroll */
   animation: fadeIn 0.4s ease;
 }
 
@@ -340,13 +345,13 @@
   transition: all 0.2s ease;
 }
 
-/* HOVER VERDE (SUCCESS) */
+/* CAMBIO: Hover azul en vez de verde */
 .aa-hora-card:hover {
-  background: #3cb371;
+  background: #0c2344;
   color: #fff;
-  border-color: #3cb371;
+  border-color: #0c2344;
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(60, 179, 113, 0.2);
+  box-shadow: 0 4px 10px rgba(12, 35, 68, 0.2);
 }
 
 .aa-no-horarios {
@@ -381,6 +386,7 @@
   }
 
   .aa-booking-sidebar {
+    background: #0c2344; /* Azul en móvil */
     padding: 25px 15px;
   }
 
@@ -406,7 +412,6 @@
     padding: 30px 20px;
     flex: 1;
     overflow-y: auto;
-    /* Permite scroll en móvil */
   }
 
   .aa-calendar-grid {
@@ -416,7 +421,6 @@
 
   .aa-calendar-day {
     height: 48px;
-    /* Touch target optimizado para dedos */
     font-size: 14px;
   }
 
@@ -435,4 +439,5 @@
   margin-top: auto;
   font-size: 11px;
   opacity: 0.5;
+  color: #fff; /* CAMBIO: Asegurar visibilidad */
 }

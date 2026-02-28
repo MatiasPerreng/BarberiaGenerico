@@ -33,14 +33,14 @@
 /* Autor */
 .footer-dev strong {
   font-weight: 600;
-  color: #e6c77b;
+  color: #ffffff;
   letter-spacing: 0.1em;
 }
 
 /* Hover sutil (desktop) */
 @media (hover: hover) {
   .footer-dev strong:hover {
-    text-shadow: 0 0 8px rgba(230, 199, 123, 0.45);
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.45);
   }
 }
 

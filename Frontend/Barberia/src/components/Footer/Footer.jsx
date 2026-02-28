@@ -11,7 +11,7 @@ export default function Footer() {
         <span className="footer-separator">·</span>
 
         <span className="footer-dev">
-          Developed by <strong>Matias Perreng</strong>
+          Developed by <strong>INFOCORE SOLUTIONS</strong>
         </span>
       </div>
     </footer>

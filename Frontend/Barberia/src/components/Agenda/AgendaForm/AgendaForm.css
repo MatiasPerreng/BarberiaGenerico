@@ -1,5 +1,5 @@
 /* =======================================================
-   OVERLAY & CONTAINER
+   OVERLAY & CONTAINER - ESTILO AZUL NOCHE
 ======================================================= */
 
 .af-booking-overlay {
@@ -7,11 +7,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background:
-    linear-gradient(180deg,
-      rgba(230, 199, 123, 0.22) 0%,
-      rgba(0, 0, 0, 0.96) 50%),
-    #000;
+  /* CAMBIO: Gradiente azul oscuro */
+  background: linear-gradient(180deg, rgba(12, 35, 68, 0.4) 0%, rgba(0, 0, 0, 0.96) 50%), #000;
   padding: 20px;
 }
 
@@ -27,11 +24,11 @@
 }
 
 /* =======================================================
-   SIDEBAR
+   SIDEBAR - Azul Profundo
 ======================================================= */
 
 .af-booking-sidebar {
-  background: #1c1f24;
+  background: #0c2344; /* Azul profundo del Hero */
   color: #fff;
   padding: 45px 35px;
   display: flex;
@@ -48,7 +45,7 @@
 }
 
 /* =========================
-   STEPS (IGUAL AL ORIGINAL)
+   STEPS - Contraste
 ========================= */
 
 .af-steps {
@@ -62,7 +59,8 @@
   align-items: center;
   gap: 15px;
   margin-bottom: 25px;
-  opacity: 0.3;
+  opacity: 0.5; /* Más tenue cuando no activo */
+  color: #fff;
 }
 
 .af-step-text {
@@ -77,12 +75,14 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: #2b2f36;
+  /* CAMBIO: Fondo sutil */
+  background: rgba(255, 255, 255, 0.1);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 11px;
   flex-shrink: 0;
+  color: #fff;
 }
 
 .af-step.active,
@@ -91,23 +91,27 @@
 }
 
 .af-step.active {
-  color: #e6c77b;
+  /* CAMBIO: Blanco sobre azul */
+  color: #fff;
 }
 
 .af-step.active .af-step-number {
-  background: #e6c77b;
-  color: #111;
+  /* CAMBIO: Círculo blanco, número azul */
+  background: #fff;
+  color: #0c2344;
 }
 
 .af-step.done .af-step-number {
-  background: #caa851;
-  color: #111;
+  /* CAMBIO: Círculo más claro */
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
 }
 
 .af-sidebar-footer {
   margin-top: auto;
   font-size: 11px;
   opacity: 0.5;
+  color: #fff;
 }
 
 /* =======================================================
@@ -125,18 +129,19 @@
   letter-spacing: 3px;
   text-transform: uppercase;
   margin-bottom: 35px;
-  color: #111;
+  color: #0c2344; /* CAMBIO: Título azul */
   font-weight: 700;
 }
 
 /* =======================================================
-   BOTÓN VOLVER
+   BOTÓN VOLVER - Estilo Plateado
 ======================================================= */
 
 .af-btn-volver {
-  background: rgba(230, 199, 123, 0.15);
-  border: 1px solid rgba(230, 199, 123, 0.6);
-  color: #111;
+  /* CAMBIO: Transparente/Borde azul */
+  background: transparent;
+  border: 1px solid rgba(12, 35, 68, 0.3);
+  color: #0c2344;
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 1.8px;
@@ -149,8 +154,8 @@
   align-items: center;
   gap: 8px;
   transition: all 0.25s ease;
+  position: relative;
 }
-
 
 .af-btn-volver::after {
   content: "";
@@ -159,16 +164,15 @@
   bottom: -4px;
   width: 0;
   height: 1px;
-  background: linear-gradient(90deg,
-      transparent,
-      #e6c77b,
-      transparent);
+  /* CAMBIO: Gradiente azul */
+  background: linear-gradient(90deg, transparent, #0c2344, transparent);
   transition: width 0.35s ease;
 }
 
 .af-btn-volver:hover {
-  background: #e6c77b;
-  color: #000;
+  /* CAMBIO: Fondo sólido azul */
+  background: #0c2344;
+  color: #fff;
   transform: translateX(-2px);
 }
 
@@ -178,9 +182,9 @@
 
 .af-btn-volver:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(230, 199, 123, 0.35);
+  /* CAMBIO: Sombra azul sutil */
+  box-shadow: 0 0 0 3px rgba(12, 35, 68, 0.2);
 }
-
 
 /* =======================================================
    FORMULARIO
@@ -210,14 +214,20 @@
   border: 1px solid #eee;
   border-radius: 0;
   font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.af-form-group input:focus {
+  outline: none;
+  border-color: #0c2344; /* CAMBIO: Foco azul */
 }
 
 .af-input-error {
-  border-color: #ff4d4d !important;
+  border-color: #dc2626 !important;
 }
 
 .af-error {
-  color: #ff4d4d;
+  color: #dc2626;
   font-size: 11px;
   margin-top: 4px;
 }
@@ -230,12 +240,13 @@
 }
 
 /* =======================================================
-   BOTÓN CONFIRMAR
+   BOTÓN CONFIRMAR - Azul
 ======================================================= */
 
 .af-btn-confirmar {
-  background: #e6c77b;
-  color: #111;
+  /* CAMBIO: Fondo azul */
+  background: #0c2344;
+  color: #fff;
   padding: 15px 35px;
   border: none;
   font-weight: 700;
@@ -247,7 +258,8 @@
 }
 
 .af-btn-confirmar:hover:not(:disabled) {
-  background: #caa851;
+  /* CAMBIO: Hover azul más claro */
+  background: #153a6d;
   transform: translateY(-2px);
 }
 
@@ -262,7 +274,7 @@
 
 @media (max-width: 899px) {
   .af-booking-overlay {
-    background: #1c1f24;
+    background: #0c2344; /* Azul en móvil */
     padding: 20px 0;
     align-items: center;
   }
@@ -275,7 +287,7 @@
     min-height: 580px;
     height: auto;
     margin: auto;
-    background: #1c1f24;
+    background: #0c2344; /* Azul en móvil */
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
   }
 
@@ -347,4 +359,3 @@
     padding: 18px;
   }
 }
-

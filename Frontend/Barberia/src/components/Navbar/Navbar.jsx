@@ -15,8 +15,7 @@ export default function Navbar() {
   return (
     <nav className={`navbar-pro ${scrolled ? "scrolled" : ""}`}>
       <div className="nav-left">
-        <div className="nav-monogram">KB</div>
-        <span className="nav-brand">KING BARBER</span>
+        <img src="./logoINFOCORE.png" alt="" />
       </div>
 
       <div className="nav-right">
