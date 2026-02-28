@@ -1,81 +1,81 @@
 /* =======================================================
-   OVERLAY
+   OVERLAY - INFOCORE STYLE
 ======================================================= */
 .success-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(3px);
+  background: rgba(0, 0, 0, 0.7); /* Ligeramente más claro */
+  backdrop-filter: blur(6px); /* Más blur */
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   animation: successFadeIn 0.2s ease;
-  padding: 15px; /* Evita que el modal toque los bordes en móviles */
+  padding: 15px;
 }
 
 /* =======================================================
-   CARD
+   CARD - INFOCORE STYLE
 ======================================================= */
 .success-modal-card {
-  background: linear-gradient(180deg, #141414, #0f0f0f);
-  border-radius: 16px;
+  background: #ffffff; /* Fondo blanco */
+  border-radius: 12px; /* Más cuadrado */
   padding: 28px;
   width: 90%;
   max-width: 420px;
   text-align: center;
-  box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.6),
-    0 0 40px rgba(230, 199, 123, 0.12);
-  border: 1px solid rgba(230, 199, 123, 0.15);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra suave */
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil */
   animation: successScaleIn 0.25s ease;
-  box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+  box-sizing: border-box;
 }
 
 /* =======================================================
-   TEXTOS
+   TEXTOS - INFOCORE STYLE
 ======================================================= */
 .success-modal-title {
-  color: #e6c77b;
+  color: #000000; /* Negro */
   margin: 0 0 10px 0;
   font-size: 1.35rem;
   font-weight: 800;
   letter-spacing: 0.3px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .success-modal-text {
-  color: #d1d5db;
+  color: #4a5568; /* Gris texto */
   font-size: 0.95rem;
   line-height: 1.55;
   margin-bottom: 26px;
 }
 
 /* =======================================================
-   ACTIONS
+   ACTIONS - INFOCORE STYLE
 ======================================================= */
 .success-modal-actions {
   display: flex;
   justify-content: center;
 }
 
-/* Botón dorado */
+/* Botón Azul */
 .success-modal-btn-confirm {
-  background: linear-gradient(135deg, #e6c77b, #f3db9c);
+  background: #007aff; /* Azul eléctrico */
   border: none;
   padding: 12px 26px;
-  border-radius: 12px;
+  border-radius: 8px; /* Cuadrado */
   cursor: pointer;
   font-weight: 700;
   font-size: 0.95rem;
-  color: #111 !important; /* Forzar negro iOS */
-  box-shadow: 0 8px 22px rgba(230, 199, 123, 0.35);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  -webkit-appearance: none; /* Fix iOS */
+  color: #ffffff !important; /* Texto blanco */
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2);
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
 }
 
 .success-modal-btn-confirm:hover {
+  background: #0066cc; /* Azul oscuro */
   transform: translateY(-1px);
-  box-shadow: 0 12px 30px rgba(230, 199, 123, 0.45);
+  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.3);
 }
 
 /* =======================================================
@@ -98,15 +98,15 @@
 }
 
 /* =======================================================
-   RESPONSIVE
+   RESPONSIVE MODAL
 ======================================================= */
 @media (max-width: 480px) {
   .success-modal-card {
     width: 100%;
     max-width: none;
     padding: 22px 18px;
-    border-radius: 14px;
-    margin: 0; /* Quitamos margen para usar el padding del overlay */
+    border-radius: 12px;
+    margin: 0;
   }
 
   .success-modal-btn-confirm {
@@ -118,54 +118,37 @@
   }
 }
 
+/* NOTA WHATSAPP */
 .success-modal-whatsapp-note {
-  font-size: 0.8rem; /* Texto bien chico */
-  color: #666;       /* Gris suave */
+  font-size: 0.8rem;
+  color: #a0aec0; /* Gris sutil */
   margin-bottom: 20px;
-  margin-top: -5px;  /* Para pegarlo un poco más al texto de arriba */
+  margin-top: -5px;
   font-style: italic;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* FIX: Alinea con la primera línea, no al centro */
+  align-items: flex-start;
   gap: 5px;
-  max-width: 280px; /* Evita que el texto se estire de más */
+  max-width: 280px;
   margin-left: auto;
   margin-right: auto;
-  text-align: left; /* Alineación para que el punto quede pegado al inicio del bloque */
+  text-align: left;
 }
 
-/* Opcional: un puntito verde sutil antes del texto */
 .success-modal-whatsapp-note::before {
   content: "";
   display: inline-block;
-  flex-shrink: 0; /* Evita que el punto se aplaste en móviles */
+  flex-shrink: 0;
   width: 6px;
   height: 6px;
-  background-color: #25d366; /* Color WhatsApp */
+  background-color: #25d366; /* Verde WhatsApp */
   border-radius: 50%;
-  margin-top: 5px; /* Nivela el punto con el texto */
+  margin-top: 5px;
 }
 
 /* ======================================================
-    HEADER
+   HEADER - INFOCORE STYLE
 ====================================================== */
-
-.horarios-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 24px;
-  flex-wrap: wrap;
-}
-
-
-.horarios-header h2 {
-  font-size: 1.75rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  margin: 0;
-}
-
 .horarios-header {
   display: flex;
   align-items: center;
@@ -180,59 +163,60 @@
   letter-spacing: -0.5px;
   margin: 0;
   margin-right: auto;
+  color: #000000;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* ======================================================
-    SELECT BARBERO
+   SELECT BARBERO - INFOCORE STYLE
 ====================================================== */
-
 .horarios-select-barbero {
-  height: 38px;
+  height: 40px;
   min-width: 220px;
   padding: 0 42px 0 14px;
 
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  background-color: #fff;
-  color: #111 !important; /* FORZAR NEGRO iOS */
+  border-radius: 8px; /* Cuadrado */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: #f4f7fa; /* Gris técnico */
+  color: #000000 !important;
 
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
 
   appearance: none;
-  -webkit-appearance: none; 
-  -webkit-tap-highlight-color: transparent; 
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
 
+  /* Flecha Azul InfoCore */
   background-image:
-    linear-gradient(45deg, transparent 50%, #e6c77b 50%),
-    linear-gradient(135deg, #e6c77b 50%, transparent 50%);
+    linear-gradient(45deg, transparent 50%, #007aff 50%),
+    linear-gradient(135deg, #007aff 50%, transparent 50%);
   background-position:
-    calc(100% - 20px) 15px,
-    calc(100% - 14px) 15px;
-  background-size: 6px 6px;
+    calc(100% - 20px) 16px,
+    calc(100% - 14px) 16px;
+  background-size: 5px 5px;
   background-repeat: no-repeat;
 
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .horarios-select-barbero:focus {
   outline: none;
-  border-color: #e6c77b;
-  box-shadow: 0 0 0 2px rgba(230, 199, 123, 0.35);
+  border-color: #007aff;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
 }
 
 /* ======================================================
-    BOTÓN PRIMARIO
+   BOTÓN PRIMARIO - INFOCORE STYLE
 ====================================================== */
-
 .horarios-btn-primary {
   padding: 12px 24px;
-  border-radius: 999px;
+  border-radius: 8px; /* Cuadrado */
   border: none;
 
-  background: linear-gradient(135deg, #e6c77b, #cfa85a);
-  color: #111 !important; /* FORZAR NEGRO iOS */
+  background: #007aff; /* Azul eléctrico */
+  color: #ffffff !important;
 
   font-size: 0.85rem;
   font-weight: 700;
@@ -240,62 +224,60 @@
   text-transform: uppercase;
 
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent; 
-  box-shadow: 0 10px 26px rgba(230, 199, 123, 0.45);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2);
   -webkit-appearance: none;
 
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    background 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .horarios-btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 36px rgba(230, 199, 123, 0.65);
+  background: #0066cc;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.3);
 }
 
 /* ======================================================
-    ESTADOS VACÍOS
+   ESTADOS VACÍOS - INFOCORE STYLE
 ====================================================== */
-
 .horarios-empty {
   margin-top: 60px;
   padding: 40px 20px;
   text-align: center;
-  border-radius: 14px;
-  background: #f8f8f8;
+  border-radius: 12px;
+  background: #f4f7fa; /* Gris técnico */
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
 .horarios-empty-title {
   font-size: 1.2rem;
   font-weight: 700;
   margin-bottom: 6px;
+  color: #000000;
 }
 
 .horarios-empty-subtitle {
   font-size: 0.95rem;
-  color: #666;
+  color: #a0aec0; /* Gris sutil */
 }
 
 /* ======================================================
-    ERRORES
-====================================================== */
-
+   ERRORES - INFOCORE STYLE
+======================================================= */
 .horarios-error {
-  background: rgba(255, 60, 60, 0.15);
-  color: #ffb3b3;
-  padding: 8px 12px;
+  background: rgba(239, 68, 68, 0.1); /* Rojo suave */
+  color: #ef4444; /* Rojo técnico */
+  padding: 10px 14px;
   border-radius: 8px;
   font-size: 0.85rem;
   margin-bottom: 14px;
   text-align: center;
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 /* ======================================================
-    MEDIA QUERY 600 (1)
+   RESPONSIVE HEADER/BTN
 ====================================================== */
-
 @media (max-width: 600px) {
   .horarios-header {
     flex-direction: column;
@@ -310,154 +292,40 @@
 }
 
 /* ======================================================
-    REPETICIÓN DE SELECT
-====================================================== */
-
-.horarios-select-barbero {
-  height: 38px;
-  min-width: 220px;
-  padding: 0 42px 0 14px;
-
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  background-color: #fff;
-  color: #111 !important;
-
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-
-  appearance: none;
-  -webkit-appearance: none; 
-
-  background-image:
-    linear-gradient(45deg, transparent 50%, #e6c77b 50%),
-    linear-gradient(135deg, #e6c77b 50%, transparent 50%);
-  background-position:
-    calc(100% - 20px) 15px,
-    calc(100% - 14px) 15px;
-  background-size: 6px 6px;
-  background-repeat: no-repeat;
-
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.horarios-select-barbero:focus {
-  outline: none;
-  border-color: #e6c77b;
-  box-shadow: 0 0 0 2px rgba(230, 199, 123, 0.35);
-}
-
-/* ======================================================
-    REPETICIÓN DE EMPTY
-====================================================== */
-
-.horarios-empty {
-  margin-top: 60px;
-  padding: 40px 20px;
-  text-align: center;
-  border-radius: 14px;
-  background: #f8f8f8;
-}
-
-.horarios-empty-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.horarios-empty-subtitle {
-  font-size: 0.95rem;
-  color: #666;
-}
-
-/* ======================================================
-    REPETICIÓN DE ERROR
-====================================================== */
-
-.horarios-error {
-  background: rgba(255, 60, 60, 0.15);
-  color: #ffb3b3;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  margin-bottom: 14px;
-  text-align: center;
-}
-
-/* ======================================================
-    REPETICIÓN DE MEDIA QUERY 600 (2)
-====================================================== */
-
-@media (max-width: 600px) {
-  .horarios-header {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-  }
-
-  .horarios-select-barbero,
-  .horarios-btn-primary {
-    width: 100%;
-  }
-}
-
-/* ======================================================
-    BOTÓN ELIMINAR
-====================================================== */
-
+   BOTÓN ELIMINAR - INFOCORE STYLE
+======================================================= */
 .btn-delete {
   min-width: 96px;
   padding: 8px 18px;
-
-  border-radius: 999px;
-  border: 1px solid rgba(185, 28, 28, 0.35);
-
-  background: linear-gradient(135deg,
-      #2a0f0f,
-      #4a1414);
-
-  color: #f5f5f5 !important;
+  border-radius: 8px; /* Cuadrado */
+  border: none;
+  background: rgba(239, 68, 68, 0.1); /* Fondo rojo suave */
+  color: #faf8f8 !important; /* Rojo técnico */
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.6px;
-
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent; 
+  -webkit-tap-highlight-color: transparent;
   -webkit-appearance: none;
-
-  box-shadow:
-    0 6px 16px rgba(0, 0, 0, 0.25),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-
-  transition:
-    background 0.2s ease,
-    transform 0.15s ease,
-    box-shadow 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 .btn-delete:hover {
-  background: linear-gradient(135deg,
-      #5c1a1a,
-      #7a1f1f);
+  background: #ef4444; /* Rojo sólido */
+  color: #ffffff !important;
   transform: translateY(-1px);
-  box-shadow:
-    0 10px 24px rgba(0, 0, 0, 0.35);
 }
 
 .btn-delete:active {
   transform: translateY(0);
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 /* ======================================================
-    FILTROS (DÍAS Y VIGENCIA)
+   FILTROS - INFOCORE STYLE
 ====================================================== */
-
 .horarios-filtros {
   display: flex;
-  gap: 16px;
+  gap: 12px;
   margin-bottom: 22px;
   flex-wrap: wrap;
 }
@@ -469,22 +337,20 @@
 
 .filtro-dia {
   padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  background: #fff !important; /* Fix fondo iOS */
-  color: #111 !important; /* Forzar negro en iOS */
+  border-radius: 8px; /* Cuadrado */
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff !important;
+  color: #000000 !important;
   font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent; 
-  -webkit-appearance: none;
+  transition: all 0.2s ease;
 }
 
-
 .filtro-dia.active {
-  background: #e6c77b !important; /* Forzar color activo */
-  border-color: #e6c77b;
-  color: #111 !important; /* TEXTO NEGRO CUANDO ESTÁ ACTIVO */
+  background: #007aff !important; /* Azul eléctrico */
+  border-color: #007aff;
+  color: #ffffff !important;
 }
 
 .filtro-vigencia {
@@ -494,29 +360,26 @@
 
 .filtro-vigencia button {
   padding: 8px 16px;
-  border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.15);
-  background: #fff !important; /* Fix fondo iOS */
-  color: #111 !important; /* Forzar negro en iOS */
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #ffffff !important;
+  color: #000000 !important;
   font-size: 0.8rem;
   font-weight: 700;
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-appearance: none;
+  transition: all 0.2s ease;
 }
 
 .filtro-vigencia button.active {
-  background: #111 !important;
-  color: #fff !important;
-  border-color: #111;
+  background: #007aff !important; /* Azul eléctrico */
+  color: #ffffff !important;
+  border-color: #007aff;
 }
 
 /* ======================================================
-    MEDIA QUERY 600 (3 - FILTROS)
+   RESPONSIVE FILTROS
 ====================================================== */
-
 @media (max-width: 600px) {
-
   .horarios-filtros {
     flex-direction: column;
     gap: 14px;
@@ -536,43 +399,11 @@
 
   .filtro-dia {
     flex: 0 0 auto;
-    padding: 8px 14px;
-    min-width: auto;
-    height: 36px;
-    border-radius: 999px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    background: #fff !important;
-    border: 1px solid rgba(0, 0, 0, 0.15);
     white-space: nowrap;
-    line-height: 1;
-    color: #111 !important; /* Fix azul iOS */
-  }
-
-  .filtro-dia.active {
-    background: #111 !important;
-    color: #fff !important;
-    border-color: #111;
-  }
-
-  .filtro-vigencia {
-    display: flex;
-    gap: 10px;
   }
 
   .filtro-vigencia button {
     flex: 1;
     height: 40px;
-    padding: 0;
-    font-size: 0.85rem;
-    font-weight: 700;
-    border-radius: 12px;
-    color: #111 !important; /* Fix azul iOS */
-    -webkit-tap-highlight-color: transparent;
-  }
-
-  .filtro-vigencia button.active {
-    background: #111 !important;
-    color: #fff !important;
   }
 }

@@ -43,7 +43,7 @@ const AdminLayout = ({ children }) => {
           ☰
         </button>
 
-        <img src="/logo.jpg" alt="King Barber" />
+        <img src="/logobarber.png" alt="King Barber" />
       </header>
 
       {/* =========================
@@ -64,7 +64,7 @@ const AdminLayout = ({ children }) => {
         <aside className={`admin-sidebar ${sidebarOpen ? "open" : ""}`}>
           {/* LOGO */}
           <div className="admin-logo">
-            <img src="/logo.jpg" alt="King Barber" />
+            <img src="/logobarber.png" alt="King Barber" />
           </div>
 
           {/* NAV */}

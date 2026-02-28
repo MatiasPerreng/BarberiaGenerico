@@ -1,25 +1,56 @@
 /* =======================================================
+   TITULO – AGENDA BARBERIA (PROFESIONAL STYLE)
+   ======================================================= */
+.hero-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700; /* Un poco menos pesado para mayor elegancia */
+  
+  /* --- AJUSTE DE ESPACIADO Y CAJA --- */
+  font-size: clamp(2rem, 5vw, 3.2rem); 
+  letter-spacing: 0.5px; /* Menos espacio entre letras para legibilidad */
+  line-height: 1.2;
+  text-transform: none; /* --- SOLUCIÓN: quitamos las mayúsculas --- */
+  text-align: center;
+  /* ------------------------------------ */
+
+  color: #FFFFFF;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  
+  margin-top: 0;
+  margin-bottom: 20px;
+  display: block;
+  
+  animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  opacity: 0;
+}
+
+/* Efecto de color degradado sutil en texto */
+.hero-title {
+  background: linear-gradient(to bottom, #ffffff 60%, #c0c0c0 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =======================================================
    TITULO – NUESTROS SERVICIOS (INFOCORE STYLE)
    ======================================================= */
 .services-title {
   position: relative;
   display: inline-block;
   
-  /* --- CAMBIO A FUENTE MODERNA --- */
   font-family: "Anton", sans-serif;
   font-weight: 400; 
-  font-size: 2.5rem; /* Un poco más grande al ser una fuente display */
-  letter-spacing: 4px; /* Mayor espaciado */
-  /* -------------------------------- */
+  font-size: 2.5rem;
+  letter-spacing: 4px;
   
-  text-transform: uppercase;
-  color: #0c2344; /* Azul profundo del Hero */
+  text-transform: uppercase; /* Aquí sí mantenemos mayúsculas por ser estilo display */
+  color: #0c2344;
   margin: 0 auto 3rem;
   text-align: center;
   width: 100%;
 }
 
-/* Línea azul/negra inferior - Actualizada para combinar con Anton */
+/* Línea azul/negra inferior */
 .services-title::after {
   content: "";
   position: absolute;
@@ -27,19 +58,17 @@
   bottom: -14px;
   transform: translateX(-50%);
   width: 100px;
-  height: 3px; /* Un poco más gruesa */
-  
-  /* Degradado sólido tecnológico */
+  height: 3px;
   background: linear-gradient(
     90deg,
     transparent,
-    #007aff, /* Azul eléctrico de contraste */
+    #007aff,
     transparent
   );
   box-shadow: 0 0 10px rgba(0, 122, 255, 0.3);
 }
 
-/* Halo azul de fondo (mantenemos el halo sutil) */
+/* Halo azul de fondo */
 .services-title::before {
   content: "";
   position: absolute;
@@ -52,8 +81,9 @@
   z-index: -1;
 }
 
-/* Ajuste específico para móvil */
+/* Ajustes responsivos */
 @media (max-width: 600px) {
+  .hero-title { font-size: 1.8rem; } /* Título hero más pequeño en móvil */
   .services-title { font-size: 1.8rem; letter-spacing: 2px; }
   .services-title::after { width: 70px; height: 2px; }
 }

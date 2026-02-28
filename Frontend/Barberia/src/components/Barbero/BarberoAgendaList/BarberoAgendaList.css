@@ -1,154 +1,149 @@
 /* =======================================================
-   LISTA CONTENEDOR
-======================================================= */
+   INFOCORE AGENDA LIST STYLE
+   ======================================================= */
+
 .barbero-agenda-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 /* =======================================================
-   ITEM TURNO (DESKTOP ORIGINAL - RESTAURADO)
-======================================================= */
+   ITEM TURNO (DESKTOP)
+   ======================================================= */
 .barbero-agenda-item {
   position: relative;
-  background: linear-gradient(180deg, #ffffff, #fafafa);
-  border-radius: 18px;
+  background: #ffffff; /* Fondo blanco puro */
+  border-radius: 12px; /* Bordes menos redondeados */
   padding: 20px 26px;
+  border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil */
 
-  /* Volvemos a tu grid original de 3 columnas */
   display: grid;
   grid-template-columns: 110px 1fr auto;
   align-items: center;
 
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  /* Sombra tecnológica muy sutil */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  
+  transition: all 0.3s ease;
+  cursor: pointer; /* Cambiado a pointer para interactividad */
+}
 
-  /* Sin cursor pointer ni eventos para evitar el bloqueo que mencionaste */
-  cursor: default; 
+.barbero-agenda-item:hover {
+  border-color: rgba(0, 122, 255, 0.3);
+  box-shadow: 0 10px 20px rgba(0, 122, 255, 0.05);
 }
 
 /* =======================================================
-   HORA (DESKTOP)
-======================================================= */
+   HORA
+   ======================================================= */
 .barbero-agenda-item .hora {
   font-size: 17px;
   font-weight: 800;
   letter-spacing: 0.6px;
-  color: #111;
+  color: #000000; /* Negro puro */
 }
 
 /* =======================================================
-   INFO CLIENTE / SERVICIO (DESKTOP)
-======================================================= */
+   INFO CLIENTE / SERVICIO
+   ======================================================= */
 .barbero-agenda-item .info {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 4px;
 }
 
 .barbero-agenda-item .info strong {
   font-size: 15px;
   font-weight: 700;
-  color: #111;
+  color: #000000;
   letter-spacing: 0.3px;
 }
 
 .barbero-agenda-item .info span {
   font-size: 13px;
   font-weight: 500;
-  color: #6b7280;
+  color: #64748b; /* Gris azulado técnico */
 }
 
 /* =======================================================
    ESTADO (BADGE)
-======================================================= */
+   ======================================================= */
 .barbero-agenda-item .estado {
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 1.4px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  padding: 8px 16px;
-  border-radius: 999px;
+  padding: 6px 14px;
+  border-radius: 4px; /* Bordes cuadrados */
   white-space: nowrap;
 }
 
-/* COLORES POR ESTADO */
+/* --- COLORES POR ESTADO (INFOCORE) --- */
+
+/* Reservado: Azul Eléctrico */
 .barbero-agenda-item.estado-reservado .estado {
-  background: linear-gradient(135deg, rgba(230, 199, 123, 0.25), rgba(230, 199, 123, 0.12));
-  color: #9a7400;
+  background: rgba(0, 122, 255, 0.1);
+  color: #007aff;
+  border: 1px solid rgba(0, 122, 255, 0.2);
 }
 
+/* Atendido: Verde Tecnológico */
 .barbero-agenda-item.estado-atendido .estado {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.25), rgba(16, 185, 129, 0.12));
-  color: #047857;
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.2);
 }
 
 .barbero-agenda-item.estado-cancelado {
-  opacity: 0.55;
+  opacity: 0.6;
 }
 
+/* Cancelado: Rojo Alerta */
 .barbero-agenda-item.estado-cancelado .estado {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.25), rgba(239, 68, 68, 0.12));
-  color: #991b1b;
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.2);
 }
 
 /* =======================================================
-   📱 RESPONSIVE MOBILE (MEJORADO Y AISLADO)
-======================================================= */
+   📱 RESPONSIVE MOBILE (INFOCORE STYLE)
+   ======================================================= */
 @media (max-width: 700px) {
   .barbero-agenda-item {
-    /* Cambiamos a Flex para mejor control estético en mobile */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
-    padding: 22px;
+    padding: 18px;
     
-    /* Borde lateral estético basado en el estado */
-    border-left: 6px solid #eee;
+    /* Borde izquierdo tecnológico según estado */
+    border-left: 4px solid #ccd6f6;
+    background: #ffffff; /* Mantenemos blanco en mobile para contraste */
   }
 
-  /* Colores del borde lateral según estado */
-  .barbero-agenda-item.estado-reservado { border-left-color: #e6c77b; }
+  /* Colores del borde izquierdo */
+  .barbero-agenda-item.estado-reservado { border-left-color: #007aff; }
   .barbero-agenda-item.estado-atendido { border-left-color: #10b981; }
   .barbero-agenda-item.estado-cancelado { border-left-color: #ef4444; }
 
-  /* Hora destacada arriba con separador */
   .barbero-agenda-item .hora {
-    font-size: 20px;
-    font-weight: 900;
+    font-size: 18px;
     width: 100%;
-    padding-bottom: 10px;
+    padding-bottom: 8px;
     border-bottom: 1px solid rgba(0,0,0,0.05);
-    margin-bottom: 4px;
-  }
-
-  /* Info más legible */
-  .barbero-agenda-item .info strong {
-    font-size: 15.5px;
+    color: #000000;
   }
 
   .barbero-agenda-item .info span {
-    font-size: 13.5px;
+    margin-top: 2px;
+  }
+
+  .barbero-agenda-item .estado {
+    align-self: flex-end;
+    font-size: 10px;
+    padding: 5px 10px;
     margin-top: 4px;
   }
-
-  /* Estado como chip sutil */
-  .barbero-agenda-item .estado {
-    align-self: flex-start;
-    font-size: 10px;
-    padding: 7px 15px;
-    margin-top: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-  }
 }
-
-/* EXTRA SMALL */
-@media (max-width: 420px) {
-  .barbero-agenda-item {
-    padding: 16px 18px;
-  }
-}
-
