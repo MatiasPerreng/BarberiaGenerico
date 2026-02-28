@@ -35,7 +35,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\csmat\Desktop\ProyectoBarberia\Backend\venv"
+VIRTUAL_ENV="C:\Users\csmat\Desktop\BarberiaGenerico\Backend\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

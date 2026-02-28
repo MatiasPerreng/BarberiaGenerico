@@ -185,7 +185,7 @@ section {
 }
 
 /* =======================================================
-   TITULO – NUESTROS SERVICIOS (PRO)
+   TITULO – NUESTROS SERVICIOS (TEMÁTICA AZUL Y NEGRO)
 ======================================================= */
 .services-title {
   position: relative;
@@ -194,13 +194,13 @@ section {
   font-size: 2.2rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #111;
+  color: #0c2344; /* Azul profundo del Hero */
   margin: 0 auto 3rem;
   text-align: center;
   width: 100%;
 }
 
-/* Línea dorada inferior */
+/* Línea azul/negra inferior */
 .services-title::after {
   content: "";
   position: absolute;
@@ -209,22 +209,23 @@ section {
   transform: translateX(-50%);
   width: 90px;
   height: 2px;
+  /* Degradado de negro a azul para coincidir con el Hero */
   background: linear-gradient(
     90deg,
     transparent,
-    #e6c77b,
+    #0c2344,
     transparent
   );
 }
 
-/* Halo sutil de fondo */
+/* Halo azul de fondo (más sutil sobre blanco) */
 .services-title::before {
   content: "";
   position: absolute;
   inset: -12px -24px;
   background: radial-gradient(
     circle,
-    rgba(230, 199, 123, 0.12),
+    rgba(12, 35, 68, 0.08), /* Azul del Hero con baja opacidad */
     transparent 70%
   );
   z-index: -1;
