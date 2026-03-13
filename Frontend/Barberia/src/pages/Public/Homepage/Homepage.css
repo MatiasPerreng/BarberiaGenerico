@@ -1,30 +1,80 @@
 /* =======================================================
+   REVEAL SYSTEM
+======================================================= */
+.reveal {
+  position: relative;
+  transform: translateY(40px);
+  opacity: 0;
+  transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1);
+  visibility: hidden;
+}
+
+.reveal.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =======================================================
+   HERO SECTION + MOSAICO SUAVE
+======================================================= */
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+}
+
+/* MOSAICO DIFUMINADO */
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+  background-size: 60px 60px;
+
+  /* difuminado real */
+  filter: blur(0.4px);
+
+  /* fade radial elegante */
+  mask-image: radial-gradient(ellipse at center, black 50%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 50%, transparent 85%);
+
+  opacity: 0.55;
+
+  pointer-events: none;
+}
+
+/* =======================================================
    TITULO – AGENDA BARBERIA (PROFESIONAL STYLE)
-   ======================================================= */
+======================================================= */
+
 .hero-title {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 700; /* Un poco menos pesado para mayor elegancia */
-  
-  /* --- AJUSTE DE ESPACIADO Y CAJA --- */
-  font-size: clamp(2rem, 5vw, 3.2rem); 
-  letter-spacing: 0.5px; /* Menos espacio entre letras para legibilidad */
+  font-weight: 700;
+
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: 0.5px;
   line-height: 1.2;
-  text-transform: none; /* --- SOLUCIÓN: quitamos las mayúsculas --- */
+  text-transform: none;
   text-align: center;
-  /* ------------------------------------ */
 
   color: #FFFFFF;
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-  
+
   margin-top: 0;
   margin-bottom: 20px;
   display: block;
-  
+
   animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   opacity: 0;
 }
 
-/* Efecto de color degradado sutil en texto */
+/* Degradado elegante en texto */
+
 .hero-title {
   background: linear-gradient(to bottom, #ffffff 60%, #c0c0c0 100%);
   -webkit-background-clip: text;
@@ -32,25 +82,27 @@
 }
 
 /* =======================================================
-   TITULO – NUESTROS SERVICIOS (INFOCORE STYLE)
-   ======================================================= */
+   TITULO – NUESTROS SERVICIOS
+======================================================= */
+
 .services-title {
   position: relative;
   display: inline-block;
-  
+
   font-family: "Anton", sans-serif;
-  font-weight: 400; 
+  font-weight: 400;
   font-size: 2.5rem;
   letter-spacing: 4px;
-  
-  text-transform: uppercase; /* Aquí sí mantenemos mayúsculas por ser estilo display */
+
+  text-transform: uppercase;
   color: #0c2344;
   margin: 0 auto 3rem;
   text-align: center;
   width: 100%;
 }
 
-/* Línea azul/negra inferior */
+/* Línea inferior */
+
 .services-title::after {
   content: "";
   position: absolute;
@@ -59,31 +111,66 @@
   transform: translateX(-50%);
   width: 100px;
   height: 3px;
+
   background: linear-gradient(
     90deg,
     transparent,
     #007aff,
     transparent
   );
+
   box-shadow: 0 0 10px rgba(0, 122, 255, 0.3);
 }
 
-/* Halo azul de fondo */
+/* Halo */
+
 .services-title::before {
   content: "";
   position: absolute;
   inset: -12px -24px;
+
   background: radial-gradient(
     circle,
     rgba(12, 35, 68, 0.08),
     transparent 70%
   );
+
   z-index: -1;
 }
 
-/* Ajustes responsivos */
+/* =======================================================
+   RESPONSIVE
+======================================================= */
+
+@media (max-width: 768px) {
+
+  .hero-section::after {
+    background-size: 80px 80px;
+    opacity: 0.45;
+  }
+
+}
+
 @media (max-width: 600px) {
-  .hero-title { font-size: 1.8rem; } /* Título hero más pequeño en móvil */
-  .services-title { font-size: 1.8rem; letter-spacing: 2px; }
-  .services-title::after { width: 70px; height: 2px; }
+
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .services-title {
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+  }
+
+  .services-title::after {
+    width: 70px;
+    height: 2px;
+  }
+
+  /* mosaico más grande en mobile */
+  .hero-section::after {
+    background-size: 105px 105px;
+    opacity: 0.4;
+  }
+
 }

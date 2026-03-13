@@ -1,0 +1,280 @@
+/* ======================================================
+   OVERLAY
+====================================================== */
+
+.admin-modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(0,0,0,0.85);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 2000;
+  padding: 20px;
+}
+
+/* ======================================================
+   MODAL CARD
+====================================================== */
+
+.admin-modal {
+
+  width: 100%;
+  max-width: 420px;
+
+  background: linear-gradient(180deg,#1a202c,#000000);
+  color: #ffffff;
+
+  border-radius: 12px;
+  padding: 28px;
+
+  box-shadow:
+    0 30px 60px rgba(0,0,0,0.9),
+    inset 0 0 0 1px rgba(255,255,255,0.05);
+
+  animation: modalIn 0.25s ease;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ======================================================
+   TITULO
+====================================================== */
+
+.admin-modal h3 {
+  margin: 0 0 22px;
+
+  text-align: center;
+
+  font-size: 1.3rem;
+  font-weight: 800;
+
+  color: #007aff;
+
+  letter-spacing: .5px;
+}
+
+/* ======================================================
+   FORM
+====================================================== */
+
+.admin-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ======================================================
+   INPUT
+====================================================== */
+
+.admin-modal input[type="text"] {
+
+  height: 44px;
+  padding: 0 12px;
+
+  border-radius: 8px;
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  background: #0a192f;
+  color: #ffffff;
+
+  font-size: .95rem;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.admin-modal input::placeholder {
+  color: #94a3b8;
+}
+
+.admin-modal input:focus {
+
+  outline: none;
+
+  border-color: #007aff;
+
+  box-shadow:
+    0 0 0 3px rgba(0,122,255,0.25);
+}
+
+/* ======================================================
+   FILE INPUT
+====================================================== */
+
+.file-label {
+
+  display: block;
+
+  text-align: center;
+
+  padding: 12px;
+
+  border-radius: 8px;
+
+  background: #111;
+
+  border: 1px dashed rgba(0,122,255,0.4);
+
+  color: #007aff;
+
+  font-size: .8rem;
+  font-weight: 700;
+
+  letter-spacing: .5px;
+
+  cursor: pointer;
+
+  transition: all .2s ease;
+}
+
+.file-label:hover {
+
+  background: rgba(0,122,255,0.08);
+
+  border-color: #007aff;
+}
+
+.file-label input {
+  display: none;
+}
+
+/* ======================================================
+   PREVIEW
+====================================================== */
+
+.admin-modal img {
+
+  width: 100px;
+  height: 100px;
+
+  object-fit: cover;
+
+  border-radius: 10px;
+
+  border: 1px solid rgba(0,122,255,0.4);
+
+  margin: 6px auto 0;
+
+  display: block;
+}
+
+/* ======================================================
+   BOTONES
+====================================================== */
+
+.modal-actions {
+
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 8px;
+}
+
+/* CREAR */
+
+.modal-actions button[type="submit"] {
+
+  flex: 1;
+
+  height: 44px;
+
+  border-radius: 8px;
+
+  border: none;
+
+  background: #007aff;
+
+  color: #ffffff;
+
+  font-weight: 800;
+
+  font-size: .85rem;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 6px 18px rgba(0,122,255,0.35);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+}
+
+.modal-actions button[type="submit"]:hover {
+
+  background: #0066cc;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 26px rgba(0,122,255,0.5);
+}
+
+/* CANCELAR */
+
+.modal-actions button[type="button"] {
+
+  flex: 1;
+
+  height: 44px;
+
+  border-radius: 8px;
+
+  border: 1px solid rgba(255,255,255,0.2);
+
+  background: transparent;
+
+  color: #e5e7eb;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all .2s ease;
+}
+
+.modal-actions button[type="button"]:hover {
+
+  background: rgba(255,255,255,0.05);
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+
+@media (max-width: 480px) {
+
+  .admin-modal {
+    padding: 22px 18px;
+  }
+
+  .modal-actions {
+    flex-direction: column;
+  }
+
+  .modal-actions button {
+    width: 100%;
+  }
+
+}
