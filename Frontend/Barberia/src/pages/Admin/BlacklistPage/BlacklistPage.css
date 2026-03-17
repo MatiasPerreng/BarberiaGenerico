@@ -2,293 +2,212 @@
    CONTENEDOR
 ====================================================== */
 
-.blist-page-container {
+.blacklist-container {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-
-  animation: blistFadeIn .3s ease;
+  gap: 28px;
+  animation: blacklistFadeIn .35s ease;
 }
 
 /* ======================================================
    HEADER
 ====================================================== */
 
-.blist-header h2 {
-
-  font-size: 1.75rem;
-  font-weight: 800;
-
-  letter-spacing: -.5px;
-
+.blacklist-header h2 {
+  font-size: 1.9rem;
+  font-weight: 900;
+  letter-spacing: -0.5px;
   margin: 0;
-
-  color: #ffffff;
+  color: #0f172a;
 }
 
-.blist-header p {
-
-  color: #cbd5e1;
-
+.blacklist-header p {
+  color: #64748b;
   font-size: .95rem;
-
-  margin-top: 4px;
+  margin-top: 6px;
 }
 
 /* ======================================================
-   TARJETA FORM
+   CARD FORM
 ====================================================== */
 
-.blist-card-form {
-
-  background: linear-gradient(180deg,#1a202c,#000000);
-
-  border-radius: 12px;
-
-  padding: 26px;
+.blacklist-form-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+  border: 1px solid #e5e7eb;
 
   box-shadow:
-    0 20px 40px rgba(0,0,0,0.8),
-    inset 0 0 0 1px rgba(255,255,255,0.05);
+    0 10px 25px rgba(0,0,0,.06);
 }
 
-.blist-form {
+/* ======================================================
+   FORM
+====================================================== */
 
+.blacklist-form {
   display: flex;
-
-  gap: 20px;
-
+  gap: 18px;
   align-items: flex-end;
-
   flex-wrap: wrap;
 }
 
-.blist-form-group {
-
+.blacklist-field {
   display: flex;
-
   flex-direction: column;
-
   gap: 6px;
-
   flex: 1;
-
   min-width: 240px;
 }
 
-.blist-form-group label {
-
+.blacklist-field label {
   font-weight: 800;
-
   font-size: .65rem;
-
   text-transform: uppercase;
-
   letter-spacing: 1px;
-
-  color: #e2e8f0;
+  color: #6b7280;
 }
 
 /* INPUT */
 
-.blist-form-group input {
-
+.blacklist-input {
   height: 46px;
-
   padding: 0 14px;
-
-  border-radius: 8px;
-
-  border: 1px solid rgba(255,255,255,0.12);
-
-  background: #0a192f;
-
-  color: #ffffff;
-
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #ffffff;
+  color: #111827;
   font-size: .95rem;
-
   transition: all .2s ease;
 }
 
-.blist-form-group input::placeholder {
-  color: #94a3b8;
+.blacklist-input::placeholder {
+  color: #9ca3af;
 }
 
-.blist-form-group input:hover {
-
-  border-color: rgba(0,122,255,0.5);
+.blacklist-input:hover {
+  border-color: #9ca3af;
 }
 
-.blist-form-group input:focus {
-
+.blacklist-input:focus {
   outline: none;
-
-  border-color: #007aff;
-
+  border-color: #6366f1;
   box-shadow:
-    0 0 0 3px rgba(0,122,255,.25);
+    0 0 0 3px rgba(99,102,241,.15);
 }
 
 /* ======================================================
    BOTONES
 ====================================================== */
 
-.blist-btn-primary {
-
-  padding: 0 24px;
-
+.blacklist-btn-add {
+  padding: 0 26px;
   height: 46px;
-
-  border-radius: 8px;
-
+  border-radius: 10px;
   border: none;
-
-  background: #007aff;
-
+  background: #111827;
   color: #fff;
-
   font-size: .8rem;
-
   font-weight: 800;
-
   letter-spacing: .6px;
-
   text-transform: uppercase;
-
   cursor: pointer;
 
-  box-shadow:
-    0 6px 18px rgba(0,122,255,.35);
-
-  transition: all .2s ease;
+  transition: all .25s ease;
 }
 
-.blist-btn-primary:hover {
-
-  background: #0066cc;
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 12px 30px rgba(0,122,255,.5);
+.blacklist-btn-add:hover {
+  background: #000;
+  transform: translateY(-1px);
 }
 
 /* DELETE */
 
-.blist-btn-danger {
-
-  padding: 8px 16px;
-
+.blacklist-btn-remove {
+  padding: 8px 14px;
   border-radius: 8px;
-
   border: none;
-
   background: #ef4444;
-
   color: #fff;
-
-  font-size: .75rem;
-
+  font-size: .72rem;
   font-weight: 700;
-
   text-transform: uppercase;
-
   cursor: pointer;
-
-  box-shadow:
-    0 4px 12px rgba(239,68,68,.3);
-
   transition: all .2s ease;
 }
 
-.blist-btn-danger:hover {
-
+.blacklist-btn-remove:hover {
   background: #dc2626;
-
-  transform: translateY(-1px);
+  transform: scale(1.05);
 }
 
 /* ======================================================
-   TABLA
+   TABLE
 ====================================================== */
 
-.blist-table-wrapper {
-
-  background: linear-gradient(180deg,#1a202c,#000);
-
-  border-radius: 12px;
-
+.blacklist-table-box {
+  background: #ffffff;
+  border-radius: 14px;
   overflow: hidden;
+  border: 1px solid #e5e7eb;
 
   box-shadow:
-    0 20px 40px rgba(0,0,0,.8),
-    inset 0 0 0 1px rgba(255,255,255,.04);
+    0 10px 25px rgba(0,0,0,.05);
 }
 
-.blist-table {
-
+.blacklist-table {
   width: 100%;
-
   border-collapse: collapse;
 }
 
-/* HEADER TABLA */
+/* HEADER */
 
-.blist-table th {
-
-  background: rgba(255,255,255,.04);
-
-  padding: 18px;
-
+.blacklist-table th {
+  background: #f9fafb;
+  padding: 16px;
   text-align: left;
-
   font-size: .7rem;
-
   text-transform: uppercase;
-
   letter-spacing: 1px;
-
-  color: #cbd5e1;
-
-  border-bottom: 1px solid rgba(255,255,255,.08);
+  color: #6b7280;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-/* CELDAS */
+/* CELLS */
 
-.blist-table td {
-
-  padding: 18px;
-
-  border-bottom: 1px solid rgba(255,255,255,.05);
-
+.blacklist-table td {
+  padding: 16px;
+  border-bottom: 1px solid #f1f5f9;
   font-size: .92rem;
-
-  color: #f1f5f9;
+  color: #111827;
 }
 
-/* HOVER FILA */
+/* ROW HOVER */
 
-.blist-table tbody tr:hover {
-
-  background: rgba(0,122,255,.08);
+.blacklist-table tbody tr:hover {
+  background: #f8fafc;
 }
 
-/* TELEFONO */
+/* PHONE */
 
-.blist-tel-cell {
-
+.blacklist-phone {
   font-weight: 800;
-
-  color: #ffffff;
+  color: #020617;
 }
 
-/* SIN MOTIVO */
+/* NO REASON */
 
-.blist-no-reason {
-
-  color: #94a3b8;
-
+.blacklist-empty-reason {
+  color: #9ca3af;
   font-style: italic;
+}
+
+/* EMPTY */
+
+.blacklist-empty {
+  text-align: center;
+  padding: 24px;
+  color: #9ca3af;
 }
 
 /* ======================================================
@@ -297,104 +216,77 @@
 
 @media (max-width: 768px) {
 
-  .blist-form {
+  .blacklist-form {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .blist-btn-primary {
+  .blacklist-btn-add {
     width: 100%;
   }
 
-  .blist-table thead {
+  .blacklist-table thead {
     display: none;
   }
 
-  .blist-table,
-  .blist-table tbody,
-  .blist-table tr,
-  .blist-table td {
+  .blacklist-table,
+  .blacklist-table tbody,
+  .blacklist-table tr,
+  .blacklist-table td {
     display: block;
     width: 100%;
   }
 
-  .blist-table-wrapper {
+  .blacklist-table-box {
     background: transparent;
     box-shadow: none;
-  }
-
-  .blist-row {
-
-    background: linear-gradient(180deg,#1a202c,#000);
-
-    margin-bottom: 16px;
-
-    padding: 18px;
-
-    border-radius: 12px;
-
-    box-shadow:
-      0 12px 28px rgba(0,0,0,.7),
-      inset 0 0 0 1px rgba(255,255,255,.05);
-  }
-
-  .blist-table td {
-
-    padding: 10px 0;
-
     border: none;
+  }
 
+  .blacklist-row {
+    background: #ffffff;
+    margin-bottom: 14px;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+  }
+
+  .blacklist-table td {
+    padding: 8px 0;
+    border: none;
     display: flex;
-
     justify-content: space-between;
-
-    align-items: center;
-
-    font-size: .9rem;
   }
 
-  .blist-table td::before {
-
+  .blacklist-table td::before {
     content: attr(data-label);
-
-    font-weight: 800;
-
-    color: #cbd5e1;
-
+    font-weight: 700;
     font-size: .65rem;
-
-    text-transform: uppercase;
+    color: #6b7280;
   }
 
-  .blist-actions-cell {
-
+  .blacklist-actions {
     justify-content: center !important;
-
-    padding-top: 14px !important;
+    padding-top: 10px;
   }
 
-  .blist-btn-danger {
-
+  .blacklist-btn-remove {
     width: 100%;
-
     height: 42px;
   }
 }
 
 /* ======================================================
-   ANIMACION
+   ANIMATION
 ====================================================== */
 
-@keyframes blistFadeIn {
-
+@keyframes blacklistFadeIn {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(12px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
   }
-
 }

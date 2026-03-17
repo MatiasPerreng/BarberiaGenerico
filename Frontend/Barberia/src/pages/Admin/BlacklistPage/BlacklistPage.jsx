@@ -26,10 +26,15 @@ const BlacklistPage = () => {
 
   const handleAdd = async (e) => {
     e.preventDefault();
+
+    if (!form.telefono.trim()) return;
+
     try {
       await axios.post(`${API_URL}/admin/blacklist`, form);
+
       setForm({ telefono: "", motivo: "" });
       fetchBlacklist();
+
       alert("Número bloqueado correctamente");
     } catch (err) {
       alert(err.response?.data?.detail || "Error al bloquear número");
@@ -37,55 +42,71 @@ const BlacklistPage = () => {
   };
 
   const handleDelete = async (id) => {
-    if (window.confirm("¿Estás seguro de que deseas desbloquear este número?")) {
-      try {
-        await axios.delete(`${API_URL}/admin/blacklist/${id}`);
-        fetchBlacklist();
-      } catch (err) {
-        alert("Error al eliminar");
-      }
+    if (!window.confirm("¿Desbloquear este número?")) return;
+
+    try {
+      await axios.delete(`${API_URL}/admin/blacklist/${id}`);
+      fetchBlacklist();
+    } catch (err) {
+      alert("Error al eliminar");
     }
   };
 
   return (
-    <div className="blist-page-container">
-      <header className="blist-header">
+    <div className="blacklist-container">
+      
+      {/* HEADER */}
+      <header className="blacklist-header">
         <h2>🚫 Lista Negra</h2>
-        <p>Los números en esta lista no podrán realizar reservas en el sistema.</p>
+        <p>
+          Los números bloqueados no podrán realizar reservas en el sistema.
+        </p>
       </header>
 
-      <section className="blist-card-form">
-        <form onSubmit={handleAdd} className="blist-form">
-          <div className="blist-form-group">
+      {/* FORM */}
+      <section className="blacklist-form-card">
+        <form onSubmit={handleAdd} className="blacklist-form">
+
+          <div className="blacklist-field">
             <label>Teléfono</label>
             <input
               type="text"
               placeholder="Ej: 099123456"
               value={form.telefono}
-              onChange={(e) => setForm({ ...form, telefono: e.target.value })}
+              onChange={(e) =>
+                setForm({ ...form, telefono: e.target.value })
+              }
+              className="blacklist-input"
               required
             />
           </div>
-          <div className="blist-form-group">
-            <label>Motivo del bloqueo</label>
+
+          <div className="blacklist-field">
+            <label>Motivo</label>
             <input
               type="text"
               placeholder="Ej: No se presenta a las citas"
               value={form.motivo}
-              onChange={(e) => setForm({ ...form, motivo: e.target.value })}
+              onChange={(e) =>
+                setForm({ ...form, motivo: e.target.value })
+              }
+              className="blacklist-input"
             />
           </div>
-          <button type="submit" className="blist-btn-primary">
-            Bloquear Número
+
+          <button type="submit" className="blacklist-btn-add">
+            Bloquear
           </button>
+
         </form>
       </section>
 
-      <section className="blist-table-wrapper">
+      {/* TABLE */}
+      <section className="blacklist-table-box">
         {loading ? (
-          <div className="blist-loading">Cargando lista...</div>
+          <div className="blacklist-empty">Cargando lista...</div>
         ) : (
-          <table className="blist-table">
+          <table className="blacklist-table">
             <thead>
               <tr>
                 <th>Teléfono</th>
@@ -94,32 +115,50 @@ const BlacklistPage = () => {
                 <th>Acción</th>
               </tr>
             </thead>
+
             <tbody>
               {numeros.length > 0 ? (
                 numeros.map((n) => (
-                  <tr key={n.id} className="blist-row">
-                    <td className="blist-tel-cell" data-label="Teléfono">
+                  <tr key={n.id} className="blacklist-row">
+
+                    <td
+                      className="blacklist-phone"
+                      data-label="Teléfono"
+                    >
                       {n.telefono}
                     </td>
+
                     <td data-label="Motivo">
-                      {n.motivo || <span className="blist-no-reason">Sin motivo</span>}
+                      {n.motivo || (
+                        <span className="blacklist-empty-reason">
+                          Sin motivo
+                        </span>
+                      )}
                     </td>
+
                     <td data-label="Fecha">
                       {new Date(n.created_at).toLocaleDateString()}
                     </td>
-                    <td className="blist-actions-cell">
-                      <button 
-                        className="blist-btn-danger" 
+
+                    <td
+                      className="blacklist-actions"
+                      data-label="Acción"
+                    >
+                      <button
+                        className="blacklist-btn-remove"
                         onClick={() => handleDelete(n.id)}
                       >
                         Desbloquear
                       </button>
                     </td>
+
                   </tr>
                 ))
               ) : (
                 <tr>
-                  <td colSpan="4" className="blist-empty">No hay números bloqueados.</td>
+                  <td colSpan="4" className="blacklist-empty">
+                    No hay números bloqueados.
+                  </td>
                 </tr>
               )}
             </tbody>
