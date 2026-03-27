@@ -46,13 +46,16 @@ export default function HomePage() {
       {/* SECCIÓN HERO (Sin reveal para carga inmediata) */}
       <section className="hero-section">
         <div className="container text-center py-5">
-          <img
-            src="/logobarber.png"
-            alt="King Barber"
-            className="hero-logo mb-4"
-          />
+          <div className="hero-brand">
+            <img
+              src="/logoINFOCORE.png"
+              alt="FlowPoint IC Barbershop"
+              className="hero-logo"
+            />
+            <p className="hero-brand-caption">BARBERSHOP <span aria-hidden="true">✂</span></p>
+          </div>
 
-          <h1 className="display-5 fw-bold hero-title">
+          <h1 className="hero-title">
             AGENDA BARBERIA
           </h1>
 

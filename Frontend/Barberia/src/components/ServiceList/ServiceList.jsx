@@ -9,12 +9,12 @@ const ServiciosList = ({ onSelectServicio }) => {
 
   useEffect(() => {
     fetch(`${API_URL}/servicios/`)
-      .then((res) => res.json())
+      .then((res) => (res.ok ? res.json() : []))
       .then((data) => {
-        setServicios(data);
+        setServicios(Array.isArray(data) ? data : []);
         setLoading(false);
       })
-      .catch((err) => console.error(err));
+      .catch(() => setLoading(false));
   }, []);
 
   if (loading) return <p className="loading">Cargando servicios...</p>;
@@ -23,11 +23,13 @@ const ServiciosList = ({ onSelectServicio }) => {
     <div className="servicios-grid">
       {servicios.map((servicio) => (
         <div className="servicio-card" key={servicio.id_servicio}>
-          <img
-            src={`${API_URL}/media/servicios/${servicio.imagen}`}
-            alt={servicio.nombre}
-            className="servicio-img"
-          />
+          <div className="servicio-img-wrapper">
+            <img
+              src={`${API_URL}/media/servicios/${servicio.imagen}`}
+              alt={servicio.nombre}
+              className="servicio-img"
+            />
+          </div>
 
           <div className="servicio-body">
             <h3 className="servicio-title">
@@ -44,14 +46,14 @@ const ServiciosList = ({ onSelectServicio }) => {
 
             <div className="servicio-footer">
               <span className="servicio-precio">
-                ${servicio.precio}
+                <small>$</small>{servicio.precio}
               </span>
 
               <button
                 className="btn-reservar"
                 onClick={() => onSelectServicio(servicio)}
               >
-                Reservar ahora
+                <span>RESERVAR AHORA</span>
               </button>
             </div>
           </div>

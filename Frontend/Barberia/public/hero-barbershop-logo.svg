@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 270" role="img" aria-label="InfoCore Barber logo">
+  <defs>
+    <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f2f6fb"/>
+      <stop offset="100%" stop-color="#b9c7d8"/>
+    </linearGradient>
+    <linearGradient id="blueEdge" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#0f2a4f"/>
+      <stop offset="100%" stop-color="#0a1a32"/>
+    </linearGradient>
+    <linearGradient id="blueText" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#9fd0ff"/>
+      <stop offset="100%" stop-color="#4da0ff"/>
+    </linearGradient>
+    <linearGradient id="lineGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2d7fe6"/>
+      <stop offset="100%" stop-color="#0d3f84"/>
+    </linearGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.09 0 0 0 0 0.43 0 0 0 0 0.86 0 0 0 0.35 0"/>
+      <feBlend mode="screen" in2="SourceGraphic"/>
+    </filter>
+    <filter id="strongBlueGlow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="4.8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.05 0 0 0 0 0.43 0 0 0 0 0.86 0 0 0 0.55 0"/>
+      <feBlend mode="screen" in2="SourceGraphic"/>
+    </filter>
+  </defs>
+
+  <rect x="24" y="32" width="204" height="204" rx="30" fill="url(#blueEdge)" filter="url(#strongBlueGlow)"/>
+  <rect x="52" y="60" width="148" height="148" rx="22" fill="#0b1526" stroke="#2d7fe6" stroke-width="2.4"/>
+
+  <g transform="translate(56 64)">
+    <path d="M10 16h132v132H10z" fill="#0d1f38"/>
+    <path d="M26 30h100" stroke="#2f7bd6" stroke-width="2.5" opacity="0.85"/>
+    <path d="M26 128h100" stroke="#2f7bd6" stroke-width="2.5" opacity="0.85"/>
+  </g>
+
+  <g transform="translate(252 72)">
+    <rect x="-8" y="12" width="700" height="128" rx="18" fill="rgba(7,17,33,0.42)"/>
+    <text x="0" y="58" font-family="Montserrat, Arial, sans-serif" font-size="56" font-weight="800" letter-spacing="3" fill="url(#steel)">FLOWPOINT</text>
+    <text x="2" y="103" font-family="Montserrat, Arial, sans-serif" font-size="38" font-weight="900" letter-spacing="6" fill="url(#blueText)">IC BARBERSHOP</text>
+    <line x1="2" y1="132" x2="640" y2="132" stroke="url(#lineGlow)" stroke-width="3.2"/>
+  </g>
+</svg>

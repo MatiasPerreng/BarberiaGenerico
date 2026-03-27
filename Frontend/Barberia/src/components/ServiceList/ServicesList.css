@@ -1,6 +1,9 @@
 /* =======================================================
    REVEAL SYSTEM (EFECTO SCROLL)
 ======================================================= */
+/* =======================================================
+   REVEAL SYSTEM (EFECTO SCROLL)
+======================================================= */
 .reveal {
   position: relative;
   transform: translateY(60px);
@@ -28,7 +31,7 @@ section {
 }
 
 /* =======================================================
-   HERO SECTION – PREMIUM DARK
+   HERO SECTION – ORIGINAL BARBERIAGENERICO
 ======================================================= */
 .hero-section {
   position: relative;
@@ -39,7 +42,7 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: 
+  background:
     linear-gradient(180deg, rgba(12, 35, 68, 0.95), #000 55%),
     url("/noise.png");
   background-blend-mode: overlay;
@@ -58,56 +61,81 @@ section {
 }
 
 .hero-logo {
-  max-width: 550px;
+  max-width: 245px;
   height: auto;
-  border-radius: 50px;
-  margin: 0 auto 10px;
+  border-radius: 16px;
+  margin: 0 auto 2px;
   display: block;
+  filter: brightness(0) invert(1) drop-shadow(0 0 7px rgba(105, 181, 255, 0.6));
   animation: fadeInDown 1.2s ease forwards;
 }
 
+.hero-brand {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  margin-bottom: 10px;
+}
+
+.hero-brand-caption {
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.98rem;
+  font-weight: 800;
+  letter-spacing: 3.4px;
+  color: #e8edf5;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 10px rgba(255, 255, 255, 0.2),
+    0 0 20px rgba(95, 145, 220, 0.28);
+}
+
 .hero-title {
-  font-family: 'Anton', sans-serif;
-  font-weight: 400;
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  letter-spacing: 6px;
-  line-height: 1.1;
+  font-family: "Anton", "Montserrat", sans-serif !important;
+  font-weight: 700 !important;
+  font-size: clamp(1.9rem, 4.9vw, 3.15rem) !important;
+  letter-spacing: 2.8px !important;
+  line-height: 1.06 !important;
   text-transform: uppercase;
   text-align: center;
-  color: #FFFFFF;
-  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  color: #f3f7ff;
+  text-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.75),
+    0 8px 24px rgba(0, 0, 0, 0.85),
+    0 0 20px rgba(8, 24, 46, 0.65);
   margin-top: 0;
-  margin-bottom: 20px;
-  background: linear-gradient(to bottom, #ffffff 60%, #c0c0c0 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+  -webkit-text-stroke: 0.35px rgba(255, 255, 255, 0.22);
   animation: fadeInUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
   opacity: 0;
 }
 
 .hero-section .lead {
   opacity: 0.85;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  letter-spacing: 2px;
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 2.1px;
+  font-weight: 500;
+  color: #dbe8f8;
   animation: fadeInUp 1.4s ease forwards;
 }
 
 /* =======================================================
-   BOTONES - SISTEMA UNIFICADO (CORREGIDO)
+   BOTONES GLOBALES HERO + SERVICE
 ======================================================= */
-.hero-section .btn, 
+.hero-section .btn,
 .btn-reservar {
-  display: inline-flex; 
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
   background-color: transparent;
-  color: #C0C0C0 !important;
+  color: #c0c0c0 !important;
   border: 1px solid rgba(192, 192, 192, 0.5);
   font-family: "Montserrat", sans-serif;
-  font-weight: 700; 
+  font-weight: 700;
   letter-spacing: 1.5px;
   font-size: 13px;
   text-transform: uppercase;
@@ -120,7 +148,6 @@ section {
   white-space: nowrap;
 }
 
-/* Ajustes específicos para el botón del Hero */
 .hero-section .btn {
   padding: 14px 38px;
   font-size: 13px;
@@ -128,50 +155,8 @@ section {
   animation: fadeInUp 1.6s ease forwards;
 }
 
-/* Ajustes específicos para el botón de las Cards */
-.btn-reservar {
-  padding: 10px 22px;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  width: auto;
-}
-
-/* Hover Global */
-.hero-section .btn:hover,
-.btn-reservar:hover {
-  background-color: #C0C0C0;
-  color: #000 !important;
-  border-color: #C0C0C0;
-  transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(192, 192, 192, 0.2);
-}
-
-/* Efecto Brillo (Flash) corregido */
-.hero-section .btn::before,
-.btn-reservar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  transition: none; /* Evita comportamientos extraños fuera del hover */
-}
-
-.hero-section .btn:hover::before,
-.btn-reservar:hover::before {
-  left: 100%;
-  transition: all 0.7s ease;
-}
-
 /* =======================================================
-   SECCIÓN SERVICIOS
+   SECCIÓN SERVICIOS TITLE
 ======================================================= */
 .services-title {
   position: relative;
@@ -192,98 +177,253 @@ section {
   transform: translateX(-50%);
   width: 90px;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #e6c77b, transparent);
+  background: linear-gradient(90deg, transparent, #007aff, transparent);
 }
 
+/* =======================================================
+   GRID - MISMA ESTRUCTURA QUE PROYECTOBARBERIA
+======================================================= */
 .servicios-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  max-width: 1150px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 40px 12px;
+  position: relative;
 }
 
+/* =======================================================
+   CARD
+======================================================= */
 .servicio-card {
-  background: #050505;
+  background: #0a0a0a;
   color: #fff;
   border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border: 1px solid rgba(192, 192, 192, 0.1);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  border: 1px solid rgba(0, 122, 255, 0.12);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  position: relative;
 }
 
 .servicio-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(192, 192, 192, 0.4);
-  box-shadow: 0 30px 60px rgba(192, 192, 192, 0.1);
+  border-color: rgba(0, 122, 255, 0.45);
+  box-shadow: 0 30px 60px rgba(0, 122, 255, 0.2);
+}
+
+/* =======================================================
+   IMAGEN
+======================================================= */
+.servicio-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  background: #0a0a0a;
 }
 
 .servicio-img {
   width: 100%;
-  height: 220px;
+  height: 100%;
   object-fit: cover;
   filter: brightness(0.7) contrast(1.1);
-  transition: filter 0.5s ease;
 }
 
-.servicio-card:hover .servicio-img {
-  filter: brightness(1) contrast(1.05);
+.servicio-img-wrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, #0a0a0a, transparent);
+  pointer-events: none;
 }
 
+/* =======================================================
+   BODY
+======================================================= */
 .servicio-body {
-  padding: 26px;
+  padding: 26px 26px 28px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  background: #0a0a0a;
+  position: relative;
 }
 
 .servicio-title {
-  font-family: 'Anton', sans-serif;
-  font-size: 1.1rem;
-  letter-spacing: 2px;
-  margin-bottom: 5px;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  color: #fff;
 }
 
 .servicio-duracion {
-  font-family: 'Montserrat', sans-serif;
   font-size: 0.7rem;
-  letter-spacing: 2px;
-  color: #C0C0C0;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 15px;
+  color: #7fc0ff;
   opacity: 0.8;
+  margin-bottom: 14px;
 }
 
 .servicio-desc {
-  font-family: 'Montserrat', sans-serif;
   font-size: 13px;
   line-height: 1.7;
-  color: #bdbdbd;
-  margin-bottom: 20px;
+  color: #a0a0a0;
+  flex-grow: 1;
 }
 
+/* =========================
+   FOOTER Y PRECIO
+========================= */
 .servicio-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-top: 18px;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  margin-top: auto;
+  margin-top: 26px;
+  gap: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 20px;
 }
 
 .servicio-precio {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 500;
-  color: #FFFFFF;
+  letter-spacing: 1px;
+  color: #fff;
+}
+
+.servicio-precio small {
+  font-size: 0.8rem;
+  color: #7fc0ff;
+  margin-right: 2px;
 }
 
 /* =======================================================
-   RESPONSIVE & ANIMATIONS
+   BOTON
 ======================================================= */
+.btn-reservar {
+  position: relative;
+  background: transparent;
+  border: 1px solid rgba(0, 122, 255, 0.65);
+  color: #7fc0ff;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  min-width: 162px;
+  padding: 0 34px;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-align: center;
+  z-index: 1;
+}
+
+.btn-reservar::after {
+  content: "";
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #007aff;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: -2;
+}
+
+.btn-reservar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transform: skewX(-20deg);
+  z-index: -1;
+  animation: lightSweep 5s infinite;
+}
+
+@keyframes lightSweep {
+  0% { left: -150%; }
+  25% { left: 150%; }
+  100% { left: 150%; }
+}
+
+.btn-reservar span {
+  transition: all 0.4s ease;
+  display: inline-block;
+  transform: rotateX(0deg);
+  padding: 0 2px;
+}
+
+.btn-reservar:hover {
+  border-color: #007aff;
+  box-shadow: 0 0 20px rgba(0, 122, 255, 0.4);
+}
+
+.btn-reservar:hover::after {
+  bottom: 0;
+}
+
+.btn-reservar:hover span {
+  color: #ffffff;
+  transform: rotateX(10deg);
+}
+
+/* Hover del botón del hero (no tocar paleta original) */
+.hero-section .btn:hover {
+  background-color: #c0c0c0;
+  color: #000 !important;
+  border-color: #c0c0c0;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 12px 24px rgba(192, 192, 192, 0.28);
+}
+
+.hero-section .btn:hover::before {
+  left: 100%;
+  transition: all 0.7s ease;
+}
+
+.hero-section .btn::after {
+  content: "";
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #d9d9d9, #bdbdbd);
+  transition: all 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+  z-index: -2;
+}
+
+.hero-section .btn:hover::after {
+  bottom: 0;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -294,24 +434,20 @@ section {
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
-  .servicios-grid { grid-template-columns: repeat(2, 1fr); }
+  .servicios-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .servicio-img-wrapper { height: 200px; }
 }
 
-/* Mobile */
 @media (max-width: 600px) {
-  .hero-title { font-size: 1.8rem; letter-spacing: 3px; }
-  .servicios-grid { grid-template-columns: 1fr; }
-  
+  .hero-title { font-size: 1.72rem; letter-spacing: 1.6px; line-height: 1.12; }
+  .hero-logo { max-width: 185px; }
+  .hero-brand-caption { font-size: 0.8rem; letter-spacing: 2px; }
+  .servicios-grid { grid-template-columns: 1fr; gap: 25px; }
   .servicio-footer {
-    flex-direction: column;
-    gap: 15px;
-    align-items: center; /* Centrado en móvil para mejor UI */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
-
-  .btn-reservar {
-    width: 100%;
-    padding: 12px 0;
-  }
+  .btn-reservar { padding: 0 20px; }
 }
