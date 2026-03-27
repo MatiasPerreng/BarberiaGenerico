@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
@@ -12,7 +14,9 @@ from routers import (
     servicios,
     auth,
     admin,
+    carousel,
     perfil,
+    estadisticas,
     tv,
 )
 
@@ -20,6 +24,12 @@ app = FastAPI(
     title="API Barbería",
     version="1.0.0",
 )
+
+BASE_DIR = Path(__file__).resolve().parent
+STATIC_DIR = BASE_DIR / "static"
+(STATIC_DIR / "servicios").mkdir(parents=True, exist_ok=True)
+(STATIC_DIR / "barberos").mkdir(parents=True, exist_ok=True)
+(STATIC_DIR / "carousel").mkdir(parents=True, exist_ok=True)
 
 # =======================
 # TEST EMAIL (temporal)
@@ -43,14 +53,20 @@ async def test_email():
 
 app.mount(
     "/media/servicios",
-    StaticFiles(directory="static/servicios"),
+    StaticFiles(directory=str(STATIC_DIR / "servicios")),
     name="media-servicios",
 )
 
 app.mount(
     "/media/barberos",
-    StaticFiles(directory="static/barberos"),
+    StaticFiles(directory=str(STATIC_DIR / "barberos")),
     name="media-barberos",
+)
+
+app.mount(
+    "/media/carousel",
+    StaticFiles(directory=str(STATIC_DIR / "carousel")),
+    name="media-carousel",
 )
 
 # =======================
@@ -81,7 +97,9 @@ app.include_router(servicios.router)
 app.include_router(horarios.router)
 app.include_router(visitas.router)
 app.include_router(admin.router)
+app.include_router(carousel.router)
 app.include_router(perfil.router)
+app.include_router(estadisticas.router)
 app.include_router(tv.router)
 
 # =======================

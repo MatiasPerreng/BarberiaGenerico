@@ -46,6 +46,8 @@ class VisitaOut(BaseModel):
 
     servicio_nombre: str
     servicio_duracion: int
+    servicio_precio: float = 0
+    precio_al_reservar: float = 0
 
     # 🔥 CAMPOS QUE FALTABAN (FIX REAL)
     barbero_id: Optional[int] = None

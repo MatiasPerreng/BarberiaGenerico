@@ -14,8 +14,11 @@ const HorarioForm = ({
   idBarbero,
   horariosExistentes = [],
   onSubmit,
+  onBulkSubmit,
   onClose,
 }) => {
+  const [modoMasivo, setModoMasivo] = useState(false);
+  const [diasSeleccionados, setDiasSeleccionados] = useState([]);
   const [form, setForm] = useState({
     dia_semana: "",
     hora_desde: "",
@@ -27,6 +30,17 @@ const HorarioForm = ({
   const [copiarDesde, setCopiarDesde] = useState("");
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  const toggleDia = (id) => {
+    setDiasSeleccionados((prev) =>
+      prev.includes(id)
+        ? prev.filter((d) => d !== id)
+        : [...prev, id].sort((a, b) => a - b)
+    );
+  };
+
+  const seleccionarLunASab = () => setDiasSeleccionados([1, 2, 3, 4, 5, 6]);
+  const seleccionarLunAVie = () => setDiasSeleccionados([1, 2, 3, 4, 5]);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -56,13 +70,13 @@ const HorarioForm = ({
   };
 
   const validate = () => {
-    if (
-      !form.dia_semana ||
-      !form.hora_desde ||
-      !form.hora_hasta ||
-      !form.fecha_desde ||
-      !form.fecha_hasta
-    ) {
+    if (!modoMasivo && !form.dia_semana) {
+      return "Selecciona un dia";
+    }
+    if (modoMasivo && diasSeleccionados.length === 0) {
+      return "Selecciona al menos un dia";
+    }
+    if (!form.hora_desde || !form.hora_hasta || !form.fecha_desde || !form.fecha_hasta) {
       return "Todos los campos son obligatorios";
     }
 
@@ -90,18 +104,28 @@ const HorarioForm = ({
     setError(null);
 
     try {
-      await onSubmit({
-        id_barbero: idBarbero,
-        dia_semana: Number(form.dia_semana),
-        hora_desde: form.hora_desde,
-        hora_hasta: form.hora_hasta,
-        fecha_desde: form.fecha_desde,
-        fecha_hasta: form.fecha_hasta,
-      });
-
+      if (modoMasivo && onBulkSubmit) {
+        const items = diasSeleccionados.map((dia_semana) => ({
+          id_barbero: idBarbero,
+          dia_semana,
+          hora_desde: form.hora_desde,
+          hora_hasta: form.hora_hasta,
+          fecha_desde: form.fecha_desde,
+          fecha_hasta: form.fecha_hasta,
+        }));
+        await onBulkSubmit(items);
+      } else {
+        await onSubmit({
+          id_barbero: idBarbero,
+          dia_semana: Number(form.dia_semana),
+          hora_desde: form.hora_desde,
+          hora_hasta: form.hora_hasta,
+          fecha_desde: form.fecha_desde,
+          fecha_hasta: form.fecha_hasta,
+        });
+      }
       onClose();
     } catch (err) {
-      // 🔥 ERROR DEL BACKEND MOSTRADO EN EL MODAL
       setError(err.message || "Horario solapado o inválido");
     } finally {
       setLoading(false);
@@ -114,6 +138,23 @@ const HorarioForm = ({
         <h3>Nuevo horario</h3>
 
         {error && <div className="error">{error}</div>}
+
+        <div className="horario-form-mode">
+          <button
+            type="button"
+            className={`mode-btn ${!modoMasivo ? "active" : ""}`}
+            onClick={() => setModoMasivo(false)}
+          >
+            Un dia
+          </button>
+          <button
+            type="button"
+            className={`mode-btn ${modoMasivo ? "active" : ""}`}
+            onClick={() => setModoMasivo(true)}
+          >
+            Varios dias
+          </button>
+        </div>
 
         {horariosExistentes.length > 0 && (
           <div className="copiar-horario">
@@ -136,21 +177,47 @@ const HorarioForm = ({
         )}
 
         <form onSubmit={handleSubmit} className="form-grid">
-          <label>
-            Día
-            <select
-              name="dia_semana"
-              value={form.dia_semana}
-              onChange={handleChange}
-            >
-              <option value="">Seleccionar día</option>
-              {DIAS_SEMANA.map((d) => (
-                <option key={d.id} value={d.id}>
-                  {d.label}
-                </option>
-              ))}
-            </select>
-          </label>
+          {modoMasivo ? (
+            <div className="horario-form-dias-bulk">
+              <label>Dias a aplicar</label>
+              <div className="dias-quick">
+                <button type="button" onClick={seleccionarLunAVie}>
+                  Lun a Vie
+                </button>
+                <button type="button" onClick={seleccionarLunASab}>
+                  Lun a Sab
+                </button>
+              </div>
+              <div className="dias-checkboxes">
+                {DIAS_SEMANA.map((d) => (
+                  <label key={d.id} className="dia-checkbox">
+                    <input
+                      type="checkbox"
+                      checked={diasSeleccionados.includes(d.id)}
+                      onChange={() => toggleDia(d.id)}
+                    />
+                    <span>{d.label}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <label>
+              Dia
+              <select
+                name="dia_semana"
+                value={form.dia_semana}
+                onChange={handleChange}
+              >
+                <option value="">Seleccionar dia</option>
+                {DIAS_SEMANA.map((d) => (
+                  <option key={d.id} value={d.id}>
+                    {d.label}
+                  </option>
+                ))}
+              </select>
+            </label>
+          )}
 
           <label>
             Hora desde
@@ -198,7 +265,11 @@ const HorarioForm = ({
               className="btn-primary"
               disabled={loading}
             >
-              {loading ? "Guardando…" : "Guardar"}
+              {loading
+                ? "Guardando..."
+                : modoMasivo && diasSeleccionados.length > 0
+                  ? `Guardar ${diasSeleccionados.length} horarios`
+                  : "Guardar"}
             </button>
             <button
               type="button"

@@ -10,6 +10,8 @@ export default function ChangePasswordModal({ show, onClose }) {
   });
 
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   if (!show) return null;
 
@@ -21,29 +23,35 @@ export default function ChangePasswordModal({ show, onClose }) {
     e.preventDefault();
 
     if (form.nueva !== form.repetir) {
-      alert("Las contraseñas no coinciden");
+      setError("Las contraseñas no coinciden");
       return;
     }
+    setError("");
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/perfil/me/password`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify({
+          actual: form.actual,
+          nueva: form.nueva,
+        }),
+      });
 
-    const res = await fetch(`${API_URL}/perfil/me/password`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify({
-        actual: form.actual,
-        nueva: form.nueva,
-      }),
-    });
+      if (!res.ok) {
+        setError("Contraseña actual incorrecta");
+        return;
+      }
 
-    if (!res.ok) {
-      alert("Contraseña actual incorrecta");
-      return;
+      onClose();
+    } catch {
+      setError("No se pudo actualizar la contraseña");
+    } finally {
+      setLoading(false);
     }
-
-    alert("Contraseña actualizada");
-    onClose();
   };
 
   const inputType = showPassword ? "text" : "password";
@@ -52,6 +60,7 @@ export default function ChangePasswordModal({ show, onClose }) {
     <div className="password-modal-overlay">
       <div className="password-modal-card">
         <h3>Cambiar contraseña</h3>
+        {error && <div className="error">{error}</div>}
 
         <form onSubmit={handleSubmit}>
           <input
@@ -89,10 +98,12 @@ export default function ChangePasswordModal({ show, onClose }) {
           </label>
 
           <div className="password-modal-actions">
-            <button type="button" onClick={onClose}>
+            <button type="button" onClick={onClose} disabled={loading}>
               Cancelar
             </button>
-            <button className="btn-guardar" type="submit">Guardar</button>
+            <button className="btn-guardar" type="submit" disabled={loading}>
+              {loading ? "Guardando..." : "Guardar"}
+            </button>
           </div>
         </form>
       </div>

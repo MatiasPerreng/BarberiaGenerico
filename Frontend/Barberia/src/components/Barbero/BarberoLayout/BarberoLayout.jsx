@@ -85,6 +85,13 @@ const BarberoLayout = ({ children }) => {
             </NavLink>
 
             <NavLink
+              to="/barbero/estadisticas"
+              onClick={handleNavClick}
+            >
+              Mis ganancias
+            </NavLink>
+
+            <NavLink
               to="/barbero/perfil"
               onClick={handleNavClick}
             >

@@ -91,14 +91,14 @@
 
   border-radius: 8px;
 
-  border: 1px solid rgba(255,255,255,0.12);
+  border: 1px solid #d1d5db;
 
-  background: #0a192f;
+  background: #ffffff;
 
   font-size: .95rem;
   font-weight: 700;
 
-  color: #ffffff;
+  color: #111827;
 
   cursor: pointer;
 
@@ -110,7 +110,7 @@
 
 .barbero-summary-date:hover {
 
-  border-color: #007aff;
+  border-color: #9ca3af;
 }
 
 .barbero-summary-date:focus {

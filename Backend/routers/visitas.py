@@ -53,6 +53,8 @@ def visita_to_out(visita):
         "cliente_telefono": visita.cliente.telefono if visita.cliente else "",
         "servicio_nombre": visita.servicio.nombre if visita.servicio else "",
         "servicio_duracion": visita.servicio.duracion_min if visita.servicio else 0,
+        "servicio_precio": float(getattr(visita, "precio_al_reservar", 0) or (visita.servicio.precio if visita.servicio else 0) or 0),
+        "precio_al_reservar": float(getattr(visita, "precio_al_reservar", 0) or 0),
 
         "barbero_id": visita.barbero.id_barbero if visita.barbero else None,
         "barbero_nombre": visita.barbero.nombre if visita.barbero else "",

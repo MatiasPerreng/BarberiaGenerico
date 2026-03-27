@@ -46,3 +46,20 @@ def get_current_login_barbero(
         )
 
     return login_barbero
+
+
+def get_current_admin(
+    login_barbero=Depends(get_current_login_barbero)
+):
+    if login_barbero.role != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Acceso denegado. Se requiere rol de administrador."
+        )
+    return login_barbero
+
+
+def get_current_staff(
+    login_barbero=Depends(get_current_login_barbero)
+):
+    return login_barbero

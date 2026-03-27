@@ -1,0 +1,76 @@
+.carousel-page-loading,
+.carousel-page-error {
+  margin: 20px 0;
+}
+
+.carousel-page-error {
+  color: #b91c1c;
+  font-weight: 600;
+}
+
+.carousel-page-empty {
+  text-align: center;
+  padding: 40px 20px;
+  background: #f8fbff;
+  border: 1px solid #dbeafe;
+  border-radius: 14px;
+  margin-top: 24px;
+}
+
+.carousel-page-upload-btn {
+  margin-top: 14px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
+  background: #007aff;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.carousel-page-upload-btn:hover {
+  background: #0063d1;
+}
+
+.carousel-page-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.carousel-page-card {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid #dbeafe;
+  box-shadow: 0 8px 24px rgba(0, 64, 128, 0.08);
+}
+
+.carousel-page-preview {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+}
+
+.carousel-page-delete {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #1f2937;
+  color: #f9fafb;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.carousel-page-delete:hover {
+  background: #111827;
+}
+
+@media (max-width: 600px) {
+  .carousel-page-grid {
+    grid-template-columns: 1fr;
+  }
+}

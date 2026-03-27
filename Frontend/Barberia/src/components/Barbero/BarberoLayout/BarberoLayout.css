@@ -28,7 +28,7 @@
 .barbero-hamburger {
   background: none;
   border: none;
-  color: #e6c77b;
+  color: #007aff;
   font-size: 24px;
   cursor: pointer;
 }
@@ -98,8 +98,8 @@
 }
 
 .barbero-nav a.active {
-  color: #e6c77b;
-  background: rgba(230, 199, 123, 0.08);
+  color: #7fc0ff;
+  background: rgba(0, 122, 255, 0.12);
 }
 
 .barbero-nav a.active::before {
@@ -109,7 +109,7 @@
   top: 0;
   width: 3px;
   height: 100%;
-  background: #e6c77b;
+  background: #007aff;
 }
 
 /* =======================================================
@@ -140,8 +140,8 @@
 
 .barbero-logout {
   background: transparent;
-  border: 1px solid rgba(230, 199, 123, 0.5);
-  color: #e6c77b;
+  border: 1px solid rgba(0, 122, 255, 0.5);
+  color: #7fc0ff;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.4px;
@@ -153,8 +153,8 @@
 }
 
 .barbero-logout:hover {
-  background: #e6c77b;
-  color: #000;
+  background: #007aff;
+  color: #ffffff;
 }
 
 /* =======================================================

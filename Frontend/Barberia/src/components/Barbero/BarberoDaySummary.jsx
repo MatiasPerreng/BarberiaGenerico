@@ -1,12 +1,13 @@
 const hoy = new Date().toISOString().split("T")[0];
 
 const BarberoDaySummary = ({ turnos, fecha, onChangeFecha }) => {
+  const normalizarEstado = (estado) => String(estado || "").toUpperCase();
   const turnosValidos = turnos.filter(
-    (t) => t.estado !== "cancelado"
+    (t) => normalizarEstado(t.estado) !== "CANCELADO"
   );
 
   const total = turnosValidos.reduce(
-    (acc, t) => acc + (t.precio || 0),
+    (acc, t) => acc + (Number(t.precio) || 0),
     0
   );
 

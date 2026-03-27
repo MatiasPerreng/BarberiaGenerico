@@ -16,12 +16,17 @@ const BarberoDashboard = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    let cancelado = false;
     setLoading(true);
+    setError(null);
 
     getAgendaBarbero(fecha)
       .then((data) => {
-        const normalizados = data.map((v) => ({
+        const list = Array.isArray(data) ? data : [];
+        const normalizados = list.map((v) => ({
           id: v.id_visita,
+          id_visita: v.id_visita,
+          fecha_hora: v.fecha_hora,
           fechaHora: v.fecha_hora,
 
           hora: new Date(v.fecha_hora).toLocaleTimeString("es-UY", {
@@ -34,18 +39,30 @@ const BarberoDashboard = () => {
           telefono: v.cliente_telefono || "",
 
           servicio: v.servicio_nombre,
+          servicio_nombre: v.servicio_nombre,
           duracion: v.servicio_duracion,
+          servicio_duracion: v.servicio_duracion,
 
           estado: v.estado || "CONFIRMADO",
-          precio: v.precio || 0,
+          precio: v.servicio_precio ?? v.precio ?? 0,
+          servicio_precio: v.servicio_precio ?? v.precio ?? 0,
         }));
 
-        setTurnos(normalizados);
+        if (!cancelado) setTurnos(normalizados);
       })
       .catch(() => {
-        setError("No se pudo cargar tu agenda");
+        if (!cancelado) {
+          setTurnos([]);
+          setError("No se pudo cargar tu agenda");
+        }
       })
-      .finally(() => setLoading(false));
+      .finally(() => {
+        if (!cancelado) setLoading(false);
+      });
+
+    return () => {
+      cancelado = true;
+    };
   }, [fecha]);
 
   const handleAtender = (id) => {

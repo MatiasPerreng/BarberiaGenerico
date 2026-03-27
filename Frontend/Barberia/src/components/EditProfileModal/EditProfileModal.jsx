@@ -7,6 +7,8 @@ function EditProfileModal({ show, onClose, user, onSuccess }) {
     nombre: "",
     email: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   // 🔥 SINCRONIZA CUANDO LLEGA USER
   useEffect(() => {
@@ -22,30 +24,38 @@ function EditProfileModal({ show, onClose, user, onSuccess }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError("");
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_URL}/perfil/me`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(form),
+      });
 
-    const res = await fetch(`${API_URL}/perfil/me`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body: JSON.stringify(form),
-    });
+      if (!res.ok) {
+        setError("Error al actualizar perfil");
+        return;
+      }
 
-    if (!res.ok) {
-      alert("Error al actualizar perfil");
-      return;
+      const data = await res.json();
+      onSuccess(data);
+      onClose();
+    } catch {
+      setError("No se pudo actualizar el perfil");
+    } finally {
+      setLoading(false);
     }
-
-    const data = await res.json();
-    onSuccess(data);
-    onClose();
   };
 
   return (
     <div className="edit-profile-overlay">
       <div className="edit-profile-card">
         <h3 className="edit-profile-title">Editar perfil</h3>
+        {error && <div className="error">{error}</div>}
 
         <form onSubmit={handleSubmit} className="edit-profile-form">
           <input
@@ -71,14 +81,16 @@ function EditProfileModal({ show, onClose, user, onSuccess }) {
           <button
             type="submit"
             className="edit-profile-btn submit"
+            disabled={loading}
           >
-            Guardar
+            {loading ? "Guardando..." : "Guardar"}
           </button>
           <div className="edit-profile-actions">
             <button
               type="button"
               className="edit-profile-btn cancel"
               onClick={onClose}
+              disabled={loading}
             >
               Cancelar
             </button>

@@ -135,6 +135,7 @@ def create_visita(db: Session, visita_in: VisitaCreate) -> Visita:
         id_cliente=visita_in.id_cliente,
         id_barbero=visita_in.id_barbero,
         id_servicio=visita_in.id_servicio,
+        precio_al_reservar=servicio.precio,
         estado="CONFIRMADO"
     )
     db.add(visita)

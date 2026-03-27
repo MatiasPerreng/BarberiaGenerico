@@ -105,6 +105,25 @@ const HorariosPage = () => {
     setHorarios(updated);
   };
 
+  const handleBulkCreate = async (items) => {
+    for (const data of items) {
+      const fechasNormalizadas = normalizarRangoPorDia({
+        fecha_desde: data.fecha_desde,
+        fecha_hasta: data.fecha_hasta,
+        dia_semana: data.dia_semana,
+      });
+
+      await crearHorario({
+        ...data,
+        dia_semana: Number(data.dia_semana),
+        ...fechasNormalizadas,
+      });
+    }
+
+    const updated = await getHorariosBarbero(barberoSeleccionado);
+    setHorarios(updated);
+  };
+
   const handleDelete = async (idHorario) => {
     if (!confirm("¿Eliminar este horario?")) return;
 
@@ -251,6 +270,7 @@ const HorariosPage = () => {
           idBarbero={barberoSeleccionado}
           horariosExistentes={horarios}
           onSubmit={handleCreate}
+          onBulkSubmit={handleBulkCreate}
           onClose={() => setShowForm(false)}
         />
       )}
