@@ -1,5 +1,3 @@
-import "./SuccessModal.css";
-
 export default function SuccessModal({ show, onClose }) {
   if (!show) return null;
 

@@ -1,15 +1,16 @@
-import API_URL from "./api";
+import { apiFetch } from "./apiClient";
 
 export async function getHorariosBarbero(idBarbero) {
-  const res = await fetch(`${API_URL}/horarios/barbero/${idBarbero}`);
+  const res = await apiFetch(`/horarios/barbero/${idBarbero}`, {
+    requireAuth: false,
+  });
   if (!res.ok) throw new Error("Error al cargar horarios");
   return await res.json();
 }
 
 export async function crearHorario(data) {
-  const res = await fetch(`${API_URL}/horarios/`, {
+  const res = await apiFetch("/horarios/", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
 
@@ -22,7 +23,7 @@ export async function crearHorario(data) {
 }
 
 export async function eliminarHorario(idHorario) {
-  const res = await fetch(`${API_URL}/horarios/${idHorario}`, {
+  const res = await apiFetch(`/horarios/${idHorario}`, {
     method: "DELETE",
   });
 

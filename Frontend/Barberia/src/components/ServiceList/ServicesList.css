@@ -56,7 +56,7 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at top, rgba(230, 199, 123, 0.06), transparent 70%);
+  background: radial-gradient(circle at top, rgba(0, 122, 255, 0.06), transparent 70%);
   pointer-events: none;
 }
 

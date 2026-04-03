@@ -21,6 +21,7 @@ export default function TvAgendaPage() {
           hour: "2-digit",
           minute: "2-digit",
           second: "2-digit",
+          hour12: false,
         })
       );
 
@@ -73,8 +74,16 @@ export default function TvAgendaPage() {
       {/* ===================== HEADER ===================== */}
       <header className="tv-header">
         <div className="tv-brand">
-          <img src="/logo.jpg" alt="King Barber" className="tv-logo" />
-          <span className="tv-brand-text">KING BARBER</span>
+          <div className="tv-brand-mark">
+            <img src="/logo.jpg" alt="" className="tv-logo" />
+          </div>
+          <div className="tv-brand-lockup">
+            <p className="tv-brand-name">
+              <span className="tv-brand-king">KING</span>{" "}
+              <span className="tv-brand-barber">BARBER</span>
+            </p>
+            <p className="tv-brand-sub">Agenda en pantalla</p>
+          </div>
         </div>
         <div className={`tv-clock ${minuteTick ? "minute-tick" : ""}`}>
           {horaActual}
@@ -84,56 +93,84 @@ export default function TvAgendaPage() {
       {/* ===================== MAIN ===================== */}
       <main className="tv-main-content">
         {/* ---------- EN CURSO ---------- */}
-        <section className="tv-section">
+        <section className="tv-section" aria-label="Servicios en curso">
           <div className="tv-section-header">
-            <h2 className="tv-title">SERVICIOS EN CURSO</h2>
-            <div className="live-badge">EN VIVO</div>
+            <h2 className="tv-title">Servicios en curso</h2>
+            <div className="live-badge" role="status">
+              <span className="live-badge-dot" aria-hidden="true" />
+              <span>En vivo</span>
+            </div>
           </div>
 
           <div className={`tv-list ${usarGrid ? "tv-list-grid" : ""}`}>
-            {enCurso.slice(0, 4).map((s, i) => (
-              <div key={i} className="tv-item">
-                <div>
-                  <span className="tv-label">BARBERO</span>
-                  <div className="tv-barbero">{s.barbero}</div>
-                </div>
-                <div>
-                  <div className="tv-servicio">{s.servicio}</div>
-                  <div className="tv-cliente">{s.cliente}</div>
-                </div>
+            {enCurso.length === 0 ? (
+              <div className="tv-empty-state">
+                <p className="tv-empty-title">Sala en espera</p>
+                <p className="tv-empty-sub">No hay servicios activos en este momento</p>
               </div>
-            ))}
+            ) : (
+              enCurso.slice(0, 4).map((s, i) => (
+                <div
+                  key={i}
+                  className="tv-item tv-item--live"
+                  style={{ animationDelay: `${i * 0.09}s` }}
+                >
+                  <div className="tv-item-bg" aria-hidden="true" />
+                  <span className="tv-item-slot" aria-hidden="true">
+                    {i + 1}
+                  </span>
+                  <div className="tv-item-body">
+                    <div className="tv-item-barbero-col">
+                      <span className="tv-label">Barbero</span>
+                      <div className="tv-barbero">{s.barbero}</div>
+                    </div>
+                    <div className="tv-item-detail-col">
+                      <div className="tv-cliente">{s.cliente}</div>
+                      <div className="tv-servicio">{s.servicio}</div>
+                    </div>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
         </section>
 
         {/* ---------- PRÓXIMO ---------- */}
-        <section className="tv-section next">
-          <h2 className="tv-title gold">PRÓXIMO SERVICIO</h2>
+        <section className="tv-section next" aria-label="Próximo turno">
+          <h2 className="tv-title gold">Próximo servicio</h2>
 
-          {proximo && (
-            <div className="tv-next-card tv-animate">
-              {!proximo.es_hoy && (
-                <div className="tv-next-fecha">
-                  {proximo.fecha_texto}
+          {proximo ? (
+            <div className="tv-next-card tv-animate" key={indiceProximo}>
+              <div className="tv-next-card-inner">
+                {!proximo.es_hoy && (
+                  <div className="tv-next-fecha">{proximo.fecha_texto}</div>
+                )}
+
+                <div className="tv-next-time-showcase">
+                  <span className="tv-next-time-eyebrow">A las</span>
+                  <div className="tv-next-hora">{proximo.hora}</div>
                 </div>
-              )}
 
-              <div className="tv-next-hora">{proximo.hora}</div>
-
-              <div className="tv-next-text">
-                <div className="tv-next-servicio">
-                  {proximo.servicio}
-                </div>
-                <div className="tv-next-cliente">
-                  {proximo.cliente}
+                <div className="tv-next-details-stack">
+                  <div className="tv-next-cliente-block">
+                    <span className="tv-next-meta-label">Cliente</span>
+                    <div className="tv-next-cliente-name">{proximo.cliente}</div>
+                  </div>
+                  <div className="tv-next-meta-inline">
+                    <span className="tv-next-meta-label">Servicio</span>
+                    <span className="tv-next-servicio-text">{proximo.servicio}</span>
+                  </div>
+                  <div className="tv-next-meta-inline tv-next-meta-inline--barber">
+                    <span className="tv-next-meta-label">Barbero</span>
+                    <strong className="tv-next-barbero-name">{proximo.barbero}</strong>
+                  </div>
                 </div>
               </div>
-
-              <div className="tv-next-barbero">
-                con <strong>{proximo.barbero}</strong>
-              </div>
-
-              <div className="shimmer-effect" />
+            </div>
+          ) : (
+            <div className="tv-empty-state tv-empty-state--next">
+              <p className="tv-empty-title">Sin turnos programados</p>
+              <p className="tv-empty-sub">Los próximos turnos aparecerán aquí</p>
             </div>
           )}
         </section>
@@ -141,8 +178,12 @@ export default function TvAgendaPage() {
 
       {/* ===================== FOOTER ===================== */}
       <footer className="tv-footer">
-        <span>DEVELOPED BY</span>
-        <strong>MATIAS PERRENG</strong>
+        <span className="tv-footer-line" />
+        <div className="tv-footer-inner">
+          <span className="tv-footer-credit">Desarrollo</span>
+          <span className="tv-footer-dot" aria-hidden="true" />
+          <span className="tv-footer-name">Matias Perreng</span>
+        </div>
       </footer>
     </div>
   );

@@ -1,102 +1,284 @@
 /* ======================================================
-   TITULO
+   HERO DASHBOARD
 ====================================================== */
 
-.admin-page h1,
-h1 {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: 0.6px;
-  color: #111;
-  margin-bottom: 24px;
+.admin-dashboard-hero {
+  margin-bottom: 8px;
+}
+
+/* Tipografía del título: styles/layoutPageTitles.css (.admin-content-inner .admin-dashboard-hero h1) */
+.admin-dashboard-hero h1 {
+  margin: 0 0 8px;
+}
+
+.admin-dashboard-hero h1::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin-top: 12px;
+  background: linear-gradient(90deg, #007aff, #60a5fa, #007aff);
+  border-radius: 999px;
+}
+
+.admin-dashboard-subtitle {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6b7280;
+  margin: 0 0 20px;
+  max-width: 520px;
+  line-height: 1.45;
+}
+
+.admin-dashboard-loading {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin: 12px 0 20px;
 }
 
 /* ======================================================
-   GRID DE CARDS
+   GRID DE CARDS (KPI)
 ====================================================== */
 
 .admin-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 22px;
-  margin-top: 28px;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 8px;
 }
 
 /* ======================================================
-   CARD BASE
+   CARD BASE (button)
 ====================================================== */
+
+button.admin-card {
+  font: inherit;
+  text-align: left;
+  width: 100%;
+  border: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+}
 
 .admin-card {
   position: relative;
-  background: linear-gradient(180deg, #ffffff, #f6f7f8);
-  padding: 26px 26px 30px;
+  isolation: isolate;
+  background: var(--kb-admin-bg-surface, #ffffff);
+  padding: 18px 20px 20px;
+  padding-left: 22px;
   border-radius: 18px;
-  box-shadow:
-    0 10px 30px rgba(0, 0, 0, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(0, 122, 255, 0.14);
+  box-shadow: var(--kb-shadow-admin-card), var(--kb-shadow-admin-card-inset);
   cursor: pointer;
-  transition: all 0.25s ease;
   overflow: hidden;
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+  -webkit-font-smoothing: antialiased;
 }
 
-.admin-card::after {
+.admin-card::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top,
-      rgba(230, 199, 123, 0.25),
-      transparent 70%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  inset: 0 auto 0 0;
+  width: 5px;
+  border-radius: 18px 0 0 18px;
+  background: linear-gradient(180deg, #007aff, #005ecb);
+  z-index: 0;
+}
+
+.admin-card-shine {
+  position: absolute;
+  inset: -40% -20% auto auto;
+  width: 140px;
+  height: 140px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 122, 255, 0.22) 0%,
+    transparent 70%
+  );
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+  transition: opacity 0.25s ease;
 }
 
 .admin-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+  border-color: rgba(0, 122, 255, 0.32);
+  box-shadow: var(--kb-shadow-admin-card-hover), var(--kb-shadow-admin-card-hover-inset);
 }
 
-.admin-card:hover::after {
-  opacity: 1;
+.admin-card:hover .admin-card-shine {
+  opacity: 0.85;
+}
+
+.admin-card:active {
+  transform: translateY(-1px);
+}
+
+.admin-card:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(0, 122, 255, 0.35),
+    0 18px 40px rgba(0, 0, 0, 0.1);
 }
 
 /* ======================================================
-   CONTENIDO
+   CONTENIDO CARD
 ====================================================== */
+
+.admin-card-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.admin-card-icon-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    rgba(0, 122, 255, 0.35),
+    rgba(0, 122, 255, 0.12)
+  );
+  border: 1px solid rgba(0, 122, 255, 0.28);
+  box-shadow:
+    0 4px 12px rgba(0, 122, 255, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  color: #0f172a;
+}
+
+.admin-card-icon-svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.admin-card-arrow {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #9ca3af;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.admin-card:hover .admin-card-arrow {
+  transform: translateX(4px);
+  color: #007aff;
+}
 
 .admin-card h3 {
-  font-size: 0.75rem;
-  font-weight: 800;
+  position: relative;
+  z-index: 1;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 2.2px;
-  color: #555;
-  margin-bottom: 14px;
+  letter-spacing: 1.4px;
+  color: #6b7280;
+  margin: 0 0 10px;
 }
 
-.admin-card p {
-  font-size: 2.2rem;
+.admin-card-value {
+  position: relative;
+  z-index: 1;
+  font-family: "Montserrat", system-ui, sans-serif;
+  font-size: 2.35rem;
   font-weight: 800;
+  letter-spacing: -0.03em;
   color: #111;
   line-height: 1;
+  margin: 0 0 10px;
+  font-variant-numeric: tabular-nums;
+}
+
+.admin-card-hint {
+  position: relative;
+  z-index: 1;
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #9ca3af;
+  margin: 0;
+  line-height: 1.35;
 }
 
 /* ======================================================
-   VARIANTES (si después querés usar por tipo)
+   VARIANTES KPI
 ====================================================== */
 
-.admin-card.primary p {
-  color: #111;
+.admin-card--hoy::before {
+  background: linear-gradient(180deg, #34d399, #059669);
 }
 
-.admin-card.success p {
-  color: #1b5e20;
+.admin-card--hoy .admin-card-icon-wrap {
+  color: #047857;
+  background: linear-gradient(
+    145deg,
+    rgba(16, 185, 129, 0.22),
+    rgba(5, 150, 105, 0.08)
+  );
+  border-color: rgba(5, 150, 105, 0.25);
+  box-shadow:
+    0 4px 12px rgba(16, 185, 129, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
 }
 
-.admin-card.warning p {
-  color: #9a6b00;
+.admin-card--hoy .admin-card-value {
+  color: #065f46;
 }
 
-.admin-card.danger p {
-  color: #8b0000;
+.admin-card--pendientes::before {
+  background: linear-gradient(180deg, #fbbf24, #d97706);
+}
+
+.admin-card--pendientes .admin-card-icon-wrap {
+  color: #92400e;
+  background: linear-gradient(
+    145deg,
+    rgba(251, 191, 36, 0.35),
+    rgba(217, 119, 6, 0.1)
+  );
+  border-color: rgba(217, 119, 6, 0.28);
+  box-shadow:
+    0 4px 12px rgba(251, 191, 36, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.admin-card--pendientes .admin-card-value {
+  color: #92400e;
+}
+
+.admin-card--cancelados::before {
+  background: linear-gradient(180deg, #fb7185, #e11d48);
+}
+
+.admin-card--cancelados .admin-card-icon-wrap {
+  color: #9f1239;
+  background: linear-gradient(
+    145deg,
+    rgba(251, 113, 133, 0.28),
+    rgba(225, 29, 72, 0.08)
+  );
+  border-color: rgba(225, 29, 72, 0.22);
+  box-shadow:
+    0 4px 12px rgba(251, 113, 133, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.admin-card--cancelados .admin-card-value {
+  color: #9f1239;
 }
 
 /* ======================================================
@@ -114,29 +296,40 @@ h1 {
 ====================================================== */
 
 @media (max-width: 600px) {
-  h1 {
-    font-size: 1.6rem;
+  .admin-dashboard-hero {
     text-align: center;
+  }
+
+  .admin-dashboard-hero h1::after {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .admin-dashboard-subtitle {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .admin-dashboard-hero h1 {
+    font-size: clamp(1.3rem, 4vw, 1.65rem);
   }
 
   .admin-cards {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 14px;
   }
 
   .admin-card {
-    padding: 22px;
+    padding: 16px 18px 18px;
+    padding-left: 20px;
   }
 
-  .admin-card p {
-    font-size: 1.9rem;
+  .admin-card-value {
+    font-size: 2rem;
   }
 }
 
 
-/* ================================
-   FILTRO DE FECHA – TURNOS
-================================ */
 /* ================================
    FILTRO DE FECHA – TURNOS
 ================================ */
@@ -178,10 +371,10 @@ h1 {
 .turnos-btn-todos {
   padding: 12px 24px;
   border-radius: 999px;
-  border: none;
+  border: 1px solid var(--kb-btn-primary-border);
 
-  background: linear-gradient(135deg, #007aff, #005ecb);
-  color: #fff;
+  background: var(--kb-btn-primary-bg);
+  color: var(--kb-btn-primary-hover-color);
 
   font-size: 0.85rem;
   font-weight: 700;
@@ -189,38 +382,26 @@ h1 {
   text-transform: uppercase;
 
   cursor: pointer;
-  box-shadow: 0 10px 24px rgba(0, 122, 255, 0.35);
+  box-shadow: var(--kb-btn-primary-shadow);
 
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
-    background 0.2s ease;
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .turnos-btn-todos:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 30px rgba(0, 122, 255, 0.45);
+  background: var(--kb-btn-primary-hover-bg);
+  border-color: var(--kb-btn-primary-hover-border);
+  color: var(--kb-btn-primary-hover-color);
+  box-shadow: var(--kb-btn-primary-hover-shadow);
 }
 
 /* ================================
-   RESPONSIVE
-================================ */
-
-@media (max-width: 480px) {
-  .turnos-filtro-fecha {
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .turnos-date-filter,
-  .turnos-btn-todos {
-    width: 100%;
-  }
-}
-
-
-/* ================================
-   RESPONSIVE
+   RESPONSIVE – TURNOS FILTRO
 ================================ */
 
 @media (max-width: 480px) {

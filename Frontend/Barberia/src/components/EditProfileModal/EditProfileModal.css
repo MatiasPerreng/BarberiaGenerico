@@ -1,11 +1,11 @@
 /* ======================================================
-   OVERLAY - INFOCORE STYLE
+   OVERLAY
 ====================================================== */
 .edit-profile-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,24 +14,28 @@
 }
 
 /* ======================================================
-   MODAL CARD - INFOCORE STYLE
+   MODAL CARD
 ====================================================== */
 .edit-profile-card {
   width: 100%;
   max-width: 480px;
-  background: #000000;
-  color: #ffffff;
-  border-radius: 12px;
-  padding: 30px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(0, 122, 255, 0.2);
+  background: #111;
+  color: #f5f5f5;
+  border-radius: 22px;
+  padding: 32px 30px;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.9),
+    inset 0 0 0 1px rgba(0, 122, 255, 0.15);
   animation: editProfileIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 @keyframes editProfileIn {
   from {
     opacity: 0;
-    transform: translateY(18px) scale(0.97);
+    transform: translateY(16px) scale(0.98);
   }
 
   to {
@@ -41,17 +45,16 @@
 }
 
 /* ======================================================
-   TITLE - INFOCORE STYLE
+   TITLE
 ====================================================== */
 .edit-profile-title {
   margin-bottom: 26px;
   text-align: center;
-  font-size: 1.35rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-family: 'Montserrat', sans-serif;
+  color: #007aff;
+  letter-spacing: -0.02em;
+  text-transform: none;
 }
 
 /* ======================================================
@@ -63,29 +66,27 @@
 }
 
 /* ======================================================
-   INPUTS - INFOCORE STYLE
+   INPUTS (UNA COLUMNA, SIEMPRE)
 ====================================================== */
 .edit-profile-input {
-  height: 48px;
+  height: 46px;
   padding: 0 16px;
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  background: #0a192f;
-  color: #ffffff;
-  font-size: 0.95rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #1b1b1b;
+  color: #fff;
+  font-size: 1rem;
   margin-bottom: 14px;
-  transition: all 0.2s ease;
 }
 
 .edit-profile-input::placeholder {
-  color: #94a3b8;
+  color: #888;
 }
 
 .edit-profile-input:focus {
   outline: none;
   border-color: #007aff;
-  background: #0a192f;
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
 }
 
 /* ======================================================
@@ -95,51 +96,45 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-top: 18px;
+  margin-top: 12px;
 }
 
-/* ======================================================
-   BUTTONS - INFOCORE STYLE
-====================================================== */
+.edit-profile-actions .edit-profile-btn {
+  width: 100%;
+}
+
 .edit-profile-btn {
   width: 100%;
   height: 52px;
-  border-radius: 10px;
-  font-size: 0.9rem;
+  border-radius: 16px;
+  font-size: 0.95rem;
   font-weight: 800;
   cursor: pointer;
   border: none;
   transition: all 0.2s ease;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
-/* Cancelar */
+/* Cancelar (más visible, no transparente) */
 .edit-profile-btn.cancel {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f5f5f5;
 }
 
 .edit-profile-btn.cancel:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.12);
 }
 
 /* Guardar */
 .edit-profile-btn.submit {
-  background: #007aff;
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+  background: linear-gradient(135deg, #007aff, #005ecb);
+  color: #111;
+  box-shadow: 0 8px 18px rgba(0, 122, 255, 0.25);
 }
 
 .edit-profile-btn.submit:hover {
-  background: #0066cc;
-}
-
-.edit-profile-btn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(0, 122, 255, 0.35);
 }
 
 /* ======================================================
@@ -147,11 +142,15 @@
 ====================================================== */
 @media (max-width: 420px) {
   .edit-profile-card {
-    padding: 26px 22px;
+    padding: 26px 20px;
+  }
+
+  .edit-profile-actions {
+    grid-template-columns: 1fr;
   }
 
   .edit-profile-btn {
-    height: 50px;
-    font-size: 0.85rem;
+    height: 54px;
+    font-size: 1rem;
   }
 }

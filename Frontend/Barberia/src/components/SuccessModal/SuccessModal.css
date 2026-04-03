@@ -11,6 +11,8 @@
   justify-content: center;
   z-index: 9999;
   padding: 15px;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* =======================================================
@@ -23,8 +25,8 @@
   width: 100%;
   max-width: 380px;
   text-align: center;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(230, 199, 123, 0.1);
-  border: 1px solid rgba(230, 199, 123, 0.2);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 122, 255, 0.1);
+  border: 1px solid rgba(0, 122, 255, 0.2);
   box-sizing: border-box;
   animation: successScaleIn 0.3s ease-out;
 }
@@ -33,13 +35,16 @@
    TEXTOS
 ======================================================= */
 .success-modal-title {
-  color: #e6c77b;
+  font-family: inherit;
+  color: #007aff;
   margin: 0 0 10px 0;
   font-size: 1.4rem;
   font-weight: 800;
+  letter-spacing: -0.02em;
 }
 
 .success-modal-text {
+  font-family: inherit;
   color: #d1d5db;
   font-size: 1rem;
   line-height: 1.5;
@@ -87,14 +92,15 @@
 }
 
 .success-modal-btn-confirm {
-  background: linear-gradient(135deg, #007aff, #005ecb);
+  font-family: inherit;
+  background: linear-gradient(135deg, #007aff, #60a5fa);
   border: none;
   padding: 14px 20px;
   border-radius: 12px;
   cursor: pointer;
   font-weight: 700;
   font-size: 1rem;
-  color: #ffffff;
+  color: #111;
   width: 100%;
   transition: transform 0.2s;
 }

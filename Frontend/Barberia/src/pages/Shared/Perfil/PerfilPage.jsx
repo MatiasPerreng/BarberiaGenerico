@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { useAuthContext } from "../../../auth/AuthContext";
 import ChangePasswordModal from "../../../components/ChangePasswordModal/ChangePasswordModal";
 import EditProfileModal from "../../../components/EditProfileModal/EditProfileModal";
 import "./PerfilPage.css";
 
 const PerfilPage = () => {
+  const { pathname } = useLocation();
+  const isAdmin = pathname.startsWith("/admin");
   const { user, updateUser } = useAuthContext();
   const [showPassModal, setShowPassModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -12,8 +15,12 @@ const PerfilPage = () => {
   if (!user) return null;
 
   return (
-    <div className="perfil-page">
-      <h2 className="perfil-title">Mi perfil</h2>
+    <div
+      className={`perfil-page-root ${isAdmin ? "admin-kb-page" : ""}`.trim()}
+    >
+      <header className="perfil-header">
+        <h2 className="perfil-title kb-page-title">Mi perfil</h2>
+      </header>
 
       <div className="perfil-card">
         <div className="perfil-row">
@@ -29,21 +36,22 @@ const PerfilPage = () => {
 
       <div className="perfil-actions">
         <button
-          className="perfil-action-btn"
+          type="button"
+          className="perfil-action-btn perfil-action-btn--primary"
           onClick={() => setShowEditModal(true)}
         >
           Cambiar nombre / email
         </button>
 
         <button
-          className="perfil-action-btn"
+          type="button"
+          className="perfil-action-btn perfil-action-btn--secondary"
           onClick={() => setShowPassModal(true)}
         >
           Cambiar contraseña
         </button>
       </div>
 
-      {/* MODAL EDITAR PERFIL */}
       <EditProfileModal
         show={showEditModal}
         user={user}
@@ -56,7 +64,6 @@ const PerfilPage = () => {
         }}
       />
 
-      {/* MODAL PASSWORD */}
       <ChangePasswordModal
         show={showPassModal}
         onClose={() => setShowPassModal(false)}

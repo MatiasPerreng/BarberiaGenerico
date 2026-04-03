@@ -1,11 +1,11 @@
 /* ======================================================
-   OVERLAY - INFOCORE STYLE
+    OVERLAY
 ====================================================== */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85); /* Fondo oscuro */
-  backdrop-filter: blur(8px); /* Efecto blur */
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(6px);
 
   display: flex;
   align-items: center;
@@ -16,25 +16,29 @@
 }
 
 /* ======================================================
-   MODAL CARD - INFOCORE STYLE
+    MODAL CARD
 ====================================================== */
 .modal-card {
   width: 100%;
   max-width: 520px;
 
-  background: #000000; /* Negro absoluto */
-  color: #ffffff;
+  background: #111;
+  color: #f5f5f5;
 
-  border-radius: 12px; /* Bordes cuadrados */
+  border-radius: 20px;
   padding: 30px;
 
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
-  border: 1px solid rgba(0, 122, 255, 0.2); /* Borde sutil azul */
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.9),
+    inset 0 0 0 1px rgba(0, 122, 255, 0.15);
 
   animation: modalIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 
   max-height: 90vh;
   overflow-y: auto;
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 @keyframes modalIn {
@@ -52,138 +56,176 @@
 .modal-card h3 {
   margin-bottom: 24px;
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  color: #ffffff; /* Título blanco */
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  color: #007aff;
+  letter-spacing: -0.02em;
+  text-transform: none;
 }
 
 /* ======================================================
-   ERROR - INFOCORE STYLE
+    ERROR
 ====================================================== */
 .error {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444; /* Rojo técnico */
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
   border: 1px solid rgba(239, 68, 68, 0.3);
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 12px;
   margin-bottom: 20px;
   font-size: 0.85rem;
   text-align: center;
 }
 
 /* ======================================================
-   MODO UN DIA / VARIOS DIAS
+    MODO UN DÍA / VARIOS DÍAS
 ====================================================== */
 .horario-form-mode {
   display: flex;
   gap: 8px;
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 
 .horario-form-mode .mode-btn {
   flex: 1;
-  height: 42px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 122, 255, 0.3);
-  background: rgba(0, 122, 255, 0.08);
-  color: #8ec8ff;
-  font-weight: 700;
-  font-size: 0.82rem;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  color: #999;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
 .horario-form-mode .mode-btn:hover {
-  border-color: rgba(0, 122, 255, 0.6);
-  background: rgba(0, 122, 255, 0.15);
+  color: #ddd;
+  border-color: rgba(0, 122, 255, 0.3);
 }
 
 .horario-form-mode .mode-btn.active {
-  color: #ffffff;
+  background: rgba(0, 122, 255, 0.15);
   border-color: #007aff;
-  background: rgba(0, 122, 255, 0.3);
+  color: #007aff;
 }
 
+/* Checkboxes varios días */
 .horario-form-dias-bulk {
   grid-column: 1 / -1;
 }
 
 .horario-form-dias-bulk > label {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 12px;
   display: block;
-  margin-bottom: 10px;
 }
 
 .dias-quick {
   display: flex;
+  justify-content: center;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
 
 .dias-quick button {
-  flex: 1;
-  height: 38px;
+  padding: 10px 18px;
   border-radius: 999px;
-  border: 1px solid rgba(0, 122, 255, 0.45);
-  background: rgba(0, 122, 255, 0.12);
-  color: #9bd0ff;
-  font-size: 0.75rem;
-  font-weight: 700;
+  border: 1px solid rgba(0, 122, 255, 0.35);
+  background: rgba(0, 122, 255, 0.06);
+  color: #007aff;
+  font-size: 0.82rem;
+  font-weight: 600;
   letter-spacing: 0.5px;
-  text-transform: uppercase;
   cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .dias-quick button:hover {
-  background: rgba(0, 122, 255, 0.25);
+  background: rgba(0, 122, 255, 0.15);
+  border-color: rgba(0, 122, 255, 0.5);
+  transform: translateY(-1px);
 }
 
-.dias-checkboxes {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 8px;
+/* 2 filas × 3 columnas: Lun Mar Mié / Jue Vie Sáb */
+.horario-form-dias-bulk .dias-checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.dia-checkbox {
-  min-height: 42px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.03);
-  display: flex !important;
-  flex-direction: row !important;
+.horario-form-dias-bulk .dia-checkbox {
+  flex: 1 1 calc((100% - 20px) / 3); /* 3 columnas con gap 10px */
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 10px;
+  min-height: 48px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.03);
   cursor: pointer;
-  padding: 8px;
+  transition: all 0.2s ease;
 }
 
-.dia-checkbox input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
-  accent-color: #007aff;
-  margin: 0;
+.horario-form-dias-bulk .dia-checkbox:hover {
+  border-color: rgba(0, 122, 255, 0.3);
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.dia-checkbox span {
-  color: #e2e8f0;
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-transform: none;
-  letter-spacing: normal;
-}
-
-.dia-checkbox:has(input:checked) {
+.horario-form-dias-bulk .dia-checkbox:has(input:checked) {
   border-color: #007aff;
-  box-shadow: 0 0 0 1px rgba(0, 122, 255, 0.25) inset;
-  background: rgba(0, 122, 255, 0.18);
+  background: rgba(0, 122, 255, 0.12);
+  box-shadow: 0 0 0 1px rgba(0, 122, 255, 0.2);
+}
+
+.horario-form-dias-bulk .dia-checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #007aff;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.horario-form-dias-bulk .dia-checkbox span {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #eee;
+  text-transform: capitalize;
+}
+
+.horario-form-dias-bulk .dia-checkbox:has(input:checked) span {
+  color: #007aff;
+}
+
+@media (max-width: 480px) {
+  .horario-form-dias-bulk .dia-checkbox {
+    flex: 1 1 calc((100% - 16px) / 3); /* 3 columnas, gap 8px */
+  }
+
+  .horario-form-dias-bulk .dia-checkbox span {
+    font-size: 0.8rem;
+  }
+
+  .dias-quick {
+    flex-wrap: wrap;
+    justify-content: stretch;
+  }
+
+  .dias-quick button {
+    flex: 1;
+  }
 }
 
 /* ======================================================
-   COPIAR HORARIO - INFOCORE STYLE
+    COPIAR HORARIO
 ====================================================== */
 .copiar-horario {
   display: flex;
@@ -193,7 +235,7 @@
   padding: 15px;
   background: rgba(255, 255, 255, 0.03);
 
-  border-radius: 8px;
+  border-radius: 14px;
   border: 1px dashed rgba(0, 122, 255, 0.3);
 }
 
@@ -202,10 +244,10 @@
   height: 42px;
   padding: 0 12px;
 
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #0a192f; /* Fondo azul oscuro */
-  color: #ffffff;
+  background: #1b1b1b;
+  color: #f5f5f5;
 
   font-size: 0.9rem;
 }
@@ -214,7 +256,7 @@
   padding: 0 20px;
   height: 42px;
 
-  border-radius: 8px;
+  border-radius: 10px;
   border: 1px solid #007aff;
   background: rgba(0, 122, 255, 0.1);
   color: #007aff;
@@ -228,11 +270,11 @@
 
 .copiar-horario button:hover {
   background: #007aff;
-  color: #ffffff;
+  color: #111;
 }
 
 /* ======================================================
-   FORM GRID - INFOCORE STYLE
+    FORM GRID
 ====================================================== */
 .form-grid {
   display: grid;
@@ -240,7 +282,7 @@
   gap: 20px 16px;
 }
 
-.form-grid > label {
+.form-grid label {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -249,10 +291,10 @@
   font-weight: 800;
   letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: #a0aec0; /* Gris sutil */
+  color: #888;
 }
 
-.form-grid > label:first-child {
+.form-grid label:first-child {
   grid-column: 1 / -1;
 }
 
@@ -261,10 +303,10 @@
   height: 44px;
   padding: 0 12px;
 
-  border-radius: 8px;
+  border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  background: #0a192f;
-  color: #ffffff;
+  background: #1b1b1b;
+  color: #fff;
 
   font-size: 1rem;
 }
@@ -273,11 +315,11 @@
 .form-grid select:focus {
   outline: none;
   border-color: #007aff;
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.15);
 }
 
 /* ======================================================
-   ACTIONS - INFOCORE STYLE
+    ACTIONS
 ====================================================== */
 .form-actions {
   grid-column: 1 / -1;
@@ -286,49 +328,37 @@
   margin-top: 30px;
 }
 
-/* BOTÓN SECUNDARIO */
 .btn-secondary {
   flex: 1;
   height: 48px;
-  border-radius: 8px;
+  border-radius: 12px;
 
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #eee;
 
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-.btn-secondary:hover {
-  background: rgba(255, 255, 255, 0.05);
 }
 
-/* BOTÓN SUBMIT */
 .form-actions button[type="submit"] {
   flex: 2;
   height: 48px;
-  border-radius: 8px;
-  border: none;
 
-  background: #007aff; /* Azul eléctrico */
-  color: #ffffff;
 
-  font-size: 0.95rem;
+
+  background: linear-gradient(135deg, #007aff, #005ecb)!important;
+  color: #111!important;
+
+  font-size: 0.95rem!important;
   font-weight: 800;
   cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 
-  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
-  transition: all 0.3s ease;
-}
-.form-actions button[type="submit"]:hover {
-  background: #0066cc;
+  box-shadow: 0 10px 20px rgba(0, 122, 255, 0.2);
 }
 
 /* ======================================================
-   RESPONSIVE - INFOCORE STYLE
+    MOBILE – COMPACTO
 ====================================================== */
 @media (max-width: 600px) {
   .modal-card {
@@ -364,7 +394,11 @@
 }
 
 /* ======================================================
-   MOBILE REAL – INFOCORE STYLE
+    CELUS CHICOS (≤420px)
+====================================================== */
+/* ======================================================
+   MOBILE REAL – MODAL COMPACTO
+   (iPhone / Android)
 ====================================================== */
 @media (max-width: 480px) {
   .modal-overlay {
@@ -380,8 +414,10 @@
   .modal-card {
     max-width: 100%;
     width: 100%;
+
     padding: 16px 14px;
-    border-radius: 12px;
+    border-radius: 14px;
+
     max-height: calc(100svh - 24px);
   }
 
@@ -390,6 +426,7 @@
     margin-bottom: 14px;
   }
 
+  /* copiar horario más compacto */
   .copiar-horario {
     padding: 10px;
     margin-bottom: 16px;
@@ -400,10 +437,7 @@
     height: 40px;
   }
 
-  .dias-checkboxes {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
+  /* grid más cerrado */
   .form-grid {
     grid-template-columns: 1fr;
     gap: 10px;
@@ -420,6 +454,7 @@
     font-size: 0.95rem;
   }
 
+  /* botones finales */
   .form-actions {
     margin-top: 18px;
     gap: 8px;
@@ -428,6 +463,5 @@
   .form-actions button {
     height: 44px;
     font-size: 0.9rem;
-    
   }
 }

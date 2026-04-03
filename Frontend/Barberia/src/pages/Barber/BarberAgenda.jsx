@@ -63,10 +63,7 @@ const BarberAgenda = () => {
       )}
 
       {!loading && turnos.length > 0 && (
-        <BarberoAgendaList
-          turnos={turnos}
-          onSelectTurno={() => { }}
-        />
+        <BarberoAgendaList turnos={turnos} />
       )}
     </div>
   );

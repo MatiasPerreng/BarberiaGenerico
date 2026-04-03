@@ -1,62 +1,130 @@
+/* ======================================================
+   ESTADÍSTICAS — Inter, KPIs con cifras tabulares, shell admin-kb-page
+====================================================== */
+
+.estadisticas-page-root {
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
 .estadisticas-page {
   padding: 0 0 40px;
 }
 
-.estadisticas-page h1 {
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: 0.4px;
-  color: #0f172a;
-  margin-bottom: 24px;
+/* Tipografía base: styles/layoutPageTitles.css */
+.estadisticas-h1 {
+  margin: 0 0 24px;
 }
 
-.estadisticas-page h2 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #1e3a8a;
-  margin-bottom: 16px;
+.estadisticas-h1--admin .estadisticas-h1-line1,
+.estadisticas-h1--admin .estadisticas-h1-line2 {
+  display: inline;
+  font-weight: 800;
+  color: #111;
 }
+
+.estadisticas-h1--admin .estadisticas-h1-line2 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Acento dorado bajo el título (admin), misma idea que otras pantallas */
+.estadisticas-page-root.admin-kb-page .estadisticas-h1--admin::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin: 12px 0 0;
+  background: linear-gradient(90deg, #007aff, #60a5fa, #007aff);
+  border-radius: 999px;
+}
+
+/* Móvil: dos líneas fijas */
+@media (max-width: 520px) {
+  .estadisticas-h1--admin {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    line-height: 1.15;
+  }
+
+  .estadisticas-h1--admin .estadisticas-h1-line1,
+  .estadisticas-h1--admin .estadisticas-h1-line2 {
+    display: block;
+  }
+
+  .estadisticas-h1--admin .estadisticas-h1-line1 {
+    font-size: 1.35rem;
+    letter-spacing: -0.03em;
+  }
+
+  .estadisticas-h1--admin .estadisticas-h1-line2 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #4b5563;
+    letter-spacing: 0.02em;
+  }
+}
+
+/* ======================================================
+   FILTROS (toolbar tipo tarjeta)
+====================================================== */
 
 .estadisticas-filtros {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 18px 24px;
   align-items: flex-end;
   margin-bottom: 28px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: var(--kb-admin-bg-surface, #ffffff);
+  border: 1px solid rgba(0, 122, 255, 0.12);
+  box-shadow: var(--kb-shadow-admin-toolbar);
 }
 
 .estadisticas-agrupacion,
 .estadisticas-barbero {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
+  min-width: 0;
 }
 
 .estadisticas-filtros label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #334155;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  color: #7a6228;
 }
 
 .estadisticas-filtros select {
   min-width: 160px;
   padding: 10px 14px;
   border-radius: 12px;
-  border: 1px solid #bfdbfe;
-  font-size: 1rem;
-  font-weight: 500;
+  border: 1px solid rgba(0, 122, 255, 0.28);
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
   background: #fff;
-  color: #0f172a;
+  color: #1a1814;
   cursor: pointer;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .estadisticas-filtros select:focus {
   outline: none;
   border-color: #007aff;
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.18);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
 }
+
+/* ======================================================
+   RESUMEN KPI — números: Inter + tabular-nums (alineación estable)
+====================================================== */
 
 .estadisticas-resumen {
   margin-bottom: 36px;
@@ -65,67 +133,140 @@
 .estadisticas-resumen.admin-cards {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 20px;
+  gap: 18px;
 }
 
-.estadisticas-resumen .admin-card {
+.estadisticas-kpi-card {
+  position: relative;
+  overflow: hidden;
   cursor: default;
-  background: linear-gradient(180deg, #ffffff, #eff6ff);
-  padding: 22px;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.12);
+  background: var(--kb-admin-bg-surface, #ffffff);
+  padding: 20px 20px 20px 22px;
+  border-radius: 16px;
+  border: 1px solid rgba(0, 122, 255, 0.14);
+  box-shadow: var(--kb-shadow-admin-card), var(--kb-shadow-admin-card-inset);
 }
 
-.estadisticas-resumen .admin-card h3 {
-  font-size: 0.75rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #334155;
-  margin: 0 0 10px;
+.estadisticas-kpi-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  border-radius: 16px 0 0 16px;
+  background: linear-gradient(180deg, #007aff, #005ecb);
 }
 
-.estadisticas-resumen .admin-card p {
-  font-size: 1.8rem;
+.estadisticas-kpi-card.success::before {
+  background: linear-gradient(180deg, #34d399, #059669);
+}
+
+.estadisticas-kpi-card.primary::before {
+  background: linear-gradient(180deg, #007aff, #005ecb);
+}
+
+.estadisticas-kpi-card h3 {
+  font-family: inherit;
+  font-size: 0.72rem;
   font-weight: 800;
-  color: #0f172a;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b6560;
+  margin: 0 0 12px;
+}
+
+.estadisticas-kpi-valor {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "lnum" 1;
+  font-size: clamp(1.35rem, 3.5vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  color: #1a1814;
   margin: 0;
+  font-synthesis: none;
+}
+
+/* ======================================================
+   GRÁFICA
+====================================================== */
+
+.estadisticas-chart-title {
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #1a1814;
+  margin: 0 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(0, 122, 255, 0.14);
 }
 
 .estadisticas-chart-container {
-  background: linear-gradient(180deg, #ffffff, #f1f7ff);
-  border: 1px solid #dbeafe;
-  padding: 28px;
+  background: var(--kb-admin-bg-surface, #ffffff);
+  padding: 24px 26px 28px;
   border-radius: 18px;
-  box-shadow: 0 10px 30px rgba(30, 64, 175, 0.1);
+  border: 1px solid rgba(0, 122, 255, 0.1);
+  box-shadow: var(--kb-shadow-admin-card), var(--kb-shadow-admin-card-inset);
   min-height: 360px;
 }
 
-.estadisticas-chart-container h2 {
-  margin-top: 0;
+.estadisticas-chart-scroll {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.estadisticas-chart-inner {
+  width: 100%;
 }
 
 .estadisticas-empty {
-  color: #475569;
-  font-style: italic;
-  padding: 40px;
+  color: #6b6560;
+  font-style: normal;
+  font-weight: 500;
+  padding: 40px 20px;
   text-align: center;
+  font-size: 0.95rem;
 }
 
-.estadisticas-loading,
+/* ======================================================
+   LOADING / ERROR
+====================================================== */
+
+.estadisticas-loading {
+  margin: 24px 0;
+  padding: 18px 20px;
+  text-align: center;
+  font-weight: 600;
+  color: #6b6560;
+  border-radius: 14px;
+  border: 1px dashed rgba(0, 122, 255, 0.35);
+  background: rgba(255, 255, 255, 0.6);
+}
+
 .estadisticas-error {
   margin: 24px 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 600;
+  color: #991b1b;
+  background: rgba(185, 28, 28, 0.08);
+  border: 1px solid rgba(185, 28, 28, 0.2);
 }
 
-.estadisticas-error {
-  color: #b91c1c;
-  font-weight: 600;
-}
+/* ======================================================
+   RESPONSIVE
+====================================================== */
 
 @media (max-width: 600px) {
   .estadisticas-filtros {
     flex-direction: column;
     align-items: stretch;
+    gap: 16px;
+    padding: 14px 16px;
   }
 
   .estadisticas-filtros select {
@@ -134,6 +275,13 @@
   }
 
   .estadisticas-chart-container {
-    padding: 16px;
+    padding: 16px 14px 20px;
+  }
+
+  .estadisticas-chart-scroll {
+    margin-left: -4px;
+    margin-right: -4px;
+    padding-left: 4px;
+    padding-right: 4px;
   }
 }

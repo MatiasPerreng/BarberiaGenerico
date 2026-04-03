@@ -32,6 +32,7 @@ const BarberoDashboard = () => {
           hora: new Date(v.fecha_hora).toLocaleTimeString("es-UY", {
             hour: "2-digit",
             minute: "2-digit",
+            hour12: false,
           }),
 
           cliente_nombre: v.cliente_nombre,
@@ -44,17 +45,16 @@ const BarberoDashboard = () => {
           servicio_duracion: v.servicio_duracion,
 
           estado: v.estado || "CONFIRMADO",
-          precio: v.servicio_precio ?? v.precio ?? 0,
-          servicio_precio: v.servicio_precio ?? v.precio ?? 0,
+          precio:
+            v.servicio_precio ?? v.precio_al_reservar ?? v.precio ?? 0,
+          servicio_precio:
+            v.servicio_precio ?? v.precio_al_reservar ?? v.precio ?? 0,
+          precio_al_reservar: v.precio_al_reservar ?? 0,
         }));
-
         if (!cancelado) setTurnos(normalizados);
       })
       .catch(() => {
-        if (!cancelado) {
-          setTurnos([]);
-          setError("No se pudo cargar tu agenda");
-        }
+        if (!cancelado) setError("No se pudo cargar tu agenda");
       })
       .finally(() => {
         if (!cancelado) setLoading(false);
@@ -98,10 +98,7 @@ const BarberoDashboard = () => {
         onChangeFecha={setFecha}
       />
 
-      <BarberoAgendaList
-        turnos={turnos}
-        onSelectTurno={setTurnoSeleccionado}
-      />
+      <BarberoAgendaList turnos={turnos} />
 
       {turnoSeleccionado && (
         <BarberoTurnoModal

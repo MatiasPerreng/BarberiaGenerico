@@ -1,61 +1,95 @@
-/* =======================================================
-   INFOCORE BARBEROS PAGE STYLE
-   ======================================================= */
+/* ======================================================
+    PAGE
+====================================================== */
 
 .barberos-page-container {
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  font-family: 'Montserrat', sans-serif; /* Fuente corporativa */
-  color: #000000;
+  gap: 22px;
 }
 
-/* =======================================================
-   HEADER
-   ======================================================= */
+.barberos-error {
+  margin: 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  background: rgba(185, 28, 28, 0.08);
+  color: #991b1b;
+  border: 1px solid rgba(185, 28, 28, 0.2);
+}
+
+/* ======================================================
+    HEADER (toolbar tipo tarjeta, alineado a filtros del historial)
+====================================================== */
 
 .barberos-header {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 16px;
   flex-wrap: wrap;
-  width: 100%;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--kb-shadow-admin-toolbar);
 }
 
-.barberos-header h2 {
-  font-size: 1.75rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+.barberos-header h2,
+.barberos-header .kb-page-title {
   margin: 0;
   margin-right: auto;
-  color: #000000;
+  flex: 1 1 200px;
 }
 
-/* Botón Primario: Azul Eléctrico */
 .barberos-btn-primary {
-  padding: 10px 20px;
-  border-radius: 8px; /* Bordes más cuadrados */
-  border: none;
-  background: #007aff;
-  color: #ffffff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
+  padding: 11px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--kb-btn-primary-border);
+  background: var(--kb-btn-primary-bg);
+  color: var(--kb-btn-primary-color);
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+  box-shadow: var(--kb-btn-primary-shadow);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
 }
 
 .barberos-btn-primary:hover {
-  transform: translateY(-2px);
-  background: #0066cc;
-  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+  transform: translateY(-1px);
+  background: var(--kb-btn-primary-hover-bg);
+  color: var(--kb-btn-primary-hover-color);
+  border-color: var(--kb-btn-primary-hover-border);
+  box-shadow: var(--kb-btn-primary-hover-shadow);
 }
 
-/* =======================================================
-   LIST / CARD
-   ======================================================= */
+.barberos-btn-primary:focus-visible {
+  outline: none;
+  box-shadow: var(--kb-btn-primary-focus-ring), var(--kb-btn-primary-shadow);
+}
+
+.barberos-actions button:focus-visible {
+  outline: none;
+  box-shadow: var(--kb-btn-primary-focus-ring), var(--kb-btn-primary-shadow);
+}
+
+.barberos-actions button.danger:focus-visible {
+  box-shadow:
+    0 0 0 3px rgba(185, 28, 28, 0.25),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+/* ======================================================
+    LIST
+====================================================== */
 
 .barberos-list {
   display: flex;
@@ -63,161 +97,280 @@
   gap: 18px;
 }
 
+/* ======================================================
+    CARD
+====================================================== */
+
 .barberos-row {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 22px 26px;
+  position: relative;
+  overflow: hidden;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: var(--kb-admin-bg-surface, #ffffff);
+  border-radius: 18px;
+  padding: 20px 22px 20px 26px;
+  border: 1px solid rgba(0, 122, 255, 0.16);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-  transition: all 0.3s ease;
+  align-items: stretch;
+  gap: 18px;
+  box-shadow: var(--kb-shadow-admin-card), var(--kb-shadow-admin-card-inset);
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    border-color 0.22s ease;
+}
+
+.barberos-row::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(180deg, #007aff, #005ecb);
 }
 
 .barberos-row:hover {
   transform: translateY(-2px);
-  border-color: rgba(0, 122, 255, 0.2);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 122, 255, 0.34);
+  box-shadow: var(--kb-shadow-admin-card-hover), var(--kb-shadow-admin-card-hover-inset);
 }
 
-/* =======================================================
-   AVATAR
-   ======================================================= */
+/* ======================================================
+    AVATAR (contenedor fijo 1:1 — evita img “achatada” en flex)
+====================================================== */
+
+.barberos-avatar-wrap {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  align-self: center;
+  background: linear-gradient(145deg, #eee8dc, #e8e0d4);
+  border: 2px solid rgba(0, 122, 255, 0.55);
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
 
 .barberos-avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-width: none;
   object-fit: cover;
-  border: 2px solid #007aff; /* Borde azul técnico */
-  padding: 2px;
-  background: #ffffff;
+  object-position: center;
 }
 
-/* =======================================================
-   INFO & STATUS
-   ======================================================= */
+/* ======================================================
+    INFO
+====================================================== */
 
 .barberos-info {
   text-align: center;
+  min-width: 0;
 }
 
 .barberos-info strong {
-  font-size: 1.1rem;
-  font-weight: 700;
-  color: #000000;
+  display: block;
+  font-size: 1.125rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.25;
+  color: #1a1814;
 }
 
+/* ======================================================
+    STATUS
+====================================================== */
+
 .barberos-status {
+  align-self: center;
   font-size: 0.75rem;
   font-weight: 700;
-  padding: 6px 16px;
-  border-radius: 4px; /* Bordes cuadrados */
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
 }
 
 .barberos-status.active {
-  background: rgba(0, 122, 255, 0.1);
-  color: #007aff;
-  border: 1px solid rgba(0, 122, 255, 0.2);
+  background: rgba(46, 125, 50, 0.1);
+  color: #1b5e20;
+  border: 1px solid rgba(46, 125, 50, 0.22);
 }
 
 .barberos-status.inactive {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: rgba(127, 29, 29, 0.08);
+  color: #991b1b;
+  border: 1px solid rgba(127, 29, 29, 0.18);
 }
 
-/* =======================================================
-   ACTIONS – INFOCORE STYLE
-   ======================================================= */
+/* ======================================================
+    ACTIONS – MOBILE FIRST (AHORA MÁS CHICOS)
+====================================================== */
 
 .barberos-actions {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-top: 12px;
+  gap: 8px;
+  margin-top: 4px;
 }
 
 .barberos-actions button {
-  padding: 0 16px;
-  height: 40px;
-  border-radius: 8px;
-  border: none;
-  background: #0a192f; /* Fondo oscuro tecnológico */
-  color: #ffffff;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
+  font-family: "Inter", system-ui, sans-serif;
+  padding: 10px 16px;
+  min-height: 42px;
+  border-radius: 11px;
+  border: 1px solid var(--kb-btn-primary-border);
+  background: var(--kb-btn-primary-bg);
+  color: var(--kb-btn-primary-color);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  box-shadow: var(--kb-btn-primary-shadow);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease;
 }
 
 .barberos-actions button:hover {
-  background: #007aff;
-  box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+  transform: translateY(-1px);
+  background: var(--kb-btn-primary-hover-bg);
+  color: var(--kb-btn-primary-hover-color);
+  border-color: var(--kb-btn-primary-hover-border);
+  box-shadow: var(--kb-btn-primary-hover-shadow);
 }
 
-/* Botón de peligro: Rojo Tecnológico */
+.barberos-actions button:active {
+  transform: translateY(0);
+}
+
+/* Eliminar: outline claro, sin bloque negro pesado */
 .barberos-actions button.danger {
-  background: rgba(239, 68, 68, 0.1);
-  color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.3);
+  margin-top: 4px;
+  border: 1.5px solid rgba(185, 28, 28, 0.38);
+  background: #fffefb;
+  color: #b91c1c;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 
 .barberos-actions button.danger:hover {
-  background: #ef4444;
-  color: #ffffff;
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+  background: #fef2f2;
+  border-color: rgba(185, 28, 28, 0.55);
+  color: #991b1b;
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.12);
 }
 
-/* =======================================================
-   DESKTOP COMPACT STYLE
-   ======================================================= */
+/* ======================================================
+    DESKTOP (BOTONES MÁS COMPACTOS)
+====================================================== */
 
 @media (min-width: 768px) {
+  /* Una fila: avatar + datos + estado; segunda fila: acciones a todo el ancho (evita “Eliminar” colgado al forzar 520px) */
   .barberos-row {
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 22px;
-    padding: 16px 26px;
+    align-content: flex-start;
+    gap: 16px 20px;
+    row-gap: 14px;
+    padding: 18px 22px 18px 26px;
+  }
+
+  .barberos-avatar-wrap {
+    align-self: center;
   }
 
   .barberos-info {
     text-align: left;
-    min-width: 160px;
+    flex: 1 1 160px;
+    min-width: 0;
+  }
+
+  .barberos-status {
+    align-self: center;
+    flex-shrink: 0;
   }
 
   .barberos-actions {
+    flex: 1 1 100%;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
-    width: auto;
-    margin-left: auto;
+    justify-content: flex-end;
+    gap: 8px;
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
     margin-top: 0;
+    padding-top: 12px;
+    border-top: 1px solid rgba(0, 122, 255, 0.14);
+    box-sizing: border-box;
   }
 
   .barberos-actions button {
-    height: 36px;
-    font-size: 0.7rem;
-    border-radius: 6px;
+    flex: 0 1 auto;
+    width: auto;
+    min-height: 36px;
+    padding: 8px 12px;
+    font-size: 0.8125rem;
+    border-radius: 10px;
+  }
+
+  .barberos-actions button.danger {
+    margin-top: 0;
+    min-height: 36px;
+    padding: 8px 12px;
   }
 }
 
-/* =======================================================
-   MODAL – INFOCORE DARK TECH
-   ======================================================= */
+/* Tablet / ventana estrecha: misma lógica que móvil (3 columnas), sin pirámide 2+1 */
+@media (min-width: 768px) and (max-width: 960px) {
+  .barberos-actions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    flex-direction: unset;
+    flex-wrap: unset;
+    justify-content: stretch;
+    align-items: stretch;
+  }
+
+  .barberos-actions button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 40px;
+    padding: 8px 10px;
+    font-size: 0.78rem;
+  }
+
+  .barberos-actions button.danger {
+    grid-column: 1 / -1;
+  }
+
+  .barberos-actions button:nth-child(4):not(.danger) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ======================================================
+    MODAL CREAR ACCESO (ESTILOS ORIGINALES)
+====================================================== */
 
 .barberos-access-modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -228,156 +381,269 @@
 .barberos-access-modal-card {
   width: 100%;
   max-width: 480px;
-  background: #000000; /* Negro absoluto */
-  color: #ffffff;
-  border-radius: 16px;
-  padding: 32px;
-  border: 1px solid rgba(0, 122, 255, 0.2); /* Borde azul sutil */
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
-  animation: barberosAccessIn 0.3s ease;
+  background: #111;
+  color: #f5f5f5;
+  border-radius: 22px;
+  padding: 32px 30px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), inset 0 0 0 1px rgba(0, 122, 255, 0.15);
+  animation: barberosAccessIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes barberosAccessIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .barberos-access-modal-title {
-  margin-bottom: 24px;
+  margin-bottom: 26px;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  color: #ffffff;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  color: #007aff;
+  letter-spacing: -0.02em;
+  text-transform: none;
 }
 
 .barberos-access-modal-text {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 18px;
   font-size: 0.9rem;
-  color: #a0aec0;
+  color: #ddd;
+}
+
+.barberos-access-modal-form {
+  display: flex;
+  flex-direction: column;
 }
 
 .barberos-access-modal-form input,
 .barberos-access-modal-form select {
-  height: 48px;
+  height: 46px;
   padding: 0 16px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: #0a192f;
-  color: #ffffff;
-  font-size: 0.95rem;
-  margin-bottom: 16px;
-  transition: all 0.3s ease;
-}
-
-.barberos-access-modal-form input:focus,
-.barberos-access-modal-form select:focus {
-  outline: none;
-  border-color: #007aff;
-  box-shadow: 0 0 10px rgba(0, 122, 255, 0.2);
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #1b1b1b;
+  color: #fff;
+  font-size: 1rem;
+  margin-bottom: 14px;
 }
 
 .barberos-access-modal-actions {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-  margin-top: 24px;
+  margin-top: 22px;
 }
 
 .barberos-access-modal-actions button {
-  height: 48px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  font-weight: 700;
+  height: 52px;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  font-weight: 800;
   cursor: pointer;
   border: none;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 
 .barberos-access-modal-actions button[type="button"] {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: #ffffff;
-}
-
-.barberos-access-modal-actions button[type="button"]:hover {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #f5f5f5;
 }
 
 .barberos-access-modal-actions button[type="submit"] {
-  background: #007aff;
-  color: #ffffff;
-  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+  background: var(--kb-btn-primary-bg);
+  color: var(--kb-btn-primary-hover-color);
+  border: 1px solid var(--kb-btn-primary-border);
+  box-shadow: var(--kb-btn-primary-shadow);
 }
 
 .barberos-access-modal-actions button[type="submit"]:hover {
-  background: #0066cc;
-  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+  background: var(--kb-btn-primary-hover-bg);
+  border-color: var(--kb-btn-primary-hover-border);
+  box-shadow: var(--kb-btn-primary-hover-shadow);
 }
 
-/* =======================================================
-   MISC INFOCORE STYLE
-   ======================================================= */
+@media (max-width: 420px) {
+  .barberos-access-modal-card {
+    padding: 26px 20px;
+  }
+
+  .barberos-access-modal-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .barberos-access-modal-actions button {
+    height: 54px;
+    font-size: 1rem;
+  }
+}
+
+/* ======================================================
+    MISC
+====================================================== */
 
 .barberos-descanso-tag {
-  font-size: 0.75rem;
-  margin-left: 10px;
-  color: #ffffff;
-  background: #0a192f;
-  padding: 4px 12px;
-  border-radius: 4px;
-  margin-top: 6px;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: #0f172a;
+  margin-left: 0;
+  margin-top: 8px;
+  background: rgba(0, 122, 255, 0.14);
+  padding: 7px 12px;
+  border-radius: 9px;
   display: inline-block;
-  border: 1px solid rgba(0, 122, 255, 0.3);
+  border: 1px solid rgba(0, 122, 255, 0.22);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.barberos-modal-field-label {
+  display: block;
+  color: #007aff;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.barberos-modal-field-label--spaced {
+  margin-top: 14px;
 }
 
 .summary-btn-todos {
-  padding: 10px 20px;
+  padding: 8px 16px;
   margin-left: 10px;
-  border-radius: 8px;
-  border: none;
-  background: #ffffff;
-  color: #000000;
-  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 999px;
+  border: 1px solid var(--kb-btn-primary-border);
+  background: var(--kb-btn-primary-bg);
+  color: var(--kb-btn-primary-hover-color);
   font-size: 0.75rem;
+  /* Reducido */
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  box-shadow: var(--kb-btn-primary-shadow);
+  transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
 }
 
 .summary-btn-todos:hover {
-  background: #f4f7fa;
-  border-color: rgba(0, 122, 255, 0.3);
+  background: var(--kb-btn-primary-hover-bg);
+  border-color: var(--kb-btn-primary-hover-border);
+  box-shadow: var(--kb-btn-primary-hover-shadow);
 }
 
 .btn-action.danger {
-  background: rgba(239, 68, 68, 0.1) !important;
-  color: #ef4444 !important;
-  border: 1px solid rgba(239, 68, 68, 0.3) !important;
+  background: linear-gradient(135deg, #440000, #880000) !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(136, 0, 0, 0.3);
 }
-
-.btn-action.danger:hover {
-  background: #ef4444 !important;
-  color: #ffffff !important;
-}
-
-/* =======================================================
-   MOBILE ADAPTATIONS
-   ======================================================= */
 
 @media (max-width: 767px) {
-  .barberos-header h2 {
+  /* Card compacta — avatar + texto; acciones: fila de 3 botones iguales (sin “pirámide” 2+1) */
+  .barberos-row {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 12px;
+    row-gap: 6px;
+    align-items: start;
+    padding: 14px 14px 14px 20px;
+  }
+
+  .barberos-avatar-wrap {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    width: 56px;
+    height: 56px;
+    align-self: start;
+  }
+
+  .barberos-info {
+    grid-column: 2;
+    grid-row: 1;
+    text-align: left;
+    align-self: center;
+  }
+
+  .barberos-status {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: start;
+    justify-self: start;
+  }
+
+  .barberos-descanso-tag {
+    font-size: 0.7rem;
+    padding: 4px 8px;
+    margin-top: 5px;
+    border-radius: 7px;
+    line-height: 1.35;
+  }
+
+  .barberos-actions {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 6px;
+    padding-top: 11px;
+    border-top: 1px solid rgba(0, 122, 255, 0.14);
+    align-items: stretch;
+  }
+
+  .barberos-actions button {
+    min-height: 40px;
+    padding: 8px 6px;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  /* Eliminar: siempre debajo, ancho completo */
+  .barberos-actions button.danger {
+    grid-column: 1 / -1;
+    margin-top: 0;
+  }
+
+  /* “Crear acceso” (4.º botón cuando hay 5): fila propia ancho completo, encima de Eliminar */
+  .barberos-actions button:nth-child(4):not(.danger) {
+    grid-column: 1 / -1;
+  }
+
+  .barberos-header {
+    align-items: stretch;
+  }
+
+  .barberos-header h2,
+  .barberos-header .kb-page-title {
     width: 100%;
-    margin-bottom: 12px;
+    margin-bottom: 4px;
+    flex: none;
   }
 
   .summary-btn-todos,
   .barberos-btn-primary {
     width: 100%; 
     margin-left: 0 !important;  
-    margin-right: 0 !important;  
-    margin-top: 8px;
+    margin-right: 0 !important; 
+    margin-top: 10px;
     padding: 12px;
     text-align: center;
     display: block;

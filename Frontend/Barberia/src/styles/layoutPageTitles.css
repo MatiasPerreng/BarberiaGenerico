@@ -1,0 +1,104 @@
+/* =======================================================
+   Título principal de cada pantalla (admin / barbero)
+   Misma fuente y escala en todas las vistas.
+======================================================= */
+
+.admin-content-inner > h1,
+.barbero-content-inner > h1,
+.admin-content-inner .admin-dashboard-hero h1,
+.barbero-content-inner .barbero-dashboard h1,
+.barbero-content-inner .barbero-agenda-page > h1,
+.admin-content-inner .admin-header-title,
+.barbero-content-inner .admin-header-title,
+.admin-content-inner .kb-title,
+.barbero-content-inner .kb-title,
+.admin-content-inner .perfil-title,
+.barbero-content-inner .perfil-title,
+.admin-content-inner .estadisticas-h1,
+.barbero-content-inner .estadisticas-h1,
+.admin-content-inner .barberos-header h2,
+.admin-content-inner .horarios-header h2,
+.admin-content-inner .barberos-header .kb-page-title,
+.admin-content-inner .horarios-header .kb-page-title,
+.admin-content-inner .blist-header h2,
+.admin-content-inner .kb-page-title {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: clamp(1.35rem, 3.2vw, 1.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+  color: #111;
+}
+
+.admin-content-inner > h1,
+.barbero-content-inner > h1,
+.barbero-content-inner .barbero-dashboard h1,
+.barbero-content-inner .barbero-agenda-page > h1 {
+  margin: 0;
+}
+
+/* Historial: mismo título que el resto; sin mayúsculas forzadas */
+.admin-content-inner .kb-historial .kb-title,
+.barbero-content-inner .kb-historial .kb-title {
+  text-transform: none;
+}
+
+/* Shell Barberos / Horarios — sin segunda capa gris; el color viene del lienzo (.admin-content) */
+.admin-content-inner .admin-kb-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 28px 16px 44px;
+  background: transparent;
+}
+
+@media (min-width: 641px) {
+  .admin-content-inner .admin-kb-page {
+    padding: 36px 20px 48px;
+  }
+}
+
+/* Título con acento azul (InfoCore) */
+.admin-content-inner .kb-page-title {
+  margin: 0;
+  text-align: center;
+}
+
+.admin-content-inner .kb-page-title::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin: 10px auto 0;
+  background: linear-gradient(90deg, #007aff, #60a5fa, #007aff);
+  border-radius: 999px;
+}
+
+.admin-content-inner .barberos-header .kb-page-title,
+.admin-content-inner .horarios-header .kb-page-title {
+  text-align: left;
+}
+
+.admin-content-inner .barberos-header .kb-page-title::after,
+.admin-content-inner .horarios-header .kb-page-title::after {
+  margin: 10px 0 0;
+}
+
+/* Perfil: título + línea azul a la izquierda (header tipo tarjeta) */
+.admin-content-inner .perfil-page-root .perfil-header .kb-page-title,
+.barbero-content-inner .perfil-page-root .perfil-header .kb-page-title {
+  text-align: left;
+}
+
+.admin-content-inner .perfil-page-root .perfil-header .kb-page-title::after,
+.barbero-content-inner .perfil-page-root .perfil-header .kb-page-title::after {
+  margin: 10px 0 0;
+}
+
+/* Lista negra: título + línea azul a la izquierda */
+.admin-content-inner .blist-header .kb-page-title {
+  text-align: left;
+}
+
+.admin-content-inner .blist-header .kb-page-title::after {
+  margin: 10px 0 0;
+}

@@ -1,288 +1,199 @@
-/* =======================================================
-   OVERLAY - INFOCORE STYLE
-======================================================= */
-.success-modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7); /* Ligeramente más claro */
-  backdrop-filter: blur(6px); /* Más blur */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  animation: successFadeIn 0.2s ease;
-  padding: 15px;
-}
+/* Success modal: estilos globales en main.jsx → SuccessModal.css + modalsShared.css */
 
-/* =======================================================
-   CARD - INFOCORE STYLE
-======================================================= */
-.success-modal-card {
-  background: #ffffff; /* Fondo blanco */
-  border-radius: 12px; /* Más cuadrado */
-  padding: 28px;
-  width: 90%;
-  max-width: 420px;
-  text-align: center;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Sombra suave */
-  border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil */
-  animation: successScaleIn 0.25s ease;
-  box-sizing: border-box;
-}
+/* ======================================================
+    PÁGINA (Inter, mismo criterio que Barberos / historial)
+====================================================== */
 
-/* =======================================================
-   TEXTOS - INFOCORE STYLE
-======================================================= */
-.success-modal-title {
-  color: #000000; /* Negro */
-  margin: 0 0 10px 0;
-  font-size: 1.35rem;
-  font-weight: 800;
-  letter-spacing: 0.3px;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.success-modal-text {
-  color: #4a5568; /* Gris texto */
-  font-size: 0.95rem;
-  line-height: 1.55;
-  margin-bottom: 26px;
-}
-
-/* =======================================================
-   ACTIONS - INFOCORE STYLE
-======================================================= */
-.success-modal-actions {
-  display: flex;
-  justify-content: center;
-}
-
-/* Botón Azul */
-.success-modal-btn-confirm {
-  background: #007aff; /* Azul eléctrico */
-  border: none;
-  padding: 12px 26px;
-  border-radius: 8px; /* Cuadrado */
-  cursor: pointer;
-  font-weight: 700;
-  font-size: 0.95rem;
-  color: #ffffff !important; /* Texto blanco */
-  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2);
-  transition: all 0.2s ease;
-  -webkit-appearance: none;
-}
-
-.success-modal-btn-confirm:hover {
-  background: #0066cc; /* Azul oscuro */
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.3);
-}
-
-/* =======================================================
-   ANIMATIONS
-======================================================= */
-@keyframes successFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes successScaleIn {
-  from {
-    opacity: 0;
-    transform: scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-/* =======================================================
-   RESPONSIVE MODAL
-======================================================= */
-@media (max-width: 480px) {
-  .success-modal-card {
-    width: 100%;
-    max-width: none;
-    padding: 22px 18px;
-    border-radius: 12px;
-    margin: 0;
-  }
-
-  .success-modal-btn-confirm {
-    width: 100%;
-  }
-
-  .success-modal-overlay {
-    padding: 20px;
-  }
-}
-
-/* NOTA WHATSAPP */
-.success-modal-whatsapp-note {
-  font-size: 0.8rem;
-  color: #a0aec0; /* Gris sutil */
-  margin-bottom: 20px;
-  margin-top: -5px;
-  font-style: italic;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 5px;
-  max-width: 280px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: left;
-}
-
-.success-modal-whatsapp-note::before {
-  content: "";
-  display: inline-block;
-  flex-shrink: 0;
-  width: 6px;
-  height: 6px;
-  background-color: #25d366; /* Verde WhatsApp */
-  border-radius: 50%;
-  margin-top: 5px;
+.horarios-page-root {
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ======================================================
-   HEADER - INFOCORE STYLE
+    HEADER (toolbar tarjeta, alineado a Barberos / historial)
 ====================================================== */
+
 .horarios-header {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 14px;
-  margin-bottom: 24px;
+  margin-bottom: 22px;
   flex-wrap: wrap;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--kb-shadow-admin-toolbar);
+  border: 1px solid rgba(0, 122, 255, 0.1);
 }
 
-.horarios-header h2 {
-  font-size: 1.75rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
+.horarios-header h2,
+.horarios-header .kb-page-title {
   margin: 0;
   margin-right: auto;
-  color: #000000;
-  font-family: 'Montserrat', sans-serif;
+  flex: 1 1 200px;
 }
 
 /* ======================================================
-   SELECT BARBERO - INFOCORE STYLE
+    SELECT BARBERO
 ====================================================== */
+
 .horarios-select-barbero {
-  height: 40px;
+  height: 44px;
   min-width: 220px;
   padding: 0 42px 0 14px;
 
-  border-radius: 8px; /* Cuadrado */
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: #f4f7fa; /* Gris técnico */
-  color: #000000 !important;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 122, 255, 0.28);
+  background-color: #fff;
+  color: #1a1814 !important;
 
+  font-family: inherit;
   font-size: 0.9rem;
   font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
 
   appearance: none;
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none; 
+  -webkit-tap-highlight-color: transparent; 
 
-  /* Flecha Azul InfoCore */
   background-image:
     linear-gradient(45deg, transparent 50%, #007aff 50%),
     linear-gradient(135deg, #007aff 50%, transparent 50%);
   background-position:
-    calc(100% - 20px) 16px,
-    calc(100% - 14px) 16px;
-  background-size: 5px 5px;
+    calc(100% - 20px) 17px,
+    calc(100% - 14px) 17px;
+  background-size: 6px 6px;
   background-repeat: no-repeat;
 
-  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .horarios-select-barbero:focus {
   outline: none;
   border-color: #007aff;
-  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.1);
+  box-shadow:
+    0 0 0 3px rgba(0, 122, 255, 0.22),
+    0 2px 8px rgba(0, 122, 255, 0.12);
 }
 
 /* ======================================================
-   BOTÓN PRIMARIO - INFOCORE STYLE
+    BOTÓN PRIMARIO (alineado a Barberos)
 ====================================================== */
+
 .horarios-btn-primary {
-  padding: 12px 24px;
-  border-radius: 8px; /* Cuadrado */
-  border: none;
+  padding: 11px 20px;
+  border-radius: 12px;
+  border: 1px solid var(--kb-btn-primary-border);
+  background: var(--kb-btn-primary-bg);
+  color: var(--kb-btn-primary-color) !important;
 
-  background: #007aff; /* Azul eléctrico */
-  color: #ffffff !important;
-
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
 
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2);
+  -webkit-tap-highlight-color: transparent; 
+  box-shadow: var(--kb-btn-primary-shadow);
   -webkit-appearance: none;
 
-  transition: all 0.2s ease;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
 }
 
 .horarios-btn-primary:hover {
-  background: #0066cc;
   transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.3);
+  background: var(--kb-btn-primary-hover-bg);
+  color: var(--kb-btn-primary-hover-color) !important;
+  border-color: var(--kb-btn-primary-hover-border);
+  box-shadow: var(--kb-btn-primary-hover-shadow);
+}
+
+.horarios-btn-primary:focus-visible {
+  outline: none;
+  box-shadow: var(--kb-btn-primary-focus-ring), var(--kb-btn-primary-shadow);
 }
 
 /* ======================================================
-   ESTADOS VACÍOS - INFOCORE STYLE
+    ESTADOS VACÍOS
 ====================================================== */
+
 .horarios-empty {
-  margin-top: 60px;
-  padding: 40px 20px;
+  margin-top: 32px;
+  padding: 36px 24px;
   text-align: center;
-  border-radius: 12px;
-  background: #f4f7fa; /* Gris técnico */
-  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 18px;
+  background: var(--kb-admin-bg-surface, #ffffff);
+  border: 1px solid rgba(0, 122, 255, 0.18);
+  box-shadow: var(--kb-shadow-admin-card), var(--kb-shadow-admin-card-inset);
 }
 
 .horarios-empty-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-  color: #000000;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  color: #1a1814;
 }
 
 .horarios-empty-subtitle {
   font-size: 0.95rem;
-  color: #a0aec0; /* Gris sutil */
+  color: #575049;
+  line-height: 1.5;
 }
 
-/* ======================================================
-   ERRORES - INFOCORE STYLE
-======================================================= */
-.horarios-error {
-  background: rgba(239, 68, 68, 0.1); /* Rojo suave */
-  color: #ef4444; /* Rojo técnico */
-  padding: 10px 14px;
-  border-radius: 8px;
-  font-size: 0.85rem;
-  margin-bottom: 14px;
+.horarios-loading {
+  margin: 28px 0 8px;
   text-align: center;
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #575049;
+  padding: 20px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px dashed rgba(0, 122, 255, 0.35);
 }
 
 /* ======================================================
-   RESPONSIVE HEADER/BTN
+    ERRORES
 ====================================================== */
+
+.horarios-error {
+  font-family: inherit;
+  background: rgba(185, 28, 28, 0.08);
+  color: #991b1b;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-align: center;
+  border: 1px solid rgba(185, 28, 28, 0.2);
+}
+
+/* ======================================================
+    MEDIA QUERY 600 (1)
+====================================================== */
+
 @media (max-width: 600px) {
   .horarios-header {
     flex-direction: column;
     align-items: stretch;
-    gap: 10px;
+    gap: 12px;
+  }
+
+  .horarios-header h2,
+  .horarios-header .kb-page-title {
+    width: 100%;
+    flex: none;
   }
 
   .horarios-select-barbero,
@@ -292,118 +203,252 @@
 }
 
 /* ======================================================
-   BOTÓN ELIMINAR - INFOCORE STYLE
-======================================================= */
-.btn-delete {
-  min-width: 96px;
-  padding: 8px 18px;
-  border-radius: 8px; /* Cuadrado */
-  border: none;
-  background: rgba(239, 68, 68, 0.1); /* Fondo rojo suave */
-  color: #faf8f8 !important; /* Rojo técnico */
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.6px;
+    BOTÓN ELIMINAR — solo dentro de la página Horarios
+    (evita pisar .btn-delete en Servicios u otras vistas)
+====================================================== */
+
+.horarios-page-root .btn-delete {
+  font-family: "Inter", system-ui, sans-serif;
+  min-width: 88px;
+  padding: 8px 14px;
+
+  border-radius: 11px;
+  border: 1.5px solid rgba(185, 28, 28, 0.38);
+
+  background: #fffefb;
+  color: #b91c1c !important;
+
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
+
   cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: transparent; 
   -webkit-appearance: none;
-  transition: all 0.2s ease;
+
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+
+  transition:
+    background 0.18s ease,
+    transform 0.15s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
 }
 
-.btn-delete:hover {
-  background: #ef4444; /* Rojo sólido */
-  color: #ffffff !important;
+.horarios-page-root .btn-delete:hover {
+  background: #fef2f2;
+  border-color: rgba(185, 28, 28, 0.5);
+  color: #991b1b !important;
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.12);
 }
 
-.btn-delete:active {
+.horarios-page-root .btn-delete:active {
   transform: translateY(0);
 }
 
+.horarios-page-root .btn-delete:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(185, 28, 28, 0.22),
+    0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
 /* ======================================================
-   FILTROS - INFOCORE STYLE
+    FILTROS (DÍAS Y VIGENCIA) — segmentos estilo King Barber
 ====================================================== */
+
 .horarios-filtros {
   display: flex;
-  gap: 12px;
-  margin-bottom: 22px;
   flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 18px 24px;
+  margin-bottom: 22px;
+  padding: 16px 18px;
+  border-radius: 18px;
+  background: var(--kb-admin-bg-surface, #ffffff);
+  box-shadow: var(--kb-shadow-admin-filtros), var(--kb-shadow-admin-filtros-inset);
+  border: 1px solid rgba(0, 122, 255, 0.16);
+}
+
+.filtro-grupo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.filtro-grupo--dias {
+  flex: 1 1 280px;
+}
+
+.filtro-grupo--vigencia {
+  flex: 0 1 auto;
+  margin-left: auto;
+}
+
+.filtro-grupo-label {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #64748b;
 }
 
 .filtro-dias {
   display: flex;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .filtro-dia {
-  padding: 8px 14px;
-  border-radius: 8px; /* Cuadrado */
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: #ffffff !important;
-  color: #000000 !important;
-  font-size: 0.8rem;
+  font-family: inherit;
+  padding: 8px 12px;
+  min-height: 38px;
+  min-width: 44px;
+  border-radius: 11px;
+  border: 1px solid rgba(0, 122, 255, 0.28);
+  background: #fff !important;
+  color: #1a1814 !important;
+  font-size: 0.78rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
   cursor: pointer;
-  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent; 
+  -webkit-appearance: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  transition:
+    background 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease,
+    transform 0.15s ease;
+}
+
+.filtro-dia:hover {
+  border-color: rgba(0, 122, 255, 0.45);
+  box-shadow: 0 2px 8px rgba(0, 122, 255, 0.12);
 }
 
 .filtro-dia.active {
-  background: #007aff !important; /* Azul eléctrico */
-  border-color: #007aff;
-  color: #ffffff !important;
+  background: var(--kb-btn-primary-hover-bg) !important;
+  border-color: var(--kb-btn-primary-hover-border) !important;
+  color: var(--kb-btn-primary-hover-color) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 2px 10px rgba(0, 122, 255, 0.12);
 }
 
 .filtro-vigencia {
-  display: flex;
-  gap: 8px;
+  display: inline-flex;
+  padding: 4px;
+  gap: 4px;
+  border-radius: 14px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 122, 255, 0.2);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 .filtro-vigencia button {
-  padding: 8px 16px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  background: #ffffff !important;
-  color: #000000 !important;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-family: inherit;
+  padding: 9px 18px;
+  border-radius: 11px;
+  border: none;
+  background: transparent !important;
+  color: #575049 !important;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.filtro-vigencia button:hover {
+  color: #1a1814 !important;
+  background: rgba(255, 255, 255, 0.55) !important;
 }
 
 .filtro-vigencia button.active {
-  background: #007aff !important; /* Azul eléctrico */
-  color: #ffffff !important;
-  border-color: #007aff;
+  background: var(--kb-btn-primary-hover-bg) !important;
+  color: var(--kb-btn-primary-hover-color) !important;
+  border: 1px solid var(--kb-btn-primary-hover-border) !important;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 2px 10px rgba(0, 122, 255, 0.12);
+}
+
+.filtro-vigencia button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.35);
+}
+
+.filtro-vigencia button.active:focus-visible {
+  box-shadow:
+    0 0 0 2px rgba(0, 122, 255, 0.45),
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 2px 10px rgba(0, 122, 255, 0.25);
 }
 
 /* ======================================================
-   RESPONSIVE FILTROS
+    FILTROS — móvil
 ====================================================== */
+
 @media (max-width: 600px) {
   .horarios-filtros {
     flex-direction: column;
+    align-items: stretch;
+    align-content: flex-start;
     gap: 14px;
   }
 
-  .filtro-dias {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    padding: 4px 2px 8px;
-    -webkit-overflow-scrolling: touch;
+  /* Evita que flex-grow:1 del desktop estire el bloque “Días” y deje un hueco antes de Vigencia */
+  .filtro-grupo--dias,
+  .filtro-grupo--vigencia {
+    flex: 0 0 auto;
+    width: 100%;
+    min-height: 0;
   }
 
-  .filtro-dias::-webkit-scrollbar {
-    display: none;
+  .filtro-grupo--vigencia {
+    margin-left: 0;
+  }
+
+  /* 6 días en grilla 3×2: caben en el ancho sin scroll lateral */
+  .filtro-dias {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px 5px;
+    overflow: visible;
+    padding: 2px 0 4px;
+    margin: 0;
   }
 
   .filtro-dia {
-    flex: 0 0 auto;
+    min-width: 0;
+    width: 100%;
+    justify-self: stretch;
+    padding: 7px 2px;
+    min-height: 34px;
+    font-size: clamp(0.65rem, 2.8vw, 0.76rem);
+    letter-spacing: 0;
+    text-align: center;
     white-space: nowrap;
+  }
+
+  .filtro-vigencia {
+    width: 100%;
+    justify-content: stretch;
   }
 
   .filtro-vigencia button {
     flex: 1;
-    height: 40px;
+    text-align: center;
+    padding-left: 12px;
+    padding-right: 12px;
   }
 }

@@ -1,19 +1,48 @@
-import { useState } from "react";
-import API_URL from "../../../services/api";
+import { useState, useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
+import { apiFetch } from "../../../services/apiClient";
 import "./TurnoActions.css";
+
+const parseFechaHora = (fechaHora) => {
+  if (!fechaHora) return new Date(NaN);
+  const s = String(fechaHora).trim();
+  const isoLike = s.includes("T") ? s : s.replace(" ", "T");
+  return new Date(isoLike);
+};
 
 const TurnoActions = ({ turno, onCancelSuccess }) => {
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const cerrarModal = useCallback(() => {
+    if (!loading) setShowModal(false);
+  }, [loading]);
+
+  useEffect(() => {
+    if (!showModal) return;
+
+    const onKeyDown = (e) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        cerrarModal();
+      }
+    };
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.removeEventListener("keydown", onKeyDown);
+    };
+  }, [showModal, cerrarModal]);
+
   const cancelarTurno = async () => {
     try {
       setLoading(true);
-      await fetch(`${API_URL}/visitas/${turno.id_visita}/cancelar`, {
+      await apiFetch(`/visitas/${turno.id_visita}/cancelar`, {
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
       });
 
       setShowModal(false);
@@ -31,56 +60,79 @@ const TurnoActions = ({ turno, onCancelSuccess }) => {
     }
   };
 
+  const dt = parseFechaHora(turno.fecha_hora);
+
+  const modal =
+    showModal &&
+    createPortal(
+      <div
+        className="cancel-modal-overlay-unique"
+        role="presentation"
+        onClick={cerrarModal}
+      >
+        <div
+          className="cancel-modal-card-unique"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="cancel-modal-title"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <h2 id="cancel-modal-title">Cancelar turno</h2>
+
+          <p>
+            ¿Estás seguro de cancelar el turno de{" "}
+            <strong>{turno.cliente_nombre}</strong>?
+          </p>
+
+          <p className="cancel-modal-sub-unique">
+            {Number.isNaN(dt.getTime())
+              ? "—"
+              : `${dt.toLocaleDateString("es-UY")} · ${dt.toLocaleTimeString("es-UY", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: false,
+                })}`}
+          </p>
+
+          <div className="cancel-modal-actions-unique">
+            <button
+              type="button"
+              className="cancel-modal-btn-cancel-unique"
+              disabled={loading}
+              onClick={cerrarModal}
+            >
+              No, volver
+            </button>
+
+            <button
+              type="button"
+              className="cancel-modal-btn-confirm-unique"
+              disabled={loading}
+              onClick={cancelarTurno}
+            >
+              {loading ? "Cancelando..." : "Sí, cancelar"}
+            </button>
+          </div>
+        </div>
+      </div>,
+      document.body
+    );
+
   return (
     <>
-      {/* BOTÓN: Posicionado absolutamente para no mover el texto */}
       <button
+        type="button"
         className="turno-btn-cancel-unique"
         title="Cancelar turno"
-        onClick={() => setShowModal(true)}
+        onClick={(e) => {
+          e.stopPropagation();
+          setShowModal(true);
+        }}
       >
         ✕
       </button>
 
-      {/* MODAL: Estilo Oscuro y Dorado solicitado */}
-      {showModal && (
-        <div className="cancel-modal-overlay-unique">
-          <div className="cancel-modal-card-unique">
-            <h2>Cancelar turno</h2>
-
-            <p>
-              ¿Estás seguro de cancelar el turno de{" "}
-              <strong>{turno.cliente_nombre}</strong>?
-            </p>
-
-            <p className="cancel-modal-sub-unique">
-              {new Date(turno.fecha_hora).toLocaleDateString("es-UY")} ·{" "}
-              {new Date(turno.fecha_hora).toLocaleTimeString("es-UY", {
-                hour: "2-digit",
-                minute: "2-digit",
-              })}
-            </p>
-
-            <div className="cancel-modal-actions-unique">
-              <button
-                className="cancel-modal-btn-cancel-unique"
-                disabled={loading}
-                onClick={() => setShowModal(false)}
-              >
-                No, volver
-              </button>
-
-              <button
-                className="cancel-modal-btn-confirm-unique"
-                disabled={loading}
-                onClick={cancelarTurno}
-              >
-                {loading ? "Cancelando..." : "Sí, cancelar"}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      {modal}
     </>
   );
 };

@@ -1,0 +1,166 @@
+/* =======================================================
+   Modales — Inter (misma base que Horarios / Barberos) +
+   ajustes móvil para que entren en pantalla (scroll interno)
+======================================================= */
+
+.success-modal-overlay,
+.password-modal-overlay,
+.edit-profile-overlay,
+.barberos-access-modal-overlay,
+.cancel-modal-overlay-unique,
+.admin-modal-overlay,
+.modal-overlay,
+.servicio-modal,
+.booking-overlay,
+.af-booking-overlay,
+.aa-booking-overlay {
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.admin-modal-overlay {
+  padding: max(16px, env(safe-area-inset-top, 0px))
+    max(16px, env(safe-area-inset-right, 0px))
+    max(16px, env(safe-area-inset-bottom, 0px))
+    max(16px, env(safe-area-inset-left, 0px));
+  box-sizing: border-box;
+}
+
+/* BarberoTurnoModal: usa .modal-overlay > .modal (sin .modal-card) */
+.modal-overlay > .modal {
+  width: 100%;
+  max-width: 420px;
+  background: #111;
+  color: #f5f5f5;
+  border-radius: 18px;
+  padding: 22px 20px;
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.85),
+    inset 0 0 0 1px rgba(0, 122, 255, 0.15);
+  max-height: min(90dvh, calc(100svh - 32px));
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.modal-overlay > .modal h2,
+.modal-overlay > .modal h3 {
+  font-family: inherit;
+  color: #7fc0ff;
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.modal-overlay > .modal p {
+  font-family: inherit;
+  color: #d1d5db;
+  margin: 8px 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.modal-overlay > .modal textarea {
+  font-family: inherit;
+  width: 100%;
+  min-height: 88px;
+  margin: 12px 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #1b1b1b;
+  color: #f5f5f5;
+  font-size: 0.95rem;
+  box-sizing: border-box;
+}
+
+.modal-overlay > .modal textarea:focus {
+  outline: none;
+  border-color: #007aff;
+  box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
+}
+
+.modal-overlay > .modal .acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.modal-overlay > .modal .acciones button {
+  font-family: inherit;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: linear-gradient(145deg, #007aff, #005ecb);
+  color: #ffffff;
+}
+
+.modal-overlay > .modal .acciones button.danger {
+  background: #fffefb;
+  color: #b91c1c;
+  border: 1.5px solid rgba(185, 28, 28, 0.38);
+}
+
+/* =======================================================
+   Móvil: overlay con scroll; tarjeta limitada al viewport
+======================================================= */
+@media (max-width: 480px) {
+  .success-modal-overlay,
+  .password-modal-overlay,
+  .edit-profile-overlay,
+  .barberos-access-modal-overlay,
+  .cancel-modal-overlay-unique,
+  .admin-modal-overlay,
+  .modal-overlay,
+  .servicio-modal,
+  .booking-overlay {
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: max(10px, env(safe-area-inset-top, 0px));
+    padding-right: max(12px, env(safe-area-inset-right, 0px));
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    padding-left: max(12px, env(safe-area-inset-left, 0px));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .af-booking-overlay,
+  .aa-booking-overlay {
+    font-family: "Inter", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    align-items: flex-start;
+    padding-top: max(10px, env(safe-area-inset-top, 0px));
+    padding-left: max(12px, env(safe-area-inset-left, 0px));
+    padding-right: max(12px, env(safe-area-inset-right, 0px));
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .success-modal-card,
+  .password-modal-card,
+  .edit-profile-card,
+  .barberos-access-modal-card,
+  .cancel-modal-card-unique,
+  .admin-modal,
+  .servicio-form,
+  .booking-container {
+    max-height: min(88dvh, calc(100svh - 24px));
+    overflow-y: auto;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .modal-card {
+    max-height: min(88dvh, calc(100svh - 24px));
+  }
+
+  .modal-overlay > .modal {
+    max-height: min(88dvh, calc(100svh - 24px));
+  }
+}

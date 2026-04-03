@@ -1,0 +1,35 @@
+/* Sombras + fondos admin — lienzo InfoCore; acentos azules */
+
+:root {
+  /* Botón primario “ghost” (toolbar / cards admin): blanco + borde azul */
+  --kb-btn-primary-bg: #ffffff;
+  --kb-btn-primary-color: #0f172a;
+  --kb-btn-primary-border: rgba(0, 122, 255, 0.38);
+  --kb-btn-primary-hover-bg: #eff6ff;
+  --kb-btn-primary-hover-color: #005ecb;
+  --kb-btn-primary-hover-border: rgba(0, 122, 255, 0.55);
+  --kb-btn-primary-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), inset 0 1px 0 #ffffff;
+  --kb-btn-primary-hover-shadow: 0 4px 18px rgba(0, 122, 255, 0.14);
+  --kb-btn-primary-focus-ring: 0 0 0 3px rgba(0, 122, 255, 0.22);
+
+  --kb-app-bg-canvas: #f4f7fa;
+  --kb-admin-bg-surface: #ffffff;
+  --kb-shadow-admin-toolbar: 0 2px 8px rgba(0, 0, 0, 0.03), 0 10px 32px rgba(0, 64, 128, 0.06);
+
+  --kb-shadow-admin-card: 0 3px 12px rgba(0, 0, 0, 0.04), 0 14px 40px rgba(0, 64, 128, 0.06);
+  --kb-shadow-admin-card-inset: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+
+  --kb-shadow-admin-card-hover: 0 5px 16px rgba(0, 0, 0, 0.05), 0 18px 48px rgba(0, 0, 0, 0.07),
+    0 8px 28px rgba(0, 122, 255, 0.1);
+  --kb-shadow-admin-card-hover-inset: inset 0 1px 0 rgba(255, 255, 255, 0.72);
+
+  --kb-shadow-admin-filtros: 0 2px 8px rgba(0, 0, 0, 0.03), 0 10px 32px rgba(0, 0, 0, 0.05);
+  --kb-shadow-admin-filtros-inset: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  --kb-shadow-admin-dark: 0 8px 28px rgba(0, 0, 0, 0.18), 0 22px 52px rgba(0, 0, 0, 0.1);
+  --kb-shadow-admin-dark-inset: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  --kb-shadow-admin-dark-hover: 0 12px 36px rgba(0, 0, 0, 0.2), 0 26px 60px rgba(0, 0, 0, 0.12),
+    0 8px 28px rgba(0, 122, 255, 0.08);
+  --kb-shadow-admin-dark-hover-inset: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}

@@ -1,250 +1,131 @@
-/* =======================================================
-   CARD DE TURNO – TEMA INFOCORE
-======================================================= */
-
-.turno-row {
-  position: relative;
-
-  /* CAMBIO: Degradado oscuro tipo infocore */
-  background: linear-gradient(180deg, #1a202c, #000000);
-  color: #f5f5f5;
-
-  border-radius: 12px;
-  padding: 18px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
-  font-family: 'Montserrat', sans-serif;
-
-  box-shadow:
-    0 10px 30px rgba(0,0,0,0.55),
-    inset 0 0 0 1px rgba(255,255,255,0.04);
-
-  transition: transform .25s ease, box-shadow .25s ease;
-
-  margin-bottom: 14px;
-}
-
-.turno-row:hover {
-  transform: translateY(-4px);
-
-  box-shadow:
-    0 20px 45px rgba(0,0,0,0.85),
-    inset 0 0 0 1px rgba(0,122,255,0.2);
-}
+/* Card base: ver TurnosList.css (.admin-turno-card.turno-row) */
 
 /* =======================================================
-   BOTON CANCELAR (CRUZ)
+   LA CRUZ (Fijada arriba a la derecha)
 ======================================================= */
-
 .turno-btn-cancel-unique {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 10px;
+  right: 10px;
 
   width: 34px;
   height: 34px;
-
-  border-radius: 8px;
+  border-radius: 10px;
+  background: rgba(185, 28, 28, 0.08);
   border: none;
 
-  background: rgba(239,68,68,0.12);
-  color: #ef4444;
-
+  color: #b91c1c;
   font-size: 16px;
   font-weight: 700;
 
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 }
 
 .turno-btn-cancel-unique:hover {
-  background: rgba(239,68,68,0.25);
+  background: rgba(185, 28, 28, 0.18);
   transform: scale(1.05);
 }
 
 /* =======================================================
-   MODAL OVERLAY
+   MODAL OSCURO / DORADO
 ======================================================= */
-
 .cancel-modal-overlay-unique {
   position: fixed;
   inset: 0;
-
-  background: rgba(0,0,0,0.85);
-  backdrop-filter: blur(4px);
-
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(3px);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  z-index: 9999;
-
-  animation: cancelFadeIn .2s ease;
+  /* Por encima del drawer del dashboard (z-index ~2000) */
+  z-index: 12000;
+  padding: 16px;
+  animation: cancelFadeIn 0.2s ease;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
-
-/* =======================================================
-   MODAL CARD
-======================================================= */
 
 .cancel-modal-card-unique {
-
-  background: linear-gradient(180deg, #1a202c, #000000);
-
-  border-radius: 12px;
+  background: linear-gradient(180deg, #141414, #0f0f0f);
+  border-radius: 16px;
   padding: 28px;
-
   width: 90%;
   max-width: 420px;
-
   text-align: center;
-
-  font-family: 'Montserrat', sans-serif;
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.9),
-    inset 0 0 0 1px rgba(255,255,255,0.05);
-
-  animation: cancelScaleIn .25s ease;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(0, 122, 255, 0.12);
+  border: 1px solid rgba(0, 122, 255, 0.15);
+  animation: cancelScaleIn 0.25s ease;
+  box-sizing: border-box;
 }
 
-/* TITULO */
-
 .cancel-modal-card-unique h2 {
+  font-family: inherit;
   color: #007aff;
   margin-bottom: 10px;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 800;
+  letter-spacing: -0.02em;
   margin-top: 0;
 }
 
-/* TEXTO */
-
 .cancel-modal-card-unique p {
-  color: #eaeaea !important;
+  color: #d1d5db !important;
   margin-bottom: 10px;
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.55;
 }
 
 .cancel-modal-sub-unique {
   font-size: 13px;
-  color: #a0aec0;
+  color: #6b7280;
   margin-bottom: 26px !important;
 }
 
 /* =======================================================
-   BOTONES
+   BOTONES DEL MODAL
 ======================================================= */
-
 .cancel-modal-actions-unique {
   display: flex;
   gap: 12px;
   justify-content: center;
 }
 
-/* CONFIRMAR */
-
 .cancel-modal-btn-confirm-unique {
-
-  background: #007aff;
+  background: linear-gradient(135deg, #007aff, #60a5fa);
   border: none;
-
   padding: 12px 22px;
-
-  border-radius: 8px;
-
+  border-radius: 12px;
   cursor: pointer;
-
   font-weight: 700;
-  font-size: 0.9rem;
-
-  color: white;
-
-  box-shadow:
-    0 6px 16px rgba(0,122,255,0.35);
-
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease,
-    background .2s ease;
+  font-size: 0.95rem;
+  color: #111;
+  box-shadow: 0 8px 22px rgba(0, 122, 255, 0.35);
+  transition: transform 0.15s ease;
 }
-
-.cancel-modal-btn-confirm-unique:hover {
-
-  background: #0066cc;
-
-  transform: translateY(-2px);
-
-  box-shadow:
-    0 10px 24px rgba(0,122,255,0.55);
-}
-
-/* CANCELAR */
 
 .cancel-modal-btn-cancel-unique {
-
   background: transparent;
-
-  border: 1px solid rgba(255,255,255,0.15);
-
+  border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 12px 22px;
-
-  border-radius: 8px;
-
+  border-radius: 12px;
   cursor: pointer;
-
   font-weight: 600;
-
   color: #e5e7eb;
-
-  transition: all .2s ease;
 }
 
-.cancel-modal-btn-cancel-unique:hover {
-  background: rgba(255,255,255,0.05);
-}
-
-/* =======================================================
-   ANIMACIONES
-======================================================= */
-
-@keyframes cancelFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
+/* Animaciones */
+@keyframes cancelFadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes cancelScaleIn {
-  from {
-    opacity: 0;
-    transform: scale(.96);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
 }
 
-/* =======================================================
-   MOBILE
-======================================================= */
-
+/* Mobile Fix */
 @media (max-width: 480px) {
-
-  .cancel-modal-actions-unique {
-    flex-direction: column;
-  }
-
-  .cancel-modal-btn-confirm-unique,
-  .cancel-modal-btn-cancel-unique {
-    width: 100%;
-  }
-
+  .cancel-modal-actions-unique { flex-direction: column; }
+  .cancel-modal-btn-confirm-unique, .cancel-modal-btn-cancel-unique { width: 100%; }
 }

@@ -54,7 +54,7 @@ body.modal-open {
     width: 6px;
 }
 .booking-container::-webkit-scrollbar-thumb {
-    background: #e6c77b;
+    background: #007aff;
     border-radius: 10px;
 }
 
@@ -100,8 +100,8 @@ body.modal-open {
     display: inline-block;
     text-decoration: none;
     border-radius: 50px;
-    border: 1px solid #e6c77b;
-    color: #e6c77b;
+    border: 1px solid #007aff;
+    color: #007aff;
     padding: 14px 40px;
     transition: all 0.3s ease;
     animation: fadeInUp 1.6s ease-out forwards;
@@ -111,10 +111,10 @@ body.modal-open {
 }
 
 .hero-btn:hover {
-    background: #e6c77b;
+    background: #007aff;
     color: #000;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(230, 199, 123, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 122, 255, 0.3);
 }
 
 /* =======================================================
@@ -136,7 +136,7 @@ body.modal-open {
    ======================================================= */
 input, select, textarea, button {
     /* Cambia el azul de los controles (checks, radio, etc) por tu dorado */
-    accent-color: #e6c77b; 
+    accent-color: #007aff; 
     /* Elimina el recuadro azul al tocar en Safari */
     -webkit-tap-highlight-color: transparent; 
 }

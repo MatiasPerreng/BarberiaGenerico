@@ -3,10 +3,8 @@
 ========================= */
 
 .barbero-summary {
-
-  background: linear-gradient(180deg,#1a202c,#000000);
-
-  border-radius: 12px;
+  background: #ffffff;
+  border-radius: 20px;
   padding: 22px 26px;
 
   display: flex;
@@ -14,10 +12,7 @@
   justify-content: space-between;
   gap: 24px;
 
-  box-shadow:
-    0 20px 40px rgba(0,0,0,0.8),
-    inset 0 0 0 1px rgba(255,255,255,0.04);
-
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.08);
   margin-bottom: 28px;
 }
 
@@ -38,23 +33,17 @@
 }
 
 .summary-label {
-
-  font-size: .7rem;
-
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-
-  color: #cbd5e1;
-
+  color: #888;
   font-weight: 700;
 }
 
 .summary-value {
-
   font-size: 1.4rem;
   font-weight: 800;
-
-  color: #ffffff;
+  color: #111;
 }
 
 .summary-value.highlight {
@@ -73,54 +62,41 @@
 }
 
 .summary-date-wrapper label {
-
-  font-size: .7rem;
-
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-
-  color: #cbd5e1;
-
+  color: #888;
   font-weight: 700;
 }
 
+/* Input fecha */
 .barbero-summary-date {
-
   height: 42px;
   padding: 0 14px;
 
-  border-radius: 8px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
 
-  border: 1px solid #d1d5db;
-
-  background: #ffffff;
-
-  font-size: .95rem;
+  font-size: 0.95rem;
   font-weight: 700;
-
-  color: #111827;
+  color: #111;
 
   cursor: pointer;
-
-  transition:
-    border-color .2s ease,
-    box-shadow .2s ease,
-    background .2s ease;
+  transition: border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
 }
 
 .barbero-summary-date:hover {
-
-  border-color: #9ca3af;
+  background: #fff;
+  border-color: #007aff;
 }
 
 .barbero-summary-date:focus {
-
   outline: none;
-
   border-color: #007aff;
-
-  box-shadow:
-    0 0 0 3px rgba(0,122,255,0.25);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.25);
 }
 
 /* =========================
@@ -128,7 +104,6 @@
 ========================= */
 
 @media (max-width: 900px) {
-
   .barbero-summary {
     flex-direction: column;
     align-items: stretch;
@@ -149,20 +124,20 @@
 }
 
 /* =========================
-   RESPONSIVE – MOBILE
+   RESPONSIVE – MOBILE (🔥 COMPRIMIDO)
 ========================= */
 
 @media (max-width: 600px) {
-
   .barbero-summary {
-    padding: 14px 16px;
-    gap: 12px;
-    margin-bottom: 16px;
+    padding: 14px 16px;   
+    gap: 12px;           
+    margin-bottom: 16px;  
   }
 
+  /* TODO EN COLUMNA */
   .barbero-summary-info {
     flex-direction: column;
-    gap: 4px;
+    gap: 4px;         
   }
 
   .summary-item {
@@ -171,11 +146,11 @@
   }
 
   .summary-label {
-    font-size: .65rem;
+    font-size: 0.65rem;  
   }
 
   .summary-value {
-    font-size: 1.35rem;
+    font-size: 1.35rem;   
   }
 
   .summary-date-wrapper {
@@ -185,13 +160,29 @@
 
   .summary-date-wrapper label {
     text-align: center;
-    font-size: .65rem;
+    font-size: 0.65rem;
   }
 
   .barbero-summary-date {
     width: 100%;
-    height: 38px;
-    font-size: .9rem;
+    height: 38px;        
+    font-size: 0.9rem;
+    max-width: 100%;
+    box-sizing: border-box;
+
+    /* iOS Safari fixes */
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .barbero-summary-date::-webkit-date-and-time-value {
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .summary-date-wrapper {
+    max-width: 100%;
+    overflow: hidden;
   }
 }
 
@@ -200,11 +191,8 @@
 ====================================================== */
 
 .barbero-agenda {
-
   display: grid;
-
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-
   gap: 18px;
 }
 
@@ -213,32 +201,21 @@
 ====================================================== */
 
 .barbero-block {
-
-  background: linear-gradient(180deg,#1a202c,#000000);
-
-  border-radius: 12px;
-
+  background: linear-gradient(180deg, #ffffff, #f6f7f8);
+  border-radius: 16px;
   padding: 18px 16px;
 
-  box-shadow:
-    0 14px 28px rgba(0,0,0,0.8),
-    inset 0 0 0 1px rgba(255,255,255,0.04);
-
-  transition: transform .2s ease, box-shadow .2s ease;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   display: flex;
   flex-direction: column;
-
   gap: 8px;
 }
 
 .barbero-block:hover {
-
   transform: translateY(-3px);
-
-  box-shadow:
-    0 20px 40px rgba(0,0,0,0.9),
-    inset 0 0 0 1px rgba(0,122,255,0.2);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
 }
 
 /* ======================================================
@@ -246,14 +223,10 @@
 ====================================================== */
 
 .barbero-block h4 {
-
   margin: 0;
-
   font-size: 1.05rem;
-
   font-weight: 700;
-
-  color: #ffffff;
+  color: #111;
 }
 
 /* ======================================================
@@ -261,36 +234,25 @@
 ====================================================== */
 
 .barbero-block small {
-
   align-self: flex-start;
-
   padding: 5px 14px;
 
   border-radius: 999px;
-
-  font-size: .75rem;
-
+  font-size: 0.75rem;
   font-weight: 800;
-
-  letter-spacing: .4px;
+  letter-spacing: 0.4px;
 }
 
-/* ACTIVO */
-
+/* Estado activo */
 .barbero-block small {
-
-  background: rgba(34,197,94,0.15);
-
-  color: #22c55e;
+  background: rgba(46, 125, 50, 0.12);
+  color: #1b5e20;
 }
 
-/* INACTIVO */
-
+/* Estado inactivo */
 .barbero-block.inactivo small {
-
-  background: rgba(239,68,68,0.15);
-
-  color: #ef4444;
+  background: rgba(164, 0, 0, 0.12);
+  color: #8b0000;
 }
 
 /* ======================================================
@@ -298,7 +260,6 @@
 ====================================================== */
 
 @media (max-width: 480px) {
-
   .barbero-agenda {
     grid-template-columns: 1fr;
   }
@@ -309,18 +270,14 @@
 ====================================================== */
 
 .dashboard-drawer {
-
   position: fixed;
   inset: 0;
-
   z-index: 2000;
 
-  background: rgba(0,0,0,0.85);
-
-  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(3px);
 
   display: flex;
-
   justify-content: flex-end;
 }
 
@@ -329,20 +286,17 @@
 ====================================================== */
 
 .drawer-panel {
-
   width: 100%;
   max-width: 420px;
   height: 100%;
 
-  background: linear-gradient(180deg,#1a202c,#000000);
-
-  box-shadow: -20px 0 60px rgba(0,0,0,0.9);
+  background: #fff;
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.35);
 
   display: flex;
-
   flex-direction: column;
 
-  animation: drawerSlideIn .25s ease;
+  animation: drawerSlideIn 0.25s ease;
 }
 
 /* ======================================================
@@ -350,56 +304,41 @@
 ====================================================== */
 
 .drawer-header {
-
   display: flex;
   align-items: center;
-
   gap: 12px;
 
   padding: 18px 20px;
-
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .drawer-header h2 {
-
   margin: 0;
-
   font-size: 1.3rem;
-
   font-weight: 700;
-
-  color: #ffffff;
-
+  color: #111;
   text-transform: capitalize;
 }
 
 .drawer-header button {
-
   margin-left: auto;
 
   width: 34px;
   height: 34px;
-
-  border-radius: 8px;
+  border-radius: 10px;
 
   border: none;
-
-  background: rgba(255,255,255,0.08);
-
-  color: #ffffff;
+  background: #f1f1f1;
 
   font-size: 1rem;
   font-weight: 700;
-
   cursor: pointer;
 
-  transition: background .2s ease;
+  transition: background 0.2s ease;
 }
 
 .drawer-header button:hover {
-
-  background: rgba(0,122,255,0.25);
+  background: #e6e6e6;
 }
 
 /* ======================================================
@@ -407,11 +346,8 @@
 ====================================================== */
 
 .drawer-content {
-
   flex: 1;
-
   overflow-y: auto;
-
   padding: 20px;
 }
 
@@ -420,12 +356,28 @@
 ====================================================== */
 
 @keyframes drawerSlideIn {
-
   from {
     transform: translateX(100%);
   }
-
   to {
     transform: translateX(0);
+  }
+}
+
+/* ======================================================
+   MOBILE DRAWER
+====================================================== */
+
+@media (max-width: 480px) {
+  .drawer-panel {
+    max-width: 100%;
+  }
+
+  .drawer-header {
+    padding: 16px;
+  }
+
+  .drawer-content {
+    padding: 16px;
   }
 }

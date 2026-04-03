@@ -1,21 +1,20 @@
-import API_URL from "./api";
+import { apiFetch } from "./apiClient";
 
 /* =========================
-   GET
+   GET (público)
 ========================= */
 export async function getServicios() {
-  const res = await fetch(`${API_URL}/servicios/`);
+  const res = await apiFetch("/servicios/", { requireAuth: false });
   if (!res.ok) throw new Error("Error cargando servicios");
   return res.json();
 }
 
 /* =========================
-   CREATE (JSON)
+   CREATE (JSON) - requiere admin
 ========================= */
 export async function createServicio(data) {
-  const res = await fetch(`${API_URL}/servicios/`, {
+  const res = await apiFetch("/servicios/", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       nombre: data.nombre,
       duracion_min: data.duracion_min,
@@ -29,12 +28,11 @@ export async function createServicio(data) {
 }
 
 /* =========================
-   UPDATE (JSON)
+   UPDATE (JSON) - requiere admin
 ========================= */
 export async function updateServicio(id, data) {
-  const res = await fetch(`${API_URL}/servicios/${id}`, {
+  const res = await apiFetch(`/servicios/${id}`, {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       nombre: data.nombre,
       duracion_min: data.duracion_min,
@@ -48,13 +46,13 @@ export async function updateServicio(id, data) {
 }
 
 /* =========================
-   UPLOAD IMAGE
+   UPLOAD IMAGE - requiere admin
 ========================= */
 export async function uploadServicioImagen(id, file) {
   const formData = new FormData();
   formData.append("file", file);
 
-  const res = await fetch(`${API_URL}/servicios/${id}/imagen`, {
+  const res = await apiFetch(`/servicios/${id}/imagen`, {
     method: "POST",
     body: formData,
   });
@@ -64,10 +62,10 @@ export async function uploadServicioImagen(id, file) {
 }
 
 /* =========================
-   DELETE
+   DELETE - requiere admin
 ========================= */
 export async function deleteServicio(id) {
-  const res = await fetch(`${API_URL}/servicios/${id}`, {
+  const res = await apiFetch(`/servicios/${id}`, {
     method: "DELETE",
   });
 

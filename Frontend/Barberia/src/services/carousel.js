@@ -1,43 +1,37 @@
+import { apiFetch } from "./apiClient";
 import API_URL from "./api";
 
-const parseError = async (res, fallback) => {
-  try {
-    const data = await res.json();
-    return data?.detail || fallback;
-  } catch {
-    return fallback;
-  }
-};
-
+/** Público: lista imágenes del carrusel */
 export async function getCarouselImages() {
   const res = await fetch(`${API_URL}/carousel`);
-  if (!res.ok) throw new Error(await parseError(res, "Error al cargar imagenes"));
-  const data = await res.json();
-  return Array.isArray(data) ? data : [];
+  if (!res.ok) throw new Error("Error al cargar imágenes");
+  return res.json();
 }
 
+/** Admin: subir imagen */
 export async function uploadCarouselImage(file) {
   const formData = new FormData();
   formData.append("file", file);
   const token = localStorage.getItem("token");
-
   const res = await fetch(`${API_URL}/carousel/upload`, {
     method: "POST",
     headers: token ? { Authorization: `Bearer ${token}` } : {},
     body: formData,
   });
-
-  if (!res.ok) throw new Error(await parseError(res, "Error al subir imagen"));
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.detail || "Error al subir imagen");
+  }
   return res.json();
 }
 
+/** Admin: eliminar imagen */
 export async function deleteCarouselImage(filename) {
-  const token = localStorage.getItem("token");
-  const res = await fetch(`${API_URL}/carousel/${encodeURIComponent(filename)}`, {
+  const res = await apiFetch(`/carousel/${encodeURIComponent(filename)}`, {
     method: "DELETE",
-    headers: token ? { Authorization: `Bearer ${token}` } : {},
   });
-
-  if (!res.ok) throw new Error(await parseError(res, "Error al eliminar imagen"));
-  return res.json();
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.detail || "Error al eliminar");
+  }
 }

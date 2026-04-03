@@ -16,9 +16,10 @@ const HistorialAgenda = () => {
   const [fecha, setFecha] = useState(hoy);
   const [modoTodos, setModoTodos] = useState(true);
   const [busqueda, setBusqueda] = useState("");
+  const [paginaActual, setPaginaActual] = useState(1);
+  const FILAS_POR_PAGINA = 5;
 
   useEffect(() => {
-    let cancelado = false;
     setError(null);
 
     let url = `${API_URL}/visitas/historial`;
@@ -31,14 +32,8 @@ const HistorialAgenda = () => {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     })
-      .then(async (res) => {
-        if (!res.ok) {
-          throw new Error("No se pudo cargar el historial");
-        }
-        return res.json();
-      })
+      .then((res) => res.json())
       .then((data) => {
-        if (cancelado) return;
         if (Array.isArray(data)) {
           setTurnos(data);
         } else {
@@ -47,13 +42,13 @@ const HistorialAgenda = () => {
         }
       })
       .catch(() => {
-        if (!cancelado) setError("Error de conexión");
+        setError("Error de conexión");
       });
-
-    return () => {
-      cancelado = true;
-    };
   }, [fecha, modoTodos]);
+
+  useEffect(() => {
+    setPaginaActual(1);
+  }, [fecha, modoTodos, busqueda, turnos]);
 
   if (error) {
     return <p className="kb-error">{error}</p>;
@@ -89,11 +84,12 @@ const HistorialAgenda = () => {
         )}
       </div>
 
+      {/* 🔍 BUSCADOR POR NOMBRE */}
       <div className="kb-filtro-busqueda">
         <input
           type="search"
           className="kb-search-input"
-          placeholder="Buscar por nombre del cliente..."
+          placeholder="Buscar por nombre del cliente…"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
         />
@@ -103,16 +99,22 @@ const HistorialAgenda = () => {
         const termino = busqueda.trim().toLowerCase();
         const turnosFiltrados = termino
           ? turnos.filter((t) => {
-            const nombre = (t.cliente_nombre || "").toLowerCase();
-            const apellido = (t.cliente_apellido || "").toLowerCase();
-            const nombreCompleto = `${nombre} ${apellido}`.trim();
-            return (
-              nombre.includes(termino) ||
-              apellido.includes(termino) ||
-              nombreCompleto.includes(termino)
-            );
-          })
+              const nombre = (t.cliente_nombre || "").toLowerCase();
+              const apellido = (t.cliente_apellido || "").toLowerCase();
+              const nombreCompleto = `${nombre} ${apellido}`.trim();
+              return (
+                nombre.includes(termino) ||
+                apellido.includes(termino) ||
+                nombreCompleto.includes(termino)
+              );
+            })
           : turnos;
+        const totalPaginas = Math.ceil(turnosFiltrados.length / FILAS_POR_PAGINA);
+        const inicio = (paginaActual - 1) * FILAS_POR_PAGINA;
+        const turnosPaginados = turnosFiltrados.slice(
+          inicio,
+          inicio + FILAS_POR_PAGINA
+        );
 
         return (
           <>
@@ -122,14 +124,14 @@ const HistorialAgenda = () => {
 
             {turnos.length > 0 && turnosFiltrados.length === 0 && (
               <p className="kb-empty">
-                Ningun cliente coincide con "{busqueda}"
+                Ningún cliente coincide con "{busqueda}"
               </p>
             )}
 
             {turnosFiltrados.length > 0 && (
               <div className="kb-list">
-                {turnosFiltrados.map((t) => {
-          const stringFecha = (t.fecha_hora || "").replace(" ", "T");
+                {turnosPaginados.map((t) => {
+          const stringFecha = t.fecha_hora.replace(" ", "T");
           const d = new Date(stringFecha);
           
 
@@ -147,27 +149,74 @@ const HistorialAgenda = () => {
             timeZone: "America/Montevideo"
           });
 
+          const fechaLinea =
+            fechaTexto.charAt(0).toUpperCase() + fechaTexto.slice(1);
+
+          const nombreCliente =
+            `${t.cliente_nombre || ""} ${t.cliente_apellido || ""}`.trim() ||
+            "—";
+          const nombreServicio = (t.servicio_nombre || "").trim() || "—";
+          const nombreBarbero = (t.barbero_nombre || "").trim();
+
           return (
             <div key={t.id_visita} className="kb-card">
-              <p className="kb-text">
-                <span className="kb-date">
-                  El día {fechaTexto} a las {horaTexto}hs
-                </span>,{" "}
-                <strong>
-                  {t.cliente_nombre} {t.cliente_apellido}
-                </strong>{" "}
-                se hizo{" "}
-                <strong className="kb-service">
-                  {t.servicio_nombre}
-                </strong>{" "}
-                con{" "}
-                <strong className="kb-barbero">
-                  {t.barbero_nombre}
-                </strong>.
+              <p className="kb-card-narrativa">
+                <span className="kb-narrativa-lead">
+                  <span className="kb-narrativa-fecha">El día {fechaLinea}</span>{" "}
+                  <span className="kb-narrativa-hora">
+                    a las {horaTexto}
+                    {"\u00a0"}
+                    hs
+                  </span>
+                </span>
+                <span
+                  className="kb-narrativa-sep kb-narrativa-sep--comma"
+                  aria-hidden="true"
+                >
+                  ,{" "}
+                </span>
+                <span className="kb-narrativa-rest">
+                  <span className="kb-narrativa-cliente">{nombreCliente}</span>
+                  {" se\u00a0hizo "}
+                  <span className="kb-narrativa-servicio">{nombreServicio}</span>
+                  {nombreBarbero ? (
+                    <>
+                      {" con el barbero "}
+                      <span className="kb-narrativa-barbero">{nombreBarbero}</span>
+                    </>
+                  ) : null}
+                  {"."}
+                </span>
               </p>
             </div>
           );
         })}
+              </div>
+            )}
+
+            {turnosFiltrados.length > 0 && totalPaginas > 1 && (
+              <div className="kb-pagination">
+                <button
+                  type="button"
+                  className="kb-page-btn"
+                  onClick={() => setPaginaActual((prev) => Math.max(prev - 1, 1))}
+                  disabled={paginaActual === 1}
+                >
+                  Anterior
+                </button>
+                <span className="kb-page-indicator">
+                  Página {paginaActual} de {totalPaginas}
+                </span>
+                <button
+                  type="button"
+                  className="kb-page-btn"
+                  onClick={() =>
+                    setPaginaActual((prev) => Math.min(prev + 1, totalPaginas))
+                  }
+                  disabled={paginaActual === totalPaginas}
+                >
+                  Siguiente
+                </button>
               </div>
             )}
           </>

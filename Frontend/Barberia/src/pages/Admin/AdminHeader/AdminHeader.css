@@ -14,9 +14,6 @@
 ---------------------- */
 
 .admin-header-title {
-  font-size: 1.75rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
   margin: 0;
 }
 
@@ -27,10 +24,10 @@
 .admin-header-action-btn {
   padding: 12px 24px;
   border-radius: 999px;
-  border: none;
+  border: 1px solid var(--kb-btn-primary-border);
 
-  background: linear-gradient(135deg, #007aff, #005ecb);
-  color: #fff;
+  background: var(--kb-btn-primary-bg);
+  color: var(--kb-btn-primary-hover-color);
 
   font-size: 0.85rem;
   font-weight: 700;
@@ -38,17 +35,22 @@
   text-transform: uppercase;
 
   cursor: pointer;
-  box-shadow: 0 10px 24px rgba(0, 122, 255, 0.35);
+  box-shadow: var(--kb-btn-primary-shadow);
 
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
-    background 0.2s ease;
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .admin-header-action-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 30px rgba(0, 122, 255, 0.45);
+  background: var(--kb-btn-primary-hover-bg);
+  border-color: var(--kb-btn-primary-hover-border);
+  color: var(--kb-btn-primary-hover-color);
+  box-shadow: var(--kb-btn-primary-hover-shadow);
 }
 
 /* ----------------------

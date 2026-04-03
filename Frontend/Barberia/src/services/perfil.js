@@ -1,12 +1,7 @@
-import API_URL from "./api";
+import { apiFetch } from "./apiClient";
 
 export const getMiPerfil = async () => {
-  const res = await fetch(`${API_URL}/perfil/me`, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
-  });
-
+  const res = await apiFetch("/perfil/me");
   if (!res.ok) throw new Error("Error cargando perfil");
   return res.json();
 };

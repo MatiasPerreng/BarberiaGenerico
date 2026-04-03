@@ -1,67 +1,83 @@
 /* ======================================================
-   LISTA - INFOCORE STYLE
+   LISTA
 ====================================================== */
 
 .horarios-list {
-  margin-top: 24px;
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
 /* ======================================================
-   CARD - INFOCORE STYLE
+   CARD
 ====================================================== */
 
 .horario-card {
-  background: #ffffff; /* Fondo blanco */
-  border-radius: 12px; /* Bordes cuadrados */
-  padding: 18px 20px;
+  position: relative;
+  overflow: hidden;
+  background: var(--kb-admin-bg-surface, #ffffff);
+  border-radius: 18px;
+  padding: 18px 20px 18px 24px;
+  border: 1px solid rgba(0, 122, 255, 0.16);
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 14px;
-  border: 1px solid rgba(0, 0, 0, 0.05); /* Borde sutil */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03); /* Sombra suave */
-  transition: all 0.3s ease;
+  box-shadow: var(--kb-shadow-admin-card), var(--kb-shadow-admin-card-inset);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.horario-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: linear-gradient(180deg, #007aff, #005ecb);
 }
 
 .horario-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-  border-color: rgba(0, 122, 255, 0.1); /* Tinte azul al hover */
+  border-color: rgba(0, 122, 255, 0.32);
+  box-shadow: var(--kb-shadow-admin-card-hover), var(--kb-shadow-admin-card-hover-inset);
 }
 
 /* ======================================================
-   INFO - INFOCORE STYLE
+   INFO
 ====================================================== */
 
 .horario-info {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .horario-dia {
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: -0.02em;
   font-size: 1.05rem;
-  color: #000000; /* Negro */
-  font-family: 'Montserrat', sans-serif;
+  color: #1a1814;
 }
 
 .horario-horas {
   font-size: 0.95rem;
-  color: #007aff; /* Azul eléctrico */
   font-weight: 600;
+  color: #0f172a;
 }
 
 .horario-vigencia {
   font-size: 0.8rem;
-  color: #a0aec0; /* Gris sutil */
+  color: #6b6560;
+  font-weight: 500;
 }
 
 /* ======================================================
-   ACTIONS - INFOCORE STYLE
+   ACTIONS
 ====================================================== */
 
 .horario-actions {
@@ -71,72 +87,87 @@
 }
 
 /* ======================================================
-   BOTONES - INFOCORE STYLE
+   BOTONES
 ====================================================== */
 
 .btn-copy {
-  padding: 12px 24px;
-  border-radius: 8px; /* Cuadrado */
-  border: none;
+  font-family: inherit;
+  padding: 9px 16px;
+  border-radius: 11px;
+  border: 1px solid rgba(0, 122, 255, 0.42);
+  background: linear-gradient(145deg, #dbeafe 0%, #3b82f6 50%, #007aff 100%);
+  color: #1a1814;
 
-  background: #007aff; /* Azul eléctrico */
-  color: #ffffff;
-
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
 
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 2px 8px rgba(0, 122, 255, 0.22);
 
-  transition: all 0.3s ease;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    filter 0.15s ease;
 }
 
 .btn-copy:hover {
-  background: #0066cc; /* Azul oscuro */
-  transform: translateY(-2px);
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 6px 16px rgba(0, 122, 255, 0.32);
 }
 
 .btn-copy:active {
   transform: translateY(0);
 }
-.btn-delete {
-  /* Estructura */
-  min-width: 96px;
-  padding: 10px 18px;
-  border-radius: 8px; /* Bordes cuadrados INFOCORE */
+
+.btn-copy:focus-visible {
+  outline: none;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 0 0 3px rgba(0, 122, 255, 0.28),
+    0 2px 8px rgba(0, 122, 255, 0.22);
+}
+
+.horario-actions .btn-delete {
+  min-width: 88px;
+  padding: 8px 14px;
+  border-radius: 11px;
+  border: 1.5px solid rgba(185, 28, 28, 0.38);
+  background: #fffefb;
+  color: #b91c1c;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
   cursor: pointer;
-  
-  /* Colores INFOCORE */
-  background: rgba(239, 68, 68, 0.1); /* Fondo rojo muy suave */
-  border: 1px solid rgba(239, 68, 68, 0.2); /* Borde sutil */
-  color: #ffffff !important; 
-  
-  /* Tipografía */
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  
-  /* Interacción */
-  transition: all 0.2s ease;
-  -webkit-appearance: none;
-  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+  transition:
+    background 0.18s ease,
+    transform 0.15s ease,
+    border-color 0.18s ease,
+    box-shadow 0.15s ease;
 }
 
-.btn-delete:hover {
-  background: #ef4444; /* Rojo sólido al pasar el mouse */
-  color: #ffffff !important; /* Texto blanco al pasar el mouse */
+.horario-actions .btn-delete:hover {
+  background: #fef2f2;
+  border-color: rgba(185, 28, 28, 0.5);
+  color: #991b1b;
   transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.12);
 }
 
-.btn-delete:active {
+.horario-actions .btn-delete:active {
   transform: translateY(0);
 }
+
 /* ======================================================
-   COPY PANEL - INFOCORE STYLE
+   COPY PANEL
 ====================================================== */
 
 .copy-panel {
@@ -144,33 +175,32 @@
   display: flex;
   gap: 8px;
   align-items: center;
-  border-top: 1px solid rgba(0,0,0,0.05);
-  padding-top: 10px;
 }
 
 /* Select */
 .copy-panel select {
-  height: 38px;
-  padding: 0 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(0,0,0,0.1);
-  font-size: 0.85rem;
-  background: #f4f7fa; /* Fondo gris claro */
-  color: #000000;
+  font-family: inherit;
+  height: 36px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 122, 255, 0.28);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #1a1814;
+  background: #fff;
   cursor: pointer;
 }
 
 .copy-panel select:focus {
   outline: none;
   border-color: #007aff;
-  box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.1);
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
 }
 
 /* Confirmar */
 .copy-panel .btn-copy {
-  padding: 0 14px;
-  height: 38px;
-  font-size: 0.8rem;
+  padding: 6px 14px;
+  font-size: 0.85rem;
 }
 
 /* ======================================================
@@ -193,23 +223,63 @@
 ====================================================== */
 
 @media (max-width: 600px) {
+  .horario-card {
+    padding: 16px;
+  }
+
+  .horario-actions {
+    flex-direction: column;
+    gap: 6px;
+    align-items: stretch;
+  }
+
+  .horario-actions .btn-copy,
+  .horario-actions .btn-delete {
+    width: 100%;
+    text-align: center;
+  }
+
+  .copy-panel {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .copy-panel select {
+    width: 100%;
+  }
+}
+
+/* ======================================================
+   RESPONSIVE – MOBILE (PRO)
+====================================================== */
+
+@media (max-width: 600px) {
   .horarios-list {
     gap: 14px;
   }
 
   .horario-card {
     padding: 16px 14px;
-    border-radius: 12px;
+    border-radius: 16px;
   }
 
   /* INFO */
   .horario-info {
-    gap: 4px;
+    gap: 8px;
   }
 
   .horario-dia {
     font-size: 1.1rem;
     font-weight: 800;
+  }
+
+  .horario-horas {
+    font-size: 0.95rem;
+  }
+
+  .horario-vigencia {
+    font-size: 0.8rem;
+    color: #666;
   }
 
   /* ACTIONS */
@@ -220,18 +290,30 @@
     align-items: stretch;
   }
 
-  .btn-copy,
-  .btn-delete {
+  .horario-actions .btn-copy,
+  .horario-actions .btn-delete {
     width: 100%;
-    padding: 12px 0;
+    padding: 12px 14px;
     font-size: 0.9rem;
-    border-radius: 8px;
+    border-radius: 12px;
+  }
+
+  .horario-actions .btn-delete {
+    background: #fffefb;
+    color: #b91c1c;
+    border: 1.5px solid rgba(185, 28, 28, 0.38);
+  }
+
+  .horario-actions .btn-delete:hover {
+    background: #fef2f2;
+    color: #991b1b;
   }
 
   /* COPY PANEL */
   .copy-panel {
     margin-top: 12px;
-    padding-top: 12px;
+    padding-top: 10px;
+    border-top: 1px solid #e6e6e6;
     flex-direction: column;
     gap: 10px;
     align-items: stretch;
@@ -241,6 +323,7 @@
     width: 100%;
     height: 40px;
     font-size: 0.95rem;
+    border-radius: 12px;
   }
 
   .copy-panel .btn-copy {

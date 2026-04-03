@@ -182,9 +182,9 @@ const BarberosPage = () => {
   };
 
   return (
-    <div className="barberos-page-container">
+    <div className="barberos-page-container admin-kb-page">
       <div className="barberos-header">
-        <h2>Barberos</h2>
+        <h2 className="kb-page-title">Barberos</h2>
         <button
           className="barberos-btn-primary"
           onClick={() => setShowForm(true)}
@@ -198,20 +198,26 @@ const BarberosPage = () => {
       <div className="barberos-list">
         {barberos.map((b) => (
           <div className="barberos-row" key={b.id_barbero}>
-            <img
-              className="barberos-avatar"
-              src={
-                b.foto_url
-                  ? `${API_URL}${b.foto_url}?v=${b._fotoUpdatedAt || 0}`
-                  : "/avatar-placeholder.png"
-              }
-              alt={b.nombre}
-            />
+            <div className="barberos-avatar-wrap">
+              <img
+                className="barberos-avatar"
+                src={
+                  b.foto_url
+                    ? `${API_URL}${b.foto_url}?v=${b._fotoUpdatedAt || 0}`
+                    : "/avatar-placeholder.png"
+                }
+                alt={b.nombre}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
 
             <div className="barberos-info">
               <strong>{b.nombre}</strong>
-              <div className="barberos-descanso-tag" style={{fontSize: '0.8rem', opacity: 0.8}}>
-                {b.descanso_inicio ? `Descanso: ${b.descanso_inicio} - ${b.descanso_fin}` : "Sin descanso"}
+              <div className="barberos-descanso-tag">
+                {b.descanso_inicio
+                  ? `Descanso: ${b.descanso_inicio} - ${b.descanso_fin}`
+                  : "Sin descanso"}
               </div>
             </div>
 
@@ -265,10 +271,10 @@ const BarberosPage = () => {
             <h3 className="barberos-access-modal-title">Horario de Descanso</h3>
             <p className="barberos-access-modal-text">Asignar pausa para <strong>{breakTarget.nombre}</strong></p>
             <form onSubmit={handleSaveBreak} className="barberos-access-modal-form">
-              <label style={{color: '#e6c77b', fontSize: '0.8rem', marginBottom: '5px'}}>INICIO</label>
+              <label className="barberos-modal-field-label">Inicio</label>
               <input type="time" required value={breakForm.inicio} onChange={e => setBreakForm({...breakForm, inicio: e.target.value})} />
               
-              <label style={{color: '#e6c77b', fontSize: '0.8rem', marginBottom: '5px', marginTop: '10px'}}>FIN</label>
+              <label className="barberos-modal-field-label barberos-modal-field-label--spaced">Fin</label>
               <input type="time" required value={breakForm.fin} onChange={e => setBreakForm({...breakForm, fin: e.target.value})} />
               
               <div className="barberos-access-modal-actions">

@@ -1,11 +1,12 @@
 /* =======================================================
-   LAYOUT BASE
+   INFOCORE BARBERO LAYOUT — estructura ProyectoBarberia, paleta azul
 ======================================================= */
 
 .barbero-layout {
   min-height: 100vh;
   display: flex;
-  background: #f6f7f8;
+  background: var(--kb-app-bg-canvas, #f4f7fa);
+  font-family: "Montserrat", sans-serif;
 }
 
 /* =======================================================
@@ -15,14 +16,16 @@
 .barbero-mobile-header {
   display: none;
   height: 56px;
-  background: #1c1f24;
+  background: #000000;
   align-items: center;
   padding: 0 14px;
   gap: 12px;
+  border-bottom: 1px solid rgba(0, 122, 255, 0.2);
 }
 
 .barbero-mobile-header img {
   width: 45px;
+  filter: brightness(0) invert(1);
 }
 
 .barbero-hamburger {
@@ -39,7 +42,6 @@
   gap: 4px;
 }
 
-
 /* =======================================================
    SIDEBAR
 ======================================================= */
@@ -47,11 +49,11 @@
 .barbero-sidebar {
   width: 250px;
   flex-shrink: 0;
-  background: linear-gradient(180deg, #1c1f24, #121418);
+  background: linear-gradient(180deg, #0a192f 0%, #000000 100%);
   color: #fff;
   display: flex;
   flex-direction: column;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
   z-index: 20;
 }
 
@@ -62,7 +64,7 @@
 .barbero-logo {
   padding: 32px 20px 26px;
   text-align: center;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(0, 122, 255, 0.15);
 }
 
 .barbero-logo img {
@@ -82,19 +84,19 @@
 
 .barbero-nav a {
   padding: 14px 26px;
-  color: #cfd2d6;
+  color: #a0aec0;
   text-decoration: none;
   font-weight: 600;
   font-size: 13px;
   letter-spacing: 1.2px;
   text-transform: uppercase;
   position: relative;
-  transition: all 0.25s ease;
+  transition: all 0.3s ease;
 }
 
 .barbero-nav a:hover {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(0, 122, 255, 0.05);
 }
 
 .barbero-nav a.active {
@@ -119,7 +121,7 @@
 .barbero-user {
   margin-top: auto;
   padding: 20px 22px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid rgba(0, 122, 255, 0.15);
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -158,7 +160,7 @@
 }
 
 /* =======================================================
-   CONTENT (MISMA LÓGICA QUE ADMIN)
+   CONTENT
 ======================================================= */
 
 .barbero-content {
@@ -166,13 +168,11 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  background: #f6f7f8;
+  background: var(--kb-app-bg-canvas, #f4f7fa);
 }
 
-/* CONTENIDO REAL */
 .barbero-content-inner {
   flex: 1;
-  /* 🔥 EMPUJA EL FOOTER */
   padding: 42px;
   box-sizing: border-box;
 }
@@ -187,10 +187,6 @@
   background: rgba(0, 0, 0, 0.55);
   z-index: 10;
 }
-
-/* =======================================================
-   MOBILE
-======================================================= */
 
 @media (max-width: 900px) {
   .barbero-mobile-header {

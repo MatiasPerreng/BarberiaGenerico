@@ -1,11 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import AdminHeader from "../AdminHeader/AdminHeader";
+import { getCarouselImages, uploadCarouselImage, deleteCarouselImage } from "../../../services/carousel";
 import API_URL from "../../../services/api";
-import {
-  deleteCarouselImage,
-  getCarouselImages,
-  uploadCarouselImage,
-} from "../../../services/carousel";
 import "./CarouselPage.css";
 
 const CarouselPage = () => {
@@ -22,8 +18,8 @@ const CarouselPage = () => {
       const data = await getCarouselImages();
       setImagenes(Array.isArray(data) ? data : []);
     } catch (err) {
+      setError("No se pudieron cargar las imágenes");
       setImagenes([]);
-      setError(err?.message || "No se pudieron cargar las imagenes");
     } finally {
       setLoading(false);
     }
@@ -38,13 +34,11 @@ const CarouselPage = () => {
     if (!file) return;
 
     if (!file.type.startsWith("image/")) {
-      setError("Solo se permiten imagenes (JPG, PNG, WebP)");
-      e.target.value = "";
+      setError("Solo se permiten imágenes (JPG, PNG, WebP)");
       return;
     }
     if (file.size > 8 * 1024 * 1024) {
       setError("La imagen no puede superar 8 MB");
-      e.target.value = "";
       return;
     }
 
@@ -54,7 +48,7 @@ const CarouselPage = () => {
       await uploadCarouselImage(file);
       await cargarImagenes();
     } catch (err) {
-      setError(err?.message || "Error al subir");
+      setError(err.message || "Error al subir");
     } finally {
       setUploading(false);
       e.target.value = "";
@@ -62,19 +56,19 @@ const CarouselPage = () => {
   };
 
   const handleDelete = async (filename) => {
-    if (!window.confirm("Eliminar esta imagen del carrusel?")) return;
+    if (!confirm("¿Eliminar esta imagen del carrusel?")) return;
     try {
       await deleteCarouselImage(filename);
       await cargarImagenes();
     } catch (err) {
-      setError(err?.message || "Error al eliminar");
+      setError(err.message || "Error al eliminar");
     }
   };
 
   return (
     <>
       <AdminHeader
-        title="Carrusel"
+        title="Fotos del carrusel"
         actionLabel="Subir imagen"
         onAction={() => fileInputRef.current?.click()}
       />
@@ -87,13 +81,19 @@ const CarouselPage = () => {
         style={{ display: "none" }}
       />
 
-      {uploading && <p className="carousel-page-loading">Subiendo imagen...</p>}
+      {uploading && <p className="carousel-page-loading">Subiendo imagen…</p>}
       {error && <p className="carousel-page-error">{error}</p>}
-      {loading && !uploading && <p className="carousel-page-loading">Cargando imagenes...</p>}
+
+      {loading && !uploading && (
+        <p className="carousel-page-loading">Cargando imágenes…</p>
+      )}
 
       {!loading && imagenes.length === 0 && (
         <div className="carousel-page-empty">
           <p>No hay fotos en el carrusel</p>
+          <p className="carousel-page-empty-hint">
+            Las fotos que subas se mostrarán en la galería de la página principal.
+          </p>
           <button
             className="carousel-page-upload-btn"
             onClick={() => fileInputRef.current?.click()}
@@ -109,18 +109,25 @@ const CarouselPage = () => {
             <div key={img.filename} className="carousel-page-card">
               <img
                 src={`${API_URL}${img.url}`}
-                alt="Imagen carrusel"
+                alt="Carrusel"
                 className="carousel-page-preview"
               />
               <button
                 className="carousel-page-delete"
                 onClick={() => handleDelete(img.filename)}
+                title="Eliminar"
               >
                 Eliminar
               </button>
             </div>
           ))}
         </div>
+      )}
+
+      {!loading && imagenes.length > 0 && (
+        <p className="carousel-page-hint">
+          El orden de las fotos es el de la lista. Sube nuevas imágenes para agregarlas al final.
+        </p>
       )}
     </>
   );

@@ -95,7 +95,7 @@ const ServicioPage = () => {
   };
 
   return (
-    <>
+    <div className="admin-kb-page servicios-page-root">
       <AdminHeader
         title="Servicios"
         actionLabel="Agregar servicio"
@@ -103,14 +103,17 @@ const ServicioPage = () => {
       />
 
       {loading && (
-        <p className="servicios-page__loading">
+        <p className="servicios-page__loading" role="status">
           Cargando servicios…
         </p>
       )}
 
       {!loading && servicios.length === 0 && (
         <div className="servicios-page__empty">
-          <p>No hay servicios cargados</p>
+          <p className="servicios-page__empty-title">No hay servicios</p>
+          <p className="servicios-page__empty-subtitle">
+            Agregá el primero con el botón de arriba
+          </p>
         </div>
       )}
 
@@ -139,7 +142,7 @@ const ServicioPage = () => {
           }}
         />
       )}
-    </>
+    </div>
   );
 };
 

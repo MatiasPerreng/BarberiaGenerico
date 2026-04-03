@@ -1,22 +1,22 @@
 /* =======================================================
-   INFOCORE ADMIN LAYOUT - TECH STYLE
-   ======================================================= */
+   INFOCORE ADMIN LAYOUT — estructura ProyectoBarberia, paleta azul
+======================================================= */
 
 .admin-layout {
   min-height: 100vh;
   display: flex;
-  background: #f4f7fa; /* Fondo gris claro tecnológico */
-  font-family: 'Montserrat', sans-serif;
+  background: var(--kb-app-bg-canvas, #f4f7fa);
+  font-family: "Montserrat", sans-serif;
 }
 
 /* =======================================================
    MOBILE HEADER
-   ======================================================= */
+======================================================= */
 
 .admin-mobile-header {
   display: none;
   height: 56px;
-  background: #000000; /* Fondo negro */
+  background: #000000;
   align-items: center;
   padding: 0 14px;
   gap: 12px;
@@ -25,26 +25,25 @@
 
 .admin-mobile-header img {
   width: 45px;
-  /* Filtro para hacer el logo blanco en el header negro */
   filter: brightness(0) invert(1);
 }
 
 .admin-hamburger {
   background: none;
   border: none;
-  color: #007aff; /* Azul eléctrico */
+  color: #007aff;
   font-size: 24px;
   cursor: pointer;
 }
 
 /* =======================================================
    SIDEBAR
-   ======================================================= */
+======================================================= */
 
 .admin-sidebar {
   width: 250px;
   flex-shrink: 0;
-  background: linear-gradient(180deg, #0a192f 0%, #000000 100%); /* Degradado azul oscuro a negro */
+  background: linear-gradient(180deg, #0a192f 0%, #000000 100%);
   color: #fff;
   display: flex;
   flex-direction: column;
@@ -54,7 +53,7 @@
 
 /* =======================================================
    LOGO
-   ======================================================= */
+======================================================= */
 
 .admin-logo {
   padding: 32px 20px 26px;
@@ -63,13 +62,12 @@
 }
 
 .admin-logo img {
-  width: 150px;
-
+  width: 85px;
 }
 
 /* =======================================================
    NAV
-   ======================================================= */
+======================================================= */
 
 .admin-nav {
   display: flex;
@@ -80,7 +78,7 @@
 
 .admin-nav a {
   padding: 14px 26px;
-  color: #a0aec0; /* Gris sutil */
+  color: #a0aec0;
   text-decoration: none;
   font-weight: 600;
   font-size: 13px;
@@ -96,15 +94,23 @@
 }
 
 .admin-nav a.active {
-  color: #ffffff;
-  background: rgba(0, 122, 255, 0.15);
-  border-left: 3px solid #007aff;
-  box-shadow: inset 0 0 10px rgba(0, 122, 255, 0.1);
+  color: #7fc0ff;
+  background: rgba(0, 122, 255, 0.12);
+}
+
+.admin-nav a.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: #007aff;
 }
 
 /* =======================================================
    USER / LOGOUT
-   ======================================================= */
+======================================================= */
 
 .admin-user {
   margin-top: auto;
@@ -131,13 +137,13 @@
   font-size: 11px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: #007aff; /* Azul eléctrico */
+  color: #9ca3af;
 }
 
 .admin-logout {
   background: transparent;
   border: 1px solid rgba(0, 122, 255, 0.5);
-  color: #007aff;
+  color: #7fc0ff;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 1.4px;
@@ -145,47 +151,39 @@
   padding: 8px 14px;
   border-radius: 999px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .admin-logout:hover {
   background: #007aff;
   color: #ffffff;
-  box-shadow: 0 0 10px rgba(0, 122, 255, 0.5);
 }
 
 /* =======================================================
    CONTENT
-   ======================================================= */
+======================================================= */
 
 .admin-content {
   flex: 1;
   min-width: 0;
   overflow-x: hidden;
+
   display: flex;
   flex-direction: column;
-  background: #f4f7fa;
+
+  background: var(--kb-app-bg-canvas, #f4f7fa);
   box-sizing: border-box;
 }
 
-/* CONTENIDO REAL */
 .admin-content-inner {
   flex: 1;
   padding: 42px;
   box-sizing: border-box;
 }
 
-.admin-content-inner h1 {
-  font-size: 1.75rem;
-  font-weight: 800;
-  letter-spacing: -0.5px;
-  color: #000000;
-  margin: 0;
-}
-
 /* =======================================================
-   GRID DE CARDS (INFOCORE STYLE)
-   ======================================================= */
+   GRID DE CARDS
+======================================================= */
 
 .admin-grid {
   margin-top: 28px;
@@ -199,18 +197,14 @@
 
 /* =======================================================
    OVERLAY (MOBILE)
-   ======================================================= */
+======================================================= */
 
 .admin-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.55);
   z-index: 10;
 }
-
-/* =======================================================
-   MEDIA QUERIES (RESPONSIVE DESIGN)
-   ======================================================= */
 
 @media (max-width: 1400px) {
   .admin-content-inner {
@@ -218,7 +212,6 @@
   }
 }
 
-/* MOBILE */
 @media (max-width: 900px) {
   .admin-mobile-header {
     display: flex;

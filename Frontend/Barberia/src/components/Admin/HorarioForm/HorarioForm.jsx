@@ -33,9 +33,7 @@ const HorarioForm = ({
 
   const toggleDia = (id) => {
     setDiasSeleccionados((prev) =>
-      prev.includes(id)
-        ? prev.filter((d) => d !== id)
-        : [...prev, id].sort((a, b) => a - b)
+      prev.includes(id) ? prev.filter((d) => d !== id) : [...prev, id].sort((a, b) => a - b)
     );
   };
 
@@ -71,23 +69,20 @@ const HorarioForm = ({
 
   const validate = () => {
     if (!modoMasivo && !form.dia_semana) {
-      return "Selecciona un dia";
+      return "Seleccioná un día";
     }
     if (modoMasivo && diasSeleccionados.length === 0) {
-      return "Selecciona al menos un dia";
+      return "Seleccioná al menos un día";
     }
     if (!form.hora_desde || !form.hora_hasta || !form.fecha_desde || !form.fecha_hasta) {
       return "Todos los campos son obligatorios";
     }
-
     if (form.hora_desde >= form.hora_hasta) {
       return "La hora desde debe ser menor que la hora hasta";
     }
-
     if (form.fecha_desde > form.fecha_hasta) {
       return "La fecha desde no puede ser mayor que la fecha hasta";
     }
-
     return null;
   };
 
@@ -139,20 +134,21 @@ const HorarioForm = ({
 
         {error && <div className="error">{error}</div>}
 
+        {/* Toggle modo masivo */}
         <div className="horario-form-mode">
           <button
             type="button"
             className={`mode-btn ${!modoMasivo ? "active" : ""}`}
             onClick={() => setModoMasivo(false)}
           >
-            Un dia
+            Un día
           </button>
           <button
             type="button"
             className={`mode-btn ${modoMasivo ? "active" : ""}`}
             onClick={() => setModoMasivo(true)}
           >
-            Varios dias
+            Varios días
           </button>
         </div>
 
@@ -179,13 +175,13 @@ const HorarioForm = ({
         <form onSubmit={handleSubmit} className="form-grid">
           {modoMasivo ? (
             <div className="horario-form-dias-bulk">
-              <label>Dias a aplicar</label>
+              <label>Días a aplicar</label>
               <div className="dias-quick">
                 <button type="button" onClick={seleccionarLunAVie}>
                   Lun a Vie
                 </button>
                 <button type="button" onClick={seleccionarLunASab}>
-                  Lun a Sab
+                  Lun a Sáb
                 </button>
               </div>
               <div className="dias-checkboxes">
@@ -203,13 +199,13 @@ const HorarioForm = ({
             </div>
           ) : (
             <label>
-              Dia
+              Día
               <select
                 name="dia_semana"
                 value={form.dia_semana}
                 onChange={handleChange}
               >
-                <option value="">Seleccionar dia</option>
+                <option value="">Seleccionar día</option>
                 {DIAS_SEMANA.map((d) => (
                   <option key={d.id} value={d.id}>
                     {d.label}
@@ -266,7 +262,7 @@ const HorarioForm = ({
               disabled={loading}
             >
               {loading
-                ? "Guardando..."
+                ? "Guardando…"
                 : modoMasivo && diasSeleccionados.length > 0
                   ? `Guardar ${diasSeleccionados.length} horarios`
                   : "Guardar"}

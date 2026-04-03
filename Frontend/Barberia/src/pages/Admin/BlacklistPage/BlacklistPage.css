@@ -1,289 +1,346 @@
-/* ======================================================
-   CONTENEDOR
-====================================================== */
+/* Lista negra — alineado a Horarios / Estadísticas / admin-kb-page */
 
-.blacklist-container {
+.blist-page-root {
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.blist-page-container {
   display: flex;
   flex-direction: column;
-  gap: 28px;
-  animation: blacklistFadeIn .35s ease;
+  gap: 22px;
+  animation: blistFadeIn 0.3s ease;
 }
 
-/* ======================================================
-   HEADER
-====================================================== */
+/* ---------- Cabecera (toolbar tipo tarjeta) ---------- */
 
-.blacklist-header h2 {
-  font-size: 1.9rem;
-  font-weight: 900;
-  letter-spacing: -0.5px;
+.blist-header {
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: var(--kb-admin-bg-surface, #ffffff);
+  border: 1px solid rgba(0, 122, 255, 0.1);
+  box-shadow: var(--kb-shadow-admin-toolbar);
+}
+
+.blist-header .kb-page-title {
   margin: 0;
-  color: #0f172a;
 }
 
-.blacklist-header p {
+.blist-header-subtitle {
+  margin: 10px 0 0;
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: #6b6560;
+  font-weight: 500;
+  max-width: 520px;
+}
+
+/* ---------- Secciones ---------- */
+
+.blist-section-title {
+  margin: 0 0 16px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: #64748b;
-  font-size: .95rem;
-  margin-top: 6px;
 }
 
-/* ======================================================
-   CARD FORM
-====================================================== */
-
-.blacklist-form-card {
-  background: #ffffff;
-  border-radius: 14px;
-  padding: 28px;
-  border: 1px solid #e5e7eb;
-
-  box-shadow:
-    0 10px 25px rgba(0,0,0,.06);
+.blist-section-title--table {
+  margin-bottom: 12px;
 }
 
-/* ======================================================
-   FORM
-====================================================== */
-
-.blacklist-form {
+.blist-table-section {
   display: flex;
-  gap: 18px;
+  flex-direction: column;
+}
+
+/* ---------- Formulario ---------- */
+
+.blist-card-form {
+  background: var(--kb-admin-bg-surface, #ffffff);
+  border-radius: 18px;
+  padding: 22px 24px 24px;
+  border: 1px solid rgba(0, 122, 255, 0.12);
+  box-shadow: var(--kb-shadow-admin-card), var(--kb-shadow-admin-card-inset);
+}
+
+.blist-form {
+  display: flex;
+  gap: 16px 20px;
   align-items: flex-end;
   flex-wrap: wrap;
 }
 
-.blacklist-field {
+.blist-form-group {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   flex: 1;
-  min-width: 240px;
+  min-width: 200px;
 }
 
-.blacklist-field label {
+.blist-form-group label {
+  font-size: 0.68rem;
   font-weight: 800;
-  font-size: .65rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #6b7280;
+  color: #0f172a;
 }
 
-/* INPUT */
-
-.blacklist-input {
+.blist-form-group input {
   height: 46px;
   padding: 0 14px;
-  border-radius: 10px;
-  border: 1px solid #d1d5db;
-  background: #ffffff;
-  color: #111827;
-  font-size: .95rem;
-  transition: all .2s ease;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 122, 255, 0.28);
+  background: #fff;
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #1a1814;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-.blacklist-input::placeholder {
+.blist-form-group input::placeholder {
   color: #9ca3af;
 }
 
-.blacklist-input:hover {
-  border-color: #9ca3af;
-}
-
-.blacklist-input:focus {
+.blist-form-group input:focus {
   outline: none;
-  border-color: #6366f1;
-  box-shadow:
-    0 0 0 3px rgba(99,102,241,.15);
+  border-color: #007aff;
+  box-shadow: 0 0 0 3px rgba(0, 122, 255, 0.2);
 }
 
-/* ======================================================
-   BOTONES
-====================================================== */
-
-.blacklist-btn-add {
-  padding: 0 26px;
+.blist-btn-primary {
+  padding: 0 22px;
   height: 46px;
-  border-radius: 10px;
-  border: none;
-  background: #111827;
-  color: #fff;
-  font-size: .8rem;
-  font-weight: 800;
-  letter-spacing: .6px;
-  text-transform: uppercase;
+  border-radius: 12px;
+  border: 1px solid var(--kb-btn-primary-border);
+  background: var(--kb-btn-primary-bg);
+  color: var(--kb-btn-primary-color);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
   cursor: pointer;
-
-  transition: all .25s ease;
+  box-shadow: var(--kb-btn-primary-shadow);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease;
 }
 
-.blacklist-btn-add:hover {
-  background: #000;
+.blist-btn-primary:hover {
   transform: translateY(-1px);
+  background: var(--kb-btn-primary-hover-bg);
+  color: var(--kb-btn-primary-hover-color);
+  border-color: var(--kb-btn-primary-hover-border);
+  box-shadow: var(--kb-btn-primary-hover-shadow);
 }
 
-/* DELETE */
-
-.blacklist-btn-remove {
-  padding: 8px 14px;
-  border-radius: 8px;
-  border: none;
-  background: #ef4444;
-  color: #fff;
-  font-size: .72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: all .2s ease;
+.blist-btn-primary:focus-visible {
+  outline: none;
+  box-shadow: var(--kb-btn-primary-focus-ring), var(--kb-btn-primary-shadow);
 }
 
-.blacklist-btn-remove:hover {
-  background: #dc2626;
-  transform: scale(1.05);
-}
+/* ---------- Tabla ---------- */
 
-/* ======================================================
-   TABLE
-====================================================== */
-
-.blacklist-table-box {
-  background: #ffffff;
-  border-radius: 14px;
+.blist-table-wrapper {
+  background: var(--kb-admin-bg-surface, #ffffff);
+  border-radius: 18px;
   overflow: hidden;
-  border: 1px solid #e5e7eb;
-
-  box-shadow:
-    0 10px 25px rgba(0,0,0,.05);
+  border: 1px solid rgba(0, 122, 255, 0.1);
+  box-shadow: var(--kb-shadow-admin-card), var(--kb-shadow-admin-card-inset);
 }
 
-.blacklist-table {
+.blist-loading {
+  padding: 28px 20px;
+  text-align: center;
+  font-weight: 600;
+  color: #6b6560;
+  font-size: 0.95rem;
+}
+
+.blist-table {
   width: 100%;
   border-collapse: collapse;
 }
 
-/* HEADER */
-
-.blacklist-table th {
-  background: #f9fafb;
-  padding: 16px;
+.blist-table th {
+  background: linear-gradient(180deg, #ffffff 0%, #f4f7fa 100%);
+  padding: 14px 18px;
   text-align: left;
-  font-size: .7rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #6b7280;
-  border-bottom: 1px solid #e5e7eb;
-}
-
-/* CELLS */
-
-.blacklist-table td {
-  padding: 16px;
-  border-bottom: 1px solid #f1f5f9;
-  font-size: .92rem;
-  color: #111827;
-}
-
-/* ROW HOVER */
-
-.blacklist-table tbody tr:hover {
-  background: #f8fafc;
-}
-
-/* PHONE */
-
-.blacklist-phone {
+  font-size: 0.68rem;
   font-weight: 800;
-  color: #020617;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #475569;
+  border-bottom: 1px solid rgba(0, 122, 255, 0.14);
 }
 
-/* NO REASON */
+.blist-table td {
+  padding: 16px 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 0.9rem;
+  color: #374151;
+  vertical-align: middle;
+}
 
-.blacklist-empty-reason {
+.blist-row:last-child td {
+  border-bottom: none;
+}
+
+.blist-tel-cell {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  color: #1a1814;
+}
+
+.blist-no-reason {
   color: #9ca3af;
   font-style: italic;
+  font-weight: 500;
 }
 
-/* EMPTY */
-
-.blacklist-empty {
+.blist-empty {
   text-align: center;
-  padding: 24px;
-  color: #9ca3af;
+  color: #6b6560;
+  font-weight: 500;
+  padding: 36px 20px !important;
 }
 
-/* ======================================================
-   MOBILE
-====================================================== */
+.blist-btn-danger {
+  padding: 9px 16px;
+  border-radius: 11px;
+  border: 1px solid rgba(185, 28, 28, 0.45);
+  background: #ffffff;
+  color: #b91c1c;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
+  transition:
+    transform 0.15s ease,
+    background 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease,
+    color 0.15s ease;
+}
+
+.blist-btn-danger:hover {
+  transform: translateY(-1px);
+  background: #fef2f2;
+  border-color: rgba(185, 28, 28, 0.6);
+  color: #991b1b;
+  box-shadow: 0 4px 14px rgba(185, 28, 28, 0.12);
+}
+
+.blist-btn-danger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.25);
+}
+
+/* ---------- Responsive ---------- */
 
 @media (max-width: 768px) {
-
-  .blacklist-form {
+  .blist-form {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .blacklist-btn-add {
-    width: 100%;
+  .blist-form-group {
+    min-width: 0;
   }
 
-  .blacklist-table thead {
+  .blist-btn-primary {
+    width: 100%;
+    height: 48px;
+  }
+
+  .blist-table thead {
     display: none;
   }
 
-  .blacklist-table,
-  .blacklist-table tbody,
-  .blacklist-table tr,
-  .blacklist-table td {
+  .blist-table,
+  .blist-table tbody,
+  .blist-table tr,
+  .blist-table td {
     display: block;
     width: 100%;
   }
 
-  .blacklist-table-box {
+  .blist-table-wrapper {
     background: transparent;
-    box-shadow: none;
     border: none;
+    box-shadow: none;
+    overflow: visible;
   }
 
-  .blacklist-row {
-    background: #ffffff;
+  .blist-row {
+    background: var(--kb-admin-bg-surface, #ffffff);
     margin-bottom: 14px;
-    padding: 16px;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
+    padding: 16px 18px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 122, 255, 0.12);
+    box-shadow: var(--kb-shadow-admin-card), var(--kb-shadow-admin-card-inset);
   }
 
-  .blacklist-table td {
-    padding: 8px 0;
+  .blist-table td {
+    padding: 10px 0;
     border: none;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.88rem;
   }
 
-  .blacklist-table td::before {
+  .blist-table td::before {
     content: attr(data-label);
-    font-weight: 700;
-    font-size: .65rem;
-    color: #6b7280;
+    font-weight: 800;
+    color: #7a6228;
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    flex-shrink: 0;
   }
 
-  .blacklist-actions {
-    justify-content: center !important;
-    padding-top: 10px;
+  .blist-tel-cell {
+    border-bottom: 1px solid rgba(0, 122, 255, 0.12) !important;
+    padding-bottom: 14px !important;
+    margin-bottom: 8px;
+    font-size: 1.05rem !important;
   }
 
-  .blacklist-btn-remove {
+  .blist-actions-cell {
+    justify-content: stretch !important;
+    padding-top: 12px !important;
+    flex-direction: column;
+    align-items: stretch !important;
+  }
+
+  .blist-actions-cell::before {
+    display: none;
+  }
+
+  .blist-btn-danger {
     width: 100%;
-    height: 42px;
+    min-height: 44px;
+    font-size: 0.85rem;
   }
 }
 
-/* ======================================================
-   ANIMATION
-====================================================== */
-
-@keyframes blacklistFadeIn {
+@keyframes blistFadeIn {
   from {
     opacity: 0;
-    transform: translateY(12px);
+    transform: translateY(8px);
   }
   to {
     opacity: 1;

@@ -35,7 +35,7 @@ import AdminDashboard from "../pages/Admin/AdminDashboard/AdminDashboard";
 import BarberosPage from "../pages/Admin/BarberoPage/BarberosPage";
 import HorariosPage from "../pages/Admin/HorarioPage/HorariosPage";
 import ServicioPage from "../pages/Admin/ServicioPage/ServicioPage";
-import BlacklistPage from "../pages/Admin/BlacklistPage/BlacklistPage"; // IMPORTACIÓN NUEVA
+import BlacklistPage from "../pages/Admin/BlacklistPage/BlacklistPage";
 import CarouselPage from "../pages/Admin/CarouselPage/CarouselPage";
 import AdminLayout from "../components/Admin/AdminLayout/AdminLayout";
 
@@ -100,6 +100,7 @@ export default function AppRouter() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/barbero/estadisticas"
         element={
@@ -191,6 +192,7 @@ export default function AppRouter() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/admin/estadisticas"
         element={
@@ -201,6 +203,7 @@ export default function AppRouter() {
           </ProtectedRoute>
         }
       />
+
       <Route
         path="/admin/carrusel"
         element={
@@ -212,7 +215,6 @@ export default function AppRouter() {
         }
       />
 
-      {/* NUEVA RUTA LISTA NEGRA */}
       <Route
         path="/admin/blacklist"
         element={

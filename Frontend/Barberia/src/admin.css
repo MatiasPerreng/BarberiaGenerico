@@ -56,7 +56,7 @@
 .admin-nav a.active,
 .admin-nav a:hover {
     background: #2b2f36;
-    color: #e6c77b;
+    color: #007aff;
 }
 
 /* =========================
@@ -165,7 +165,7 @@
 }
 
 .admin-page-header button {
-    background: #e6c77b;
+    background: #007aff;
     border: none;
     padding: 8px 14px;
     border-radius: 6px;

@@ -169,9 +169,9 @@ const HorariosPage = () => {
   });
 
   return (
-    <>
+    <div className="admin-kb-page horarios-page-root">
       <div className="horarios-header">
-        <h2>Horarios</h2>
+        <h2 className="kb-page-title">Horarios</h2>
 
         <select
           className="horarios-select-barbero"
@@ -218,9 +218,12 @@ const HorariosPage = () => {
       ========================= */}
       {barberoSeleccionado && !loading && (
         <div className="horarios-filtros">
-          <div className="filtro-dias">
+          <div className="filtro-grupo filtro-grupo--dias">
+            <span className="filtro-grupo-label">Días</span>
+            <div className="filtro-dias" role="group" aria-label="Filtrar por día">
             {[1, 2, 3, 4, 5, 6].map((d) => (
               <button
+                type="button"
                 key={d}
                 className={`filtro-dia ${diasFiltro.includes(d) ? "active" : ""
                   }`}
@@ -235,27 +238,37 @@ const HorariosPage = () => {
                 {["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"][d - 1]}
               </button>
             ))}
+            </div>
           </div>
 
-          <div className="filtro-vigencia">
+          <div className="filtro-grupo filtro-grupo--vigencia">
+            <span className="filtro-grupo-label">Vigencia</span>
+            <div className="filtro-vigencia" role="group" aria-label="Activos o históricos">
             <button
+              type="button"
               className={modoVigencia === "activos" ? "active" : ""}
               onClick={() => setModoVigencia("activos")}
             >
               Activos
             </button>
             <button
+              type="button"
               className={modoVigencia === "historicos" ? "active" : ""}
               onClick={() => setModoVigencia("historicos")}
             >
               Históricos
             </button>
+            </div>
           </div>
         </div>
       )}
 
       {error && <p className="horarios-error">{error}</p>}
-      {loading && <p>Cargando horarios…</p>}
+      {loading && (
+        <p className="horarios-loading" role="status">
+          Cargando horarios…
+        </p>
+      )}
 
       {!loading && barberoSeleccionado && (
         <HorarioList
@@ -274,7 +287,7 @@ const HorariosPage = () => {
           onClose={() => setShowForm(false)}
         />
       )}
-    </>
+    </div>
   );
 };
 

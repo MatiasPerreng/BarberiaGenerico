@@ -1,116 +1,200 @@
-/* =======================================================
-   INFOCORE PROFILE PAGE STYLE - FULL
-   ======================================================= */
+/* Perfil — Inter, header tarjeta, card clara (misma línea que Barberos / Horarios) */
 
-.perfil-page {
-  max-width: 480px;
-  margin: auto;
-  padding: 28px 20px;
-  background: #f4f7fa; /* Fondo gris claro tecnológico */
-  font-family: 'Montserrat', sans-serif;
-  color: #000000;
+.perfil-page-root {
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
-/* ---------- TÍTULO ---------- */
-.perfil-title {
-  font-size: 24px;
-  font-weight: 800;
+/* Barbero: sin shell admin-kb-page */
+.perfil-page-root:not(.admin-kb-page) {
+  padding-bottom: 8px;
+}
+
+/* ---------- Header (misma idea que barberos-header / servicios toolbar) ---------- */
+
+.perfil-header {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 18px 20px;
   margin-bottom: 22px;
-  color: #000000;
-  letter-spacing: -0.5px;
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--kb-shadow-admin-toolbar);
+  border: 1px solid rgba(0, 122, 255, 0.1);
 }
 
-/* ---------- CARD PERFIL ---------- */
+.perfil-header .perfil-title {
+  margin: 0;
+  flex: 1 1 auto;
+}
+
+/* Barbero: .kb-page-title no tiene ::after global (solo en admin) */
+.barbero-content-inner .perfil-page-root .perfil-header .kb-page-title::after {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 3px;
+  margin: 10px 0 0;
+  background: linear-gradient(90deg, #007aff, #60a5fa, #007aff);
+  border-radius: 999px;
+}
+
+/* ---------- Card datos (clara — evita sombra “cuadrada” y choque con fondo admin) ---------- */
+
 .perfil-card {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 18px;
-  margin-bottom: 26px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+  background: var(--kb-admin-bg-surface, #ffffff);
+  border-radius: 18px;
+  padding: 6px 20px 8px;
+  margin-bottom: 22px;
+  border: 1px solid rgba(0, 122, 255, 0.16);
+  box-shadow: var(--kb-shadow-admin-card), var(--kb-shadow-admin-card-inset);
 }
 
-/* ---------- FILAS ---------- */
 .perfil-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 14px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .perfil-row:last-child {
   border-bottom: none;
 }
 
-/* ---------- LABEL / VALUE ---------- */
 .perfil-label {
-  font-size: 14px;
-  font-weight: 500;
-  color: #a0aec0; /* Gris azulado */
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #6b6560;
+  flex-shrink: 0;
 }
 
 .perfil-value {
-  font-size: 15px;
-  font-weight: 600;
-  color: #000000;
-  letter-spacing: 0.2px;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #1a1814;
+  text-align: right;
+  word-break: break-word;
 }
 
-/* ---------- ACCIONES ---------- */
+/* ---------- Acciones ---------- */
+
 .perfil-actions {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
-/* ---------- BOTONES (INFOCORE STYLE) ---------- */
 .perfil-action-btn {
-  padding: 12px 24px;
-  border-radius: 8px; /* Bordes más cuadrados */
-  border: none;
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-transform: none;
   cursor: pointer;
-  
-  /* Azul Eléctrico por defecto */
-  background: #007aff;
-  color: #ffffff;
-
-  font-size: 0.85rem;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease,
+    border-color 0.18s ease,
+    background 0.18s ease;
 }
 
-/* Hover Azul más oscuro */
-.perfil-action-btn:hover {
-  transform: translateY(-2px);
-  background: #0066cc;
-  box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+.perfil-action-btn:focus-visible {
+  outline: none;
 }
 
-/* Estilo para botón secundario (fondo oscuro) */
-.perfil-action-btn.secondary {
-  background: #0a192f;
-  color: #ffffff;
-  box-shadow: none;
+.perfil-action-btn--primary {
+  border: 1px solid var(--kb-btn-primary-border);
+  background: var(--kb-btn-primary-bg);
+  color: var(--kb-btn-primary-color);
+  box-shadow: var(--kb-btn-primary-shadow);
 }
 
-.perfil-action-btn.secondary:hover {
-  background: #007aff;
-  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
+.perfil-action-btn--primary:hover {
+  transform: translateY(-1px);
+  background: var(--kb-btn-primary-hover-bg);
+  color: var(--kb-btn-primary-hover-color);
+  border-color: var(--kb-btn-primary-hover-border);
+  box-shadow: var(--kb-btn-primary-hover-shadow);
 }
 
-/* ---------- RESPONSIVE ---------- */
-@media (max-width: 480px) {
-  .perfil-title {
-    font-size: 20px;
+.perfil-action-btn--primary:focus-visible {
+  box-shadow: var(--kb-btn-primary-focus-ring), var(--kb-btn-primary-shadow);
+}
+
+/* Secundario: neutro (contrasta con primario InfoCore) */
+.perfil-action-btn--secondary {
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #f8fafc;
+  color: #334155;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+}
+
+.perfil-action-btn--secondary:hover {
+  transform: translateY(-1px);
+  background: #f1f5f9;
+  border-color: rgba(15, 23, 42, 0.18);
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+}
+
+.perfil-action-btn--secondary:focus-visible {
+  box-shadow:
+    0 0 0 3px rgba(15, 23, 42, 0.12),
+    0 1px 2px rgba(15, 23, 42, 0.05);
+}
+
+.perfil-action-btn:active {
+  transform: translateY(0);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (min-width: 520px) {
+  .perfil-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 
   .perfil-action-btn {
-    font-size: 13px;
-    padding: 14px;
+    flex: 1 1 calc(50% - 6px);
+    min-width: 200px;
+  }
+}
+
+@media (max-width: 480px) {
+  .perfil-header {
+    padding: 16px 16px;
+    margin-bottom: 18px;
+  }
+
+  .perfil-card {
+    padding: 4px 16px 6px;
+  }
+
+  .perfil-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 14px 0;
+  }
+
+  .perfil-value {
+    text-align: left;
+    font-size: 0.9rem;
   }
 }
