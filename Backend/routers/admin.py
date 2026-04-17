@@ -7,6 +7,7 @@ import logging
 
 from database import get_db
 from models import Visita, Barbero, Cliente, Servicio
+from core.dependencias import get_current_admin
 
 from models.blacklist import Blacklist
 
@@ -33,7 +34,10 @@ def get_now_uy():
 # =====================================================================================
 
 @router.get("/dashboard")
-def admin_dashboard(db: Session = Depends(get_db)):
+def admin_dashboard(
+    admin=Depends(get_current_admin),
+    db: Session = Depends(get_db)
+):
     ahora = get_now_uy()
     hoy = ahora.date()
 
@@ -71,7 +75,8 @@ def admin_dashboard(db: Session = Depends(get_db)):
 @router.get("/turnos")
 def admin_turnos(
     filtro: str = Query(..., regex="^(pendientes|hoy|cancelados)$"),
-    fecha: date | None = None, 
+    fecha: date | None = None,
+    admin=Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
     ahora = get_now_uy()
@@ -123,24 +128,31 @@ def admin_turnos(
 # =====================================================================================
 
 @router.patch("/turnos/{id_visita}/cancelar")
-def cancelar_turno_admin(id_visita: int, db: Session = Depends(get_db)):
+def cancelar_turno_admin(
+    id_visita: int,
+    admin=Depends(get_current_admin),
+    db: Session = Depends(get_db)
+):
     # 1. Buscamos el turno con los joins necesarios
     turno = db.query(Visita).filter(Visita.id_visita == id_visita).first()
     if not turno:
         raise HTTPException(status_code=404, detail="Turno no encontrado")
     
-    # 2. Extraer datos ANTES del commit para asegurar disponibilidad
+    # 2. Evitar re-cancelar
+    if str(turno.estado).upper() == "CANCELADO":
+        return {"status": "success", "message": "El turno ya estaba cancelado"}
+
+    # 3. Extraer datos ANTES del commit para asegurar disponibilidad
     nombre_cliente = turno.cliente.nombre
     telefono_cliente = turno.cliente.telefono
     nombre_servicio = turno.servicio.nombre
-    # Formato ajustado a tu plantilla: "18/01 a las 15:00"
     fecha_msg = turno.fecha_hora.strftime("%d/%m a las %H:%M")
-    
-    # 3. Actualizamos la Base de Datos
+
+    # 4. Actualizamos la Base de Datos
     turno.estado = "cancelado"
     db.commit()
     
-    # 4. Enviamos el WhatsApp (Corregido: coincidencia de nombres de argumentos)
+    # 5. Enviamos el WhatsApp
     try:
         print(f"DEBUG: Intentando disparar WhatsApp de cancelación para {nombre_cliente}")
         enviar_cancelacion_whatsapp(
@@ -155,7 +167,11 @@ def cancelar_turno_admin(id_visita: int, db: Session = Depends(get_db)):
     return {"status": "success", "message": "Turno cancelado y cliente notificado"}
 
 @router.patch("/turnos/{id_visita}/confirmar")
-def confirmar_turno_admin(id_visita: int, db: Session = Depends(get_db)):
+def confirmar_turno_admin(
+    id_visita: int,
+    admin=Depends(get_current_admin),
+    db: Session = Depends(get_db)
+):
     turno = db.query(Visita).filter(Visita.id_visita == id_visita).first()
     if not turno:
         raise HTTPException(status_code=404, detail="Turno no encontrado")
@@ -169,11 +185,17 @@ def confirmar_turno_admin(id_visita: int, db: Session = Depends(get_db)):
 # =====================================================================================
 
 @router.get("/barberos/listado")
-def admin_listar_barberos(db: Session = Depends(get_db)):
+def admin_listar_barberos(
+    admin=Depends(get_current_admin),
+    db: Session = Depends(get_db)
+):
     return db.query(Barbero).all()
 
 @router.get("/servicios/listado")
-def admin_listar_servicios(db: Session = Depends(get_db)):
+def admin_listar_servicios(
+    admin=Depends(get_current_admin),
+    db: Session = Depends(get_db)
+):
     return db.query(Servicio).all()
 
 # =====================================================================================
@@ -181,12 +203,19 @@ def admin_listar_servicios(db: Session = Depends(get_db)):
 # =====================================================================================
 
 @router.get("/blacklist", response_model=List[BlacklistOut])
-def listar_lista_negra(db: Session = Depends(get_db)):
+def listar_lista_negra(
+    admin=Depends(get_current_admin),
+    db: Session = Depends(get_db)
+):
     """Obtiene todos los números bloqueados."""
     return db.query(Blacklist).order_by(Blacklist.created_at.desc()).all()
 
 @router.post("/blacklist", response_model=BlacklistOut)
-def agregar_a_lista_negra(data: BlacklistCreate, db: Session = Depends(get_db)):
+def agregar_a_lista_negra(
+    data: BlacklistCreate,
+    admin=Depends(get_current_admin),
+    db: Session = Depends(get_db)
+):
     """Bloquea un número de teléfono."""
     # Limpieza básica del número (solo dígitos)
     tel_limpio = "".join(filter(str.isdigit, data.telefono))
@@ -207,7 +236,11 @@ def agregar_a_lista_negra(data: BlacklistCreate, db: Session = Depends(get_db)):
     return nuevo_bloqueo
 
 @router.delete("/blacklist/{id_blacklist}")
-def eliminar_de_lista_negra(id_blacklist: int, db: Session = Depends(get_db)):
+def eliminar_de_lista_negra(
+    id_blacklist: int,
+    admin=Depends(get_current_admin),
+    db: Session = Depends(get_db)
+):
     """Desbloquea un número de la lista negra."""
     item = db.query(Blacklist).filter(Blacklist.id == id_blacklist).first()
     if not item:

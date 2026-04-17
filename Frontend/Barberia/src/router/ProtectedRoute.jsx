@@ -4,18 +4,35 @@ import { useAuthContext } from "../auth/AuthContext";
 export default function ProtectedRoute({ children, role }) {
   const { user, loading } = useAuthContext();
 
-
   if (loading) {
-    return null;
+    return (
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        minHeight: "200px",
+        color: "#555",
+      }}>
+        Verificando sesión…
+      </div>
+    );
   }
 
   if (!user) {
     const token = localStorage.getItem("token");
-
     if (token) {
-      return null;
+      return (
+        <div style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          minHeight: "200px",
+          color: "#555",
+        }}>
+          Verificando sesión…
+        </div>
+      );
     }
-
     return <Navigate to="/login-barbero" replace />;
   }
 

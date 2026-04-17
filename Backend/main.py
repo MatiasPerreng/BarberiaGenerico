@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from fastapi import FastAPI
@@ -14,9 +15,9 @@ from routers import (
     servicios,
     auth,
     admin,
-    carousel,
     perfil,
     estadisticas,
+    carousel,
     tv,
 )
 
@@ -32,17 +33,17 @@ STATIC_DIR = BASE_DIR / "static"
 (STATIC_DIR / "carousel").mkdir(parents=True, exist_ok=True)
 
 # =======================
-# TEST EMAIL (temporal)
+# TEST EMAIL (solo si ENABLE_TEST_EMAIL=true en .env)
 # =======================
-
-@app.get("/test-email")
-async def test_email():
-    await enviar_email_confirmacion(
-        destinatario="tuemail@gmail.com",
-        asunto="Test Barbería",
-        cuerpo="Este es un email de prueba desde FastAPI.",
-    )
-    return {"status": "email enviado"}
+if os.getenv("ENABLE_TEST_EMAIL", "").lower() in ("true", "1", "yes"):
+    @app.get("/test-email")
+    async def test_email():
+        await enviar_email_confirmacion(
+            destinatario="tuemail@gmail.com",
+            asunto="Test Barbería",
+            cuerpo="Este es un email de prueba desde FastAPI.",
+        )
+        return {"status": "email enviado"}
 
 
 # =======================
@@ -73,14 +74,23 @@ app.mount(
 # CORS
 # =======================
 
+_default_origins = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+    "http://192.168.1.62:5173",
+    "http://167.62.53.159:5173",
+]
+_extra = os.getenv("CORS_ORIGINS", "")
+if _extra.strip():
+    allow_origins = _default_origins + [
+        o.strip() for o in _extra.split(",") if o.strip()
+    ]
+else:
+    allow_origins = _default_origins
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://192.168.1.62:5173",
-        "http://167.62.53.159:5173",
-    ],
+    allow_origins=allow_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -97,9 +107,9 @@ app.include_router(servicios.router)
 app.include_router(horarios.router)
 app.include_router(visitas.router)
 app.include_router(admin.router)
-app.include_router(carousel.router)
 app.include_router(perfil.router)
 app.include_router(estadisticas.router)
+app.include_router(carousel.router)
 app.include_router(tv.router)
 
 # =======================

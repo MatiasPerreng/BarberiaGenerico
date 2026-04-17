@@ -26,7 +26,9 @@ router = APIRouter(
     tags=["Barberos"]
 )
 
-MEDIA_DIR = Path("static/barberos")
+# Misma carpeta que monta main.py en /media/barberos (no usar cwd: en Ubuntu el proceso suele tener otro directorio de trabajo).
+_BACKEND_DIR = Path(__file__).resolve().parent.parent
+MEDIA_DIR = _BACKEND_DIR / "static" / "barberos"
 
 # ---------------------------------------------------------
 # AGENDA BARBERO

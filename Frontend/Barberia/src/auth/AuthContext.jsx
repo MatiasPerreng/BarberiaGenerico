@@ -5,6 +5,16 @@ import API_URL from "../services/api";
 
 const AuthContext = createContext(null);
 
+function buildUserFromPerfil(token, perfil, payload) {
+  return {
+    token,
+    id: perfil.id_barbero,
+    nombre: perfil.nombre,
+    email: perfil.email,
+    role: payload.role,
+  };
+}
+
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -23,27 +33,13 @@ export const AuthProvider = ({ children }) => {
 
     const loadUser = async () => {
       try {
-        // Validamos token (exp, firma, etc.)
         const payload = jwtDecode(token);
-
-        // Traemos datos reales del usuario
         const res = await fetch(`${API_URL}/perfil/me`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: { Authorization: `Bearer ${token}` },
         });
-
         if (!res.ok) throw new Error("No autorizado");
-
         const perfil = await res.json();
-
-        setUser({
-          token,
-          id: perfil.id_barbero,
-          nombre: perfil.nombre,
-          email: perfil.email,
-          role: payload.role,
-        });
+        setUser(buildUserFromPerfil(token, perfil, payload));
       } catch (err) {
         console.error("❌ Sesión inválida", err);
         localStorage.removeItem("token");
@@ -61,25 +57,14 @@ export const AuthProvider = ({ children }) => {
   // =========================
   const login = async ({ token }) => {
     localStorage.setItem("token", token);
-
     try {
       const payload = jwtDecode(token);
-
       const res = await fetch(`${API_URL}/perfil/me`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
+        headers: { Authorization: `Bearer ${token}` },
       });
-
+      if (!res.ok) throw new Error("No autorizado");
       const perfil = await res.json();
-
-      setUser({
-        token,
-        id: perfil.id_barbero,
-        nombre: perfil.nombre,
-        email: perfil.email,
-        role: payload.role,
-      });
+      setUser(buildUserFromPerfil(token, perfil, payload));
     } catch (err) {
       console.error("❌ Error al cargar perfil", err);
       logout();

@@ -1,11 +1,13 @@
+from pathlib import Path
+
 from fastapi import APIRouter, Depends, HTTPException, status, UploadFile, File
 from sqlalchemy.orm import Session
 from typing import List
 import shutil
-import os
 import uuid
 
 from database import get_db
+from core.dependencias import get_current_admin
 import crud.servicio as crud_servicio
 from schemas import ServicioCreate, ServicioUpdate, ServicioOut
 
@@ -14,8 +16,13 @@ router = APIRouter(
     tags=["Servicios"]
 )
 
-UPLOAD_DIR = "static/servicios"
-os.makedirs(UPLOAD_DIR, exist_ok=True)
+_BACKEND_DIR = Path(__file__).resolve().parent.parent
+UPLOAD_DIR = _BACKEND_DIR / "static" / "servicios"
+UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
+
+ALLOWED_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp"}
+ALLOWED_CONTENT_TYPES = {"image/jpeg", "image/png", "image/webp"}
+MAX_FILE_SIZE = 5 * 1024 * 1024  # 5 MB
 
 #----------------------------------------------------------------------------------------------------------------------
 
@@ -39,6 +46,7 @@ def obtener_servicio(servicio_id: int, db: Session = Depends(get_db)):
 @router.post("/", response_model=ServicioOut, status_code=status.HTTP_201_CREATED)
 def crear_servicio(
     servicio_in: ServicioCreate,
+    admin=Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
     return crud_servicio.create_servicio(db, servicio_in)
@@ -49,6 +57,7 @@ def crear_servicio(
 def actualizar_servicio(
     servicio_id: int,
     servicio_in: ServicioUpdate,
+    admin=Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
     servicio = crud_servicio.get_servicio_by_id(db, servicio_id)
@@ -66,6 +75,7 @@ def actualizar_servicio(
 def subir_imagen_servicio(
     servicio_id: int,
     file: UploadFile = File(...),
+    admin=Depends(get_current_admin),
     db: Session = Depends(get_db)
 ):
     servicio = crud_servicio.get_servicio_by_id(db, servicio_id)
@@ -73,16 +83,25 @@ def subir_imagen_servicio(
     if not servicio:
         raise HTTPException(status_code=404, detail="Servicio no encontrado")
 
-    # 🔹 generar nombre único
-    ext = file.filename.split(".")[-1]
-    filename = f"{uuid.uuid4()}.{ext}"
+    ext = "." + file.filename.rsplit(".", 1)[-1].lower() if "." in file.filename else ""
+    if ext not in ALLOWED_EXTENSIONS:
+        raise HTTPException(
+            status_code=400,
+            detail=f"Formato no permitido. Use: {', '.join(ALLOWED_EXTENSIONS)}"
+        )
+    if file.content_type and file.content_type not in ALLOWED_CONTENT_TYPES:
+        raise HTTPException(status_code=400, detail="Tipo de archivo no permitido")
 
-    # 🔹 guardar archivo en disco
-    filepath = os.path.join("static", "servicios", filename)
+    content = file.file.read()
+    file.file.seek(0)
+    if len(content) > MAX_FILE_SIZE:
+        raise HTTPException(status_code=400, detail="Archivo demasiado grande (máx. 5 MB)")
+
+    filename = f"{uuid.uuid4()}{ext}"
+    filepath = UPLOAD_DIR / filename
     with open(filepath, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
 
-    # 🔥 CLAVE: guardar SOLO el nombre
     servicio.imagen = filename
 
     db.commit()
@@ -93,7 +112,11 @@ def subir_imagen_servicio(
 #----------------------------------------------------------------------------------------------------------------------
 
 @router.delete("/{servicio_id}", status_code=status.HTTP_204_NO_CONTENT)
-def eliminar_servicio(servicio_id: int, db: Session = Depends(get_db)):
+def eliminar_servicio(
+    servicio_id: int,
+    admin=Depends(get_current_admin),
+    db: Session = Depends(get_db)
+):
     servicio = crud_servicio.get_servicio_by_id(db, servicio_id)
 
     if not servicio:
